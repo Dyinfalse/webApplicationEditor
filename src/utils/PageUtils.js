@@ -70,7 +70,7 @@ export default class PageUtils {
      * @param {String} uuid 必填要删除的组件的uuid
      */
     deletePathUuidMap(path, uuid) {
-
+        
     }
 
     

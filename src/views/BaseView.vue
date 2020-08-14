@@ -41,7 +41,7 @@ export default {
             this.$P.setPathUuidMap(this.$router.currentRoute.name, config.base.uuid);
       },
       removeComponent() {
-          
+          console.log(this.$C.getFocus)
       }
   },
   created() {
