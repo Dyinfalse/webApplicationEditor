@@ -27,7 +27,6 @@ export default class PageUtils {
      * 增加一个页面
      */
     addPage() {
-        this.pageId ++;
         let routes = this.router.options.routes;
 
         routes.find(item => item.path == "/pageCtrl").children.push({
@@ -42,7 +41,7 @@ export default class PageUtils {
         window.localStorage.setItem("pageId", this.pageId);
         window.localStorage.setItem("router", JSON.stringify(routes));
 
-        return "/pageCtrl/baseView_" + this.pageId;
+        return "/pageCtrl/baseView_" + this.pageId ++;
     }
 
     /**
@@ -70,7 +69,7 @@ export default class PageUtils {
      * @param {String} uuid 必填要删除的组件的uuid
      */
     deletePathUuidMap(path, uuid) {
-        
+
     }
 
     

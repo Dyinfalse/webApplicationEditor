@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import PageCtrl from '../views/PageCtrl.vue'
-import BaseView from '../views/BaseView';
 
 Vue.use(VueRouter)
 let localRouter = JSON.parse(window.localStorage.getItem("router"));
@@ -10,9 +7,7 @@ let localRouter = JSON.parse(window.localStorage.getItem("router"));
 const routes = localRouter || [
   {
     path: '/',
-    name: 'Home',
-    vue: "Home",
-    component: "Home"
+    redirect:'/pageCtrl'
   },
   {
     path: '/pageCtrl',

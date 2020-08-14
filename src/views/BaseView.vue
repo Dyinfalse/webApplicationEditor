@@ -26,7 +26,7 @@ export default {
   },
   methods: {
       addComponent() {
-            let name = 'Input';
+            let name = 'HelloWorld';
             /**
              * 实例了一个组件之后, 需要增加其配置信息到映射里面
              */

@@ -46,6 +46,7 @@ export default {
         }
     },
     created() {
+        if(!this.uuid) throw "缺少必要的uuid";
         /**
          * 初始化
          */
