@@ -1,18 +1,42 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>组件列表</h1>
+
+    <div>
+      <button @click="components.push($C.pack('Input'))" style="margin-right: 20px">add</button>
+      <button @click="components.shift()">remove</button>
+    </div>
+
+    <component v-for="(item) in components" :key="item.id" :id="item.name" :is="item.name"/>
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Ctrl from '../components/Ctrl';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: { Ctrl },
+  data() {
+    return {
+      components: [ "HelloWorld" ]
+    }
+  },
+  created() {
+    this.$C.install(this.components);
+    this.components = this.$C.pack(this.components);
+    /**
+     * 定时删除组件
+     * 模拟拖拽增加组件
+     */
+    setTimeout(()=> {
+      this.$C.install(["Input"]) && this.components.push(this.$C.pack("Input"));
+      /**
+       * 组件删除
+       */
+      // this.components.shift();
+    }, 2000)
   }
 }
 </script>
