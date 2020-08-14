@@ -1,14 +1,15 @@
 # WEB应用编辑器开发方案
 
-2020.8.12 author by QC & DWY
+2020.8.14 author by QC & DWY
 
 ## 整体思路
 
-在组件方面做到响应式渲染(丢弃原来的操作数组), 尽量使用映射避免循环来保证渲染效率, 配置方面使用组件中的`data`代替原来单独的配置文件, 原因是可以响应式, 不需要人为干预, 使用JS可以操作配置, 每个组件有一个唯一的`uuid`, 在工具类里维护所有组件的配置信息, 和`uuid`是一对一的映射关系, 组件的响应式处理由基础组件`Pack`来处理
+在组件方面做到响应式渲染, 尽量使用映射避免循环来保证渲染效率, 配置方面使用组件中的`data`代替原来单独的配置文件, 原因是可以响应式, 不需要人为干预, 使用JS可以操作配置, 每个组件有一个唯一的`uuid`, 在工具类里维护所有组件的配置信息, 和`uuid`是一对一的映射关系, 组件的响应式处理由基础组件`Pack`来处理
 
 页面方面使用`addRoutes`动态添加页面路由, 在页面工具类中维护一个页面路由`path`和组件`uuid`一对多的映射关系来保存页面中的组件, 组件的读取和渲染有基础页面`BaseView`来完成.
 
 组件中`data`的定义方式尽量保证如下格式:
+
 ``` js
 data() {
     return {
@@ -74,7 +75,7 @@ data() {
 
 `pageId`内部维护的页面唯一标识
 
-`pathUuidMap`页面路径和当前页面所有组件的`uuid`, 链表结构
+`pathUuidMap`页面路径和当前页面所有组件的`uuid`, `Map<Path, Array<Uuid>>`结构
 
 **PageUtils核心方法**
 
@@ -89,7 +90,7 @@ data() {
 遵循约定优于配置(Convention Over Configuration)的编程方式, 使用该类之前对组件开发者作出以下约定:
 
 - 组件名称必须和组件文件名称保持一致, 大写字母开头
-- 组件中所有内容必须包含在基础组件`Pack`内, 例如: `src/components/Input.vue`
+- 组件中所有内容必须包含在基础组件`Pack`内, 并且接收`uuid`, 同时传递给`Pack`, 例如: `src/components/Input.vue`
 - 组件内需要被控制面板修改的样式, 必须采用驼峰, 保证`:style=""`属性可以直接渲染
 - 不可直接操作`this.$C.componentsUuidMap`, 只能读取的时候使用, 如果要添加或删除,必须使用`addComponentsUuidMap()`和`deleteUuidMap()`
 - 不可直接操作`this.$P.pathUuidMap`, 只能读取的时候使用, 如果要添加或删除, 只能通过`addPage()`和`deletePage()`
@@ -143,5 +144,5 @@ componentsUuidMap = {
 
 ## 方法
 
-
+`componentsUuidMap`维护`Array<Function>`触发注册进来发方法, 可以在属性变更或需要的时候调用
 
