@@ -27,7 +27,7 @@ export default {
   },
   methods: {
       addComponent() {
-            let name = 'HelloWorld';
+            let name = 'Input';
             /**
              * 实例了一个组件之后, 需要增加其配置信息到映射里面
              */
@@ -58,6 +58,7 @@ export default {
     if(this.$P.pathUuidMap[path]){
         this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
         this.$C.install(this.cList.map(c => c.name));
+        console.log(this.cList)
     }
     
     /**

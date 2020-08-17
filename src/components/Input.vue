@@ -22,15 +22,20 @@ export default {
       value: '11',
       style: {
         color: 0,
-        fontSize: 0
+        fontSize: 20
       }
     }
   },
   created() {
     this.style.color = "#000";
   },
+  methods: {
+    add () {
+      console.log(1)
+    }
+  },
   mounted(){
-    this.style.fontSize = 20;
+    // this.style.fontSize = 20;
   }
 }
 </script>

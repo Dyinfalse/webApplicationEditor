@@ -59,8 +59,9 @@ export default {
             ...this.$C.componentsUuidMap[this.uuid].base.style
         }
         this.$data.uuid = this.uuid;
+        console.log(this.$parent.$data)
         /**
-         * 同步
+         * 同步引用
          */
         this.$C.addComponentsUuidMap(this.uuid, {
             name: this.$parent.$attrs.id,
