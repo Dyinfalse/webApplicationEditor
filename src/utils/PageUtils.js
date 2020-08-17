@@ -26,9 +26,9 @@ export default class PageUtils {
     /**
      * 增加一个页面
      */
-    addPage() {
+    addPage(targetPath) {
         let routes = this.router.options.routes;
-
+        console.log(this.pathUuidMap)
         routes.find(item => item.path == "/pageCtrl").children.push({
             path: "baseView_" + this.pageId,
             name: "baseView_" + this.pageId,

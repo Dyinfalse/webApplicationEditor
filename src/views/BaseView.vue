@@ -5,6 +5,7 @@
     <div>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
+      <button @click="addPage()">增加子页面</button>
     </div>
 
     <component v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
@@ -42,6 +43,10 @@ export default {
       },
       removeComponent() {
           console.log(this.$C.getFocus)
+      },
+      addPage() {
+        console.log(this.$router.currentRoute.name)
+        // this.$P.addPage();
       }
   },
   created() {
