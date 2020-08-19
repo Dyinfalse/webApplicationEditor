@@ -9,6 +9,11 @@ export default class ComponentUtils {
     baseComponents = ['Pack'];
 
     /**
+     * 已经加过的组件记录
+     */
+    installed = {};
+
+    /**
      * 所有组件的Uuid映射
      */
     componentsUuidMap = {};
@@ -49,8 +54,11 @@ export default class ComponentUtils {
          * 安装之前给组件增加唯一hash值 uuid, 在组件集合当中
          */
         try {
+            if(this.installed[cname]) return true;
+
             let components = this.getComponents(cname);
             components.map(component => Vue.component(component.name, component));
+            this.installed[cname] = 1;
             return true;
         } catch (e) {
             console.error('组件挂载异常', e);
@@ -159,25 +167,9 @@ export default class ComponentUtils {
             return v.toString(16);
         });
     }
-    /**
-     * 包装组件信息, 提供全局唯一自增key
-     * @param {Array|String} cname 组件名称, 可以接受多个
-     * @return 返回包含自增id的组件信息, 不需要人为维护
-     */
-    pack(cname) {
-        if(Array.isArray(cname)){
-            return cname.map(name => {
-                this.cid++;
-                return { name, id: this.cid};
-            })
-        }else {
-            this.cid ++;
-            return {name: cname, id: this.cid};
-        }
-    }
 
     addFunction(_this, name) {
-        this.componentsUuidMap[_this.uuid].function = {
+        this.componentsUuidMap[_this.$parent.uuid].function = {
             [name]: _this
         }
     }

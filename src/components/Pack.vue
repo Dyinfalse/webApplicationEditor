@@ -46,12 +46,14 @@ export default {
         }
     },
     created() {
+    },
+    mounted() {
         if(!this.uuid) throw "缺少必要的uuid";
         /**
          * 初始化
          */
-        this.$parent.$data.style = {
-            ...this.$parent.$data.style,
+        this.$children[0].$data.style = {
+            ...this.$children[0].$data.style,
             ...this.$C.componentsUuidMap[this.uuid].extend.$data.style
         }
         this.style = {
@@ -61,14 +63,11 @@ export default {
         /**
          * 同步引用
          */
-        console.log(this.$C.addComponentsUuidMap(this.uuid, {
-            name: this.$parent.$attrs.id,
+        this.$C.addComponentsUuidMap(this.uuid, {
+            name: this.$children[0].$attrs.id,
             base: this,
-            extend: this.$parent
-        }))
-    },
-    mounted() {
-        
+            extend: this.$children[0]
+        })
     }
 }
 </script>

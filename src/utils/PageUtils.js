@@ -12,7 +12,7 @@ export default class PageUtils {
     /**
      * 页面自增id
      */
-    pageId = window.localStorage.getItem("pageId") || 0;
+    pageId = window.localStorage.getItem("pageId") || -1;
 
     /**
      * 页面路径和 组件uuid映射
@@ -27,6 +27,7 @@ export default class PageUtils {
      * 增加一个页面
      */
     addPage() {
+        this.pageId ++;
         let routes = this.router.options.routes;
 
         routes.find(item => item.path == "/pageCtrl").children.push({
@@ -41,7 +42,7 @@ export default class PageUtils {
         window.localStorage.setItem("pageId", this.pageId);
         window.localStorage.setItem("router", JSON.stringify(routes));
 
-        return "/pageCtrl/baseView_" + this.pageId ++;
+        return "/pageCtrl/baseView_" + this.pageId;
     }
 
     /**

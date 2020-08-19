@@ -1,22 +1,15 @@
 <template>
-  <Pack :uuid="uuid">
+  
     <div class="Input" :style="{fontSize: style.fontSize + 'px', color: style.color}">
       this's Input component
       <input type="text" v-model="value">
     </div>
-  </Pack>
 </template>
 
 <script>
 
 export default {
   name: 'Input',
-  props: {
-    uuid: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
       value: '11',

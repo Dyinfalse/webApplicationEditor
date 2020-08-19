@@ -6,9 +6,9 @@
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
     </div>
-
-    <component v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
-    
+    <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
+      <component :id="item.name" :is="item.name"/>
+    </Pack>
   </div>
 </template>
 
@@ -57,10 +57,14 @@ export default {
   },
   mounted() {
     let path = this.$router.currentRoute.name;
-
+    
     if(this.$P.pathUuidMap[path]){
         this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
         this.$C.install(this.cList.map(c => c.name));
+
+        for(let i = 0; i < 1000; i++){
+          this.$C.install(["Input"]);
+        }
     }
     
     /**
