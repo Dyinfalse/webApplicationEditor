@@ -4,12 +4,20 @@
         <p>基础属性</p>
         <p v-for="(v, k) in baseStyle" :key="k">
             <span>{{TRANSLATE_ENUM[k]}}</span>
-            <input type="text" v-model="baseStyle[k]" name="" id="">
+            <input type="text" v-model="baseStyle[k]" name="">
         </p>
         <p>扩展属性</p>
         <p v-for="(v, k) in extendStyle" :key="k">
             <span>{{TRANSLATE_ENUM[k]}}</span>
-            <input type="text" v-model="extendStyle[k]" name="" id="">
+            <input type="text" v-model="extendStyle[k]" name="">
+        </p>
+        <p>数据</p>
+        <p v-for="(v, k) in dataMap" :key="k">
+            {{k}}
+        </p>
+        <p>事件</p>
+        <p v-for="(v, k) in functionMap" :key="k">
+            
         </p>
     </div>
 </template>
@@ -41,14 +49,33 @@ export default {
   },
   computed: {
       baseStyle () {
-          return this.$C.getFocusUuidMap()[0].base.style;
+          return this.$C.getFocusUuidMap()[0].base.$data.style;
       },
       extendStyle () {
-          return this.$C.getFocusUuidMap()[0].extend.style;
+          return this.$C.getFocusUuidMap()[0].extend.$data.style;
+      },
+      functionMap() {
+          return this.$C.getFocusUuidMap()[0].function;
+      },
+      dataMap() {
+          return {}
       }
   },
   methods: {
-      
+      addEvent() {
+        // {
+        //     source: Vue,
+        //     type: "click",
+        //     target: vue,
+        //     functionName: "add"
+        // }
+        // source.$refs['pack'].addEventListener(type, function() {
+        //     target.functionName();
+        // })
+      }
+  },
+  mounted() {
+
   }
 }
 </script>

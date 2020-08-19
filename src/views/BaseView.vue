@@ -5,10 +5,9 @@
     <div>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
-      <button @click="addPage()">增加子页面</button>
     </div>
 
-    <component v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
+    <component v-for="item in cList" ref="pack2" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
     
   </div>
 </template>
@@ -21,7 +20,7 @@ export default {
   components: { Ctrl },
   data() {
     return {
-        components: ["Input"],
+        components: [],
         cList: [],
     }
   },
@@ -31,23 +30,28 @@ export default {
             /**
              * 实例了一个组件之后, 需要增加其配置信息到映射里面
              */
-            let config = this.$C.addComponentsUuidMap(name);
+            let v = this.$C.addComponentsUuidMap(name);
             /**
              * 挂载并渲染
              */
-            this.$C.install([name]) && this.cList.push(config);
+            this.$C.install([name]) && this.cList.push(v);
             /**
              * 增加到页面映射关系
              */
-            this.$P.setPathUuidMap(this.$router.currentRoute.name, config.base.uuid);
+            this.$P.setPathUuidMap(this.$router.currentRoute.name, v.base.uuid);
       },
       removeComponent() {
-          console.log(this.$C.getFocus)
+        let uuids = this.$C.deleteUuidMap();
+        this.$P.deletePathUuidMap(this.$router.currentRoute.name, uuids);
+
+        for(let i = 0; i < this.cList.length; i++) {
+          if(uuids.indexOf(this.cList[i].base.uuid) > -1) {
+            this.cList.splice(i,1);
+            i--;
+          }
+        }
+        
       },
-      addPage() {
-        console.log(this.$router.currentRoute.name)
-        // this.$P.addPage();
-      }
   },
   created() {
 
@@ -58,7 +62,6 @@ export default {
     if(this.$P.pathUuidMap[path]){
         this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
         this.$C.install(this.cList.map(c => c.name));
-        console.log(this.cList)
     }
     
     /**

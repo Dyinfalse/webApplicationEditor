@@ -101,20 +101,10 @@ export default class ComponentUtils {
             uuid = this.randomUuID();
             let _config = {
                 name,
-                base: {style: {}},
-                extend: {style: {}},
+                base: {$data: {style: {}}},
+                extend: {$data: {style: {}}},
             }
             this.componentsUuidMap[uuid] = _config;
-        }else if(typeof uuid == 'object' && !config) {
-            if(!uuid.name) throw "创建映射异常: 缺少必要的name字段";
-            /** create by config */
-            let _config = uuid;
-            uuid = this.randomUuID();
-            this.componentsUuidMap[uuid] = {
-                base: { style: {}},
-                extend: { style: {}},
-                ..._config
-            }
         }
         this.componentsUuidMap[uuid].base.uuid = uuid;
         return this.componentsUuidMap[uuid];
@@ -134,9 +124,16 @@ export default class ComponentUtils {
      * @param {String} uuid 要删除的Uuid
      */
     deleteUuidMap(uuid) {
+        /**
+         * 默认当前选中uuid
+         */
+        if(!uuid){
+            return this.stroe.focus.map(u => this.deleteUuidMap(u));
+        }
         if(!delete this.componentsUuidMap[uuid]){
             console.error("Uuid映射关系删除失败");
         }
+        return uuid;
     }
     /**
      * 设置当前的焦点组件, 可以是多个
@@ -175,6 +172,12 @@ export default class ComponentUtils {
         }else {
             this.cid ++;
             return {name: cname, id: this.cid};
+        }
+    }
+
+    addFunction(_this, name) {
+        this.componentsUuidMap[_this.uuid].function = {
+            [name]: _this
         }
     }
 }

@@ -20,9 +20,13 @@ export default {
   data() {
     return {
       value: '11',
+      timer: '',
       style: {
         color: 0,
         fontSize: 20
+      },
+      data: {
+        value: '11',
       }
     }
   },
@@ -31,11 +35,16 @@ export default {
   },
   methods: {
     add () {
-      console.log(1)
+      
     }
   },
   mounted(){
+    this.$C.addFunction(this, "add");
     // this.style.fontSize = 20;
+
+    this.timer = setTimeout(() => {
+      this.value = '22';
+    }, 100000)
   }
 }
 </script>

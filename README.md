@@ -79,7 +79,7 @@ data() {
 
 **PageUtils核心方法**
 
-`Path addPage()`增加一个页面路由, 返回增加的路由Url
+`Path addPage()`增加一个页面路由, 返回增加的路由Url, 返回新建的`path`
 
 `Boolean setPathUuidMap(Path, Uuid)` 给路径增加一个组件的`uuid`, 返回是否添加成功, 最好在该方法执行完之后再跳转路径
 

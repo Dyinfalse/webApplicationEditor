@@ -1,5 +1,5 @@
 <template>
-    <div class="component-box" :style="{
+    <div class="component-box" ref="pack" :style="{
         width: style.width + 'px',
         height: style.height + 'px',
         background: style.background
@@ -52,22 +52,20 @@ export default {
          */
         this.$parent.$data.style = {
             ...this.$parent.$data.style,
-            ...this.$C.componentsUuidMap[this.uuid].extend.style
+            ...this.$C.componentsUuidMap[this.uuid].extend.$data.style
         }
         this.style = {
             ...this.style,
-            ...this.$C.componentsUuidMap[this.uuid].base.style
+            ...this.$C.componentsUuidMap[this.uuid].base.$data.style
         }
-        this.$data.uuid = this.uuid;
-        console.log(this.$parent.$data)
         /**
          * 同步引用
          */
-        this.$C.addComponentsUuidMap(this.uuid, {
+        console.log(this.$C.addComponentsUuidMap(this.uuid, {
             name: this.$parent.$attrs.id,
-            base: this.$data,
-            extend: this.$parent.$data
-        })
+            base: this,
+            extend: this.$parent
+        }))
     },
     mounted() {
         
