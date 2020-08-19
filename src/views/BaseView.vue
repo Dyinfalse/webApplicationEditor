@@ -7,7 +7,7 @@
       <button @click="removeComponent()">remove</button>
     </div>
 
-    <component v-for="item in cList" ref="pack2" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
+    <component v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid" :id="item.name" :is="item.name"/>
     
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
              */
             this.$C.install([name]) && this.cList.push(v);
             /**
-             * 增加到页面映射关系
+             * 增加到页面映射关系`
              */
             this.$P.setPathUuidMap(this.$router.currentRoute.name, v.base.uuid);
       },
@@ -50,7 +50,6 @@ export default {
             i--;
           }
         }
-        
       },
   },
   created() {

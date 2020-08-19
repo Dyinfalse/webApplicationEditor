@@ -122,6 +122,7 @@ export default class ComponentUtils {
     /**
      * 删除 componentsUuidMap 当中的映射配置数据
      * @param {String} uuid 要删除的Uuid
+     * @return {Array<Uuid>} 被删除的uuid数组
      */
     deleteUuidMap(uuid) {
         /**
