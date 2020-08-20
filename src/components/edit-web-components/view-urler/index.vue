@@ -70,6 +70,7 @@
                             :snapTolerance="20"
                             :scale-ratio="pageSize.scale"
                             @activated='activated(item,index)'
+                            @deactivated="deactivated(item,index)"
                             >
                             <component :id="item.name" :is="item.name" /> 
                         </vdr>
@@ -367,9 +368,12 @@ export default {
         },
         methods: {
             activated(item,index){
-                // this.activeUUid = item.base.uuid
+                this.activeUUid = true
                 // console.log(item)
                 this.$C.setFocus([item.base.uuid]);
+            },
+            deactivated(item){
+                this.activeUUid = false
             },
             getCommonStyle(styleObj, scalingRatio = 1) {
                 let needUnitStr = ['width', 'height','top', 'left', 'paddingTop', 'paddingLeft', 'paddingRight', 'paddingBottom', 'marginTop', 'marginLeft', 'marginRight', 'marginBottom', 'borderWidth','fontSize', 'borderRadius', 'letterSpacing']
@@ -739,7 +743,7 @@ export default {
                 
                 console.log(event)
                 
-                if(this.$C.stroe.focus.length>0) return;
+                if(this.activeUUid) return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');
                 let scrollElement = document.getElementById('ruler-canvas-scroll');
@@ -840,6 +844,7 @@ export default {
                     const endLeft = ev.clientX
                     const endTop = ev.clientY
                     div.remove()
+                    this.activeUUid = false
                     // this.activeUUid
                     document.onmousemove = null;
                     document.onmouseup = null;

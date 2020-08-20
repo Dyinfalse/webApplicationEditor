@@ -21,7 +21,7 @@ export default class ComponentUtils {
     /**
      * 当前焦点组件uuid
      */
-    stroe = {};
+    store = {};
 
     /**
      * 组件id, 自增
@@ -40,9 +40,9 @@ export default class ComponentUtils {
         this.installBase();
         /**
          * 响应式数据集合, 目前存放焦点组件的Uuid, 后面可以扩展存放全项目响应式数据
-         * 缺点 -> 没有主动函数可以调用, 如果要调用方法 只能监听(watch) $C.stroe.focus
+         * 缺点 -> 没有主动函数可以调用, 如果要调用方法 只能监听(watch) $C.store.focus
          */
-        this.stroe = Vue.observable({ focus: [] });
+        this.store = Vue.observable({ focus: [] });
         
         this.$P = Vue.prototype.$P;
     }
@@ -133,11 +133,11 @@ export default class ComponentUtils {
      * 获取当前focus的组件的配置信息
      */
     getFocusUuidMap(){
-        if(this.stroe.focus.length == 0) {
+        if(this.store.focus.length == 0) {
             console.warn("没有激活的组件");
             return [];
         };
-        return this.stroe.focus.map(uuid => this.componentsUuidMap[uuid]);
+        return this.store.focus.map(uuid => this.componentsUuidMap[uuid]);
     }
     /**
      * 删除 componentsUuidMap 当中的映射配置数据
@@ -149,7 +149,7 @@ export default class ComponentUtils {
          * 默认当前选中uuid
          */
         if(!uuid){
-            return this.stroe.focus.map(u => this.deleteUuidMap(u));
+            return this.store.focus.map(u => this.deleteUuidMap(u));
         }
         if(!delete this.componentsUuidMap[uuid]){
             console.error("Uuid映射关系删除失败");
@@ -166,9 +166,9 @@ export default class ComponentUtils {
         /**
          * @TODO 需要add方法, 单纯覆盖不满足业务需要
          */
-        // this.stroe.focus.push(...uuids);
-        // this.stroe.focus = Array.from(new Set(this.stroe.focus));
-        this.stroe.focus = uuids;
+        // this.store.focus.push(...uuids);
+        // this.store.focus = Array.from(new Set(this.store.focus));
+        this.store.focus = uuids;
     }
     /**
      * 生成随机Uuid

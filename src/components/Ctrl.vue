@@ -1,6 +1,6 @@
 <template>
-    <div class="Ctrl" v-if="$C.stroe.focus.length > 0">
-        当前激活了{{$C.stroe.focus.length}}个组件
+    <div class="Ctrl" v-if="$C.store.focus.length > 0">
+        当前激活了{{$C.store.focus.length}}个组件
         <p>基础属性</p>
         <p v-for="(v, k) in focusMap.base.$data" :key="k">
             <span>{{k}}</span>
@@ -75,7 +75,7 @@ export default {
             /**
              * 设置函数名称选项
              */
-            this.targetChange(this.$C.getFocusUuidMap()[0].extend)
+            this.targetChange(this.$C.getFocusUuidMap()[0].extend);
             return this.$C.getFocusUuidMap()[0];
       }
   },
