@@ -253,6 +253,7 @@ export default {
         },
         data() {
             return {
+                activeUUid:"",
                 pageSize: {                    
                     width: 1920,
                     height: 1080,
@@ -366,7 +367,8 @@ export default {
         },
         methods: {
             activated(item,index){
-                console.log(item)
+                // this.activeUUid = item.base.uuid
+                // console.log(item)
                 this.$C.setFocus([item.base.uuid]);
             },
             getCommonStyle(styleObj, scalingRatio = 1) {
@@ -729,17 +731,15 @@ export default {
              * @param {层级，默认body} pname
              */
             getOffset(el, pname = 'body'){
-                let left = el.offsetLeft;
-                let top = el.offsetTop;console.log(left)
-                if (el.offsetParent && el.offsetParent.tagName !== pname) {
-                let p = this.getOffset(el.offsetParent, pname);
-                left += p.left;
-                top += p.top;
-                }
+                let left = el.getBoundingClientRect().left;
+                let top = el.getBoundingClientRect().top;
                 return {left, top};
             },
             mousedown(event){
-                // if(this.styleConfig.dragStart) return;
+                
+                console.log(event)
+                
+                if(this.$C.stroe.focus.length>0) return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');
                 let scrollElement = document.getElementById('ruler-canvas-scroll');
@@ -839,7 +839,8 @@ export default {
                 document.onmouseup = (ev) => {
                     const endLeft = ev.clientX
                     const endTop = ev.clientY
-                    // div.remove()
+                    div.remove()
+                    // this.activeUUid
                     document.onmousemove = null;
                     document.onmouseup = null;
                     /**
