@@ -24,7 +24,7 @@ import BaseView from './BaseView';
 
 export default {
   name: 'Home',
-  components: { Ctrl },
+  components: { Ctrl},
   data() {
     return {
         components: [ "HelloWorld" ],

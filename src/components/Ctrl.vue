@@ -2,9 +2,9 @@
     <div class="Ctrl" v-if="$C.stroe.focus.length > 0">
         当前激活了{{$C.stroe.focus.length}}个组件
         <p>基础属性</p>
-        <p v-for="(v, k) in focusMap.base.$data.style" :key="k">
-            <span>{{TRANSLATE_ENUM[k]}}</span>
-            <input type="text" v-model="focusMap.base.$data.style[k]" name="">
+        <p v-for="(v, k) in focusMap.base.$data" :key="k">
+            <span>{{k}}</span>
+            <input type="text" v-model="focusMap.base.$data[k]" name="">
         </p>
         <p>扩展属性</p>
         <p v-for="(v, k) in focusMap.extend.$data.style" :key="k">
@@ -98,6 +98,7 @@ export default {
        * 修改目标元素
        */
       targetChange(t) {
+          console.log(t)
           this.functionList = this.$C.componentsUuidMap[t.$parent.uuid].function;
       },
       /**
