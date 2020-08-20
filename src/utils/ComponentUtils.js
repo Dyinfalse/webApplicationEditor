@@ -28,6 +28,11 @@ export default class ComponentUtils {
      */
     cid = 0;
 
+    /**
+     * 页面工具类实例
+     */
+    $P = null;
+
     constructor () {
         /**
          * 安装基础组件
@@ -38,6 +43,9 @@ export default class ComponentUtils {
          * 缺点 -> 没有主动函数可以调用, 如果要调用方法 只能监听(watch) $C.stroe.focus
          */
         this.stroe = Vue.observable({ focus: [] });
+
+
+        this.$P = Vue.prototype.$P;
     }
     /**
      * 指定文件名称挂载组件 - 必须在 created 里面调用才生效
@@ -101,7 +109,9 @@ export default class ComponentUtils {
     addComponentsUuidMap(uuid, config) {
         if(typeof uuid == 'string' && config) {
             /** update */
-            this.componentsUuidMap[uuid] = config;
+            this.componentsUuidMap[uuid].name = config.name;
+            this.componentsUuidMap[uuid].base = config.base;
+            this.componentsUuidMap[uuid].extend = config.extend;
         } else if(typeof uuid == 'string' && !config) {
             /** create by name */
             if(!uuid) throw "创建映射异常: 缺少必要的name字段";
@@ -111,7 +121,10 @@ export default class ComponentUtils {
                 name,
                 base: {$data: {style: {}}},
                 extend: {$data: {style: {}}},
+                function: [],
+                event: []
             }
+
             this.componentsUuidMap[uuid] = _config;
         }
         this.componentsUuidMap[uuid].base.uuid = uuid;
@@ -141,6 +154,8 @@ export default class ComponentUtils {
         }
         if(!delete this.componentsUuidMap[uuid]){
             console.error("Uuid映射关系删除失败");
+        }else {
+            this.$P.deletePathUuidMap(this.$P.router.currentRoute.name, [uuid]);
         }
         return uuid;
     }
@@ -168,9 +183,13 @@ export default class ComponentUtils {
         });
     }
 
-    addFunction(_this, name) {
-        this.componentsUuidMap[_this.$parent.uuid].function = {
-            [name]: _this
-        }
+    /**
+     * 添加一个对外方法给当前组件配置
+     * @param {Uuid} uuid 绑定到的uuid
+     * @param {String} name Function name
+     */
+    addFunction(uuid, name) {
+        if(this.componentsUuidMap[uuid].function.indexOf(name) > -1) return;
+        this.componentsUuidMap[uuid].function.push(name);
     }
 }

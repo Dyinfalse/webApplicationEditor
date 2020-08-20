@@ -78,5 +78,10 @@ export default class PageUtils {
         }
     }
 
+    toUrl(url) {
+        this.pathMap[current] = url;
+        this.router.push(url);
+    }
+
 
 }

@@ -10,9 +10,10 @@
     <div style="display: flex">
         <div style="margin-right: 20px;" v-for="(r, index) in router[1].children" :key="r.path" @click="toUrl(r, index)">{{r.path}}</div>
     </div>
-    
-    <router-view :key="$route.fullPath"/>
 
+    <keep-alive>
+      <router-view :key="$route.fullPath"/>
+    </keep-alive>
     <Ctrl></Ctrl>
   </div>
 </template>

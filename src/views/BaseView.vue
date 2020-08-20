@@ -6,6 +6,8 @@
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
     </div>
+
+    <!-- 禁止往Pack插入其他元素 -->
     <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
       <component :id="item.name" :is="item.name"/>
     </Pack>
@@ -40,12 +42,12 @@ export default {
              */
             this.$P.setPathUuidMap(this.$router.currentRoute.name, v.base.uuid);
       },
+      /**
+       * 删除选中的元素
+       */
       removeComponent() {
-        let uuids = this.$C.deleteUuidMap();
-        this.$P.deletePathUuidMap(this.$router.currentRoute.name, uuids);
-
         for(let i = 0; i < this.cList.length; i++) {
-          if(uuids.indexOf(this.cList[i].base.uuid) > -1) {
+          if(this.$C.stroe.focus.indexOf(this.cList[i].base.uuid) > -1) {
             this.cList.splice(i,1);
             i--;
           }
@@ -53,31 +55,9 @@ export default {
       },
   },
   created() {
-
   },
   mounted() {
-    let path = this.$router.currentRoute.name;
     
-    if(this.$P.pathUuidMap[path]){
-        this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
-        this.$C.install(this.cList.map(c => c.name));
-
-        for(let i = 0; i < 1000; i++){
-          this.$C.install(["Input"]);
-        }
-    }
-    
-    /**
-     * 定时删除组件
-     * 模拟拖拽增加组件
-     */
-    // setTimeout(()=> {
-    //   this.$C.install(["Input"]) && this.components.push(this.$C.pack("Input"));
-    //   /**
-    //    * 组件删除
-    //    */
-    //   // this.components.shift();
-    // }, 2000)
   }
 }
 </script>
