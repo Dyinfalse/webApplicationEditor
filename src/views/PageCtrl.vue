@@ -10,9 +10,8 @@
     <div style="display: flex">
         <div style="margin-right: 20px;" v-for="(r, index) in router[1].children" :key="r.path" @click="toUrl(r, index)">{{r.path}}</div>
     </div>
-    
-    <router-view :key="$route.fullPath"/>
 
+    <router-view :key="$route.fullPath"/>
     <Ctrl></Ctrl>
   </div>
 </template>
@@ -23,7 +22,7 @@ import BaseView from './BaseView';
 
 export default {
   name: 'Home',
-  components: { Ctrl },
+  components: { Ctrl},
   data() {
     return {
         components: [ "HelloWorld" ],

@@ -6,7 +6,9 @@
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
     </div>
+    <ruler :VueComponent='cList'></ruler>
     <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
+      {{item}}
       <component :id="item.name" :is="item.name"/>
     </Pack>
   </div>
@@ -14,10 +16,10 @@
 
 <script>
 import Ctrl from '../components/Ctrl';
-
+import ruler from '@/components/edit-web-components/view-urler'
 export default {
   name: 'BaseView',
-  components: { Ctrl },
+  components: { Ctrl ,ruler},
   data() {
     return {
         components: [],
