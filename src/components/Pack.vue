@@ -40,7 +40,7 @@ export default {
     methods: {
         focus() {
             /**
-             * 生成组件的配置信息
+             * 设置组件激活组件
              */
             this.$C.setFocus([this.uuid]);
         }

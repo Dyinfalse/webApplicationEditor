@@ -34,13 +34,7 @@ export default {
     }
   },
   mounted(){
-    this.$C.addFunction(this.$parent.uuid, "add");
-    this.$C.addFunction(this.$parent.uuid, "clear");
-    // this.style.fontSize = 20;
-
-    // this.timer = setTimeout(() => {
-    //   this.value = '22';
-    // }, 100000)
+    this.$C.addFunction(this);
   }
 }
 </script>

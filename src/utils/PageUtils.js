@@ -77,11 +77,11 @@ export default class PageUtils {
             }
         }
     }
-
-    toUrl(url) {
+    /**
+     * 跳转路由方法, 保存跳转映射
+     */
+    routerPush() {
         this.pathMap[current] = url;
         this.router.push(url);
     }
-
-
 }

@@ -43,8 +43,7 @@ export default class ComponentUtils {
          * 缺点 -> 没有主动函数可以调用, 如果要调用方法 只能监听(watch) $C.stroe.focus
          */
         this.stroe = Vue.observable({ focus: [] });
-
-
+        
         this.$P = Vue.prototype.$P;
     }
     /**
@@ -185,11 +184,31 @@ export default class ComponentUtils {
 
     /**
      * 添加一个对外方法给当前组件配置
-     * @param {Uuid} uuid 绑定到的uuid
+     * @param {VueComponent} _this 绑定到的uuid
      * @param {String} name Function name
      */
-    addFunction(uuid, name) {
-        if(this.componentsUuidMap[uuid].function.indexOf(name) > -1) return;
-        this.componentsUuidMap[uuid].function.push(name);
+    addFunction(_this, name) {
+        try {
+            if(name) {
+                let uuid = _this.$parent.uuid;
+                /**
+                 * 相同组件内不允许同名方法
+                 */
+                if(this.componentsUuidMap[uuid].function.indexOf(name) > -1) return;
+                this.componentsUuidMap[uuid].function.push(name);
+            } else {
+                /**
+                 * 没有name, 添加所有方法
+                 * $createElement & _c 是Vue的保留方法
+                 */
+                for(let attr of Object.keys(_this)){
+                    if(typeof _this[attr] === 'function' && attr !== '$createElement' && attr !== '_c'){
+                        this.addFunction(_this, attr);
+                    }
+                }
+            }
+        } catch (e) {
+            console.error("添加函数异常", e)
+        }
     }
 }
