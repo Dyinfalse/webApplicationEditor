@@ -1,6 +1,6 @@
 # WEB应用编辑器开发方案
 
-2020.8.14 author by QC & DWY1
+2020.8.14 author by QC & DWY
 
 ## 整体思路
 
