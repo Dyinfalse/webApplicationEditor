@@ -62,15 +62,16 @@
 
                 </div>
                 <!-- 画布 -->
-                <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle">
+                <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle" @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box"> 
-                        <vdr v-for="(item,index) in VueComponent" :uuid="item.base.uuid" :id="item.base.uuid" :key="index"
-                            
+                        <vdr v-for="(item,index) in VueComponent" :ref="item.base.uuid" :uuid="item.base.uuid" :id="item.base.uuid" :key="index"
                             :parent="true"
                             :snap="false"
                             :snapTolerance="20"
-                            :scale-ratio="pageSize.scale">
-                            <component :is="item.name" /> 
+                            :scale-ratio="pageSize.scale"
+                            @activated='activated(item,index)'
+                            >
+                            <component :id="item.name" :is="item.name" /> 
                         </vdr>
                     </div>
                 </div>
@@ -118,6 +119,7 @@ export default {
         },
         name: 'Ide-ruler',
         props: {
+                
             scroll: {
                 type: Boolean,
                 default () {
@@ -339,6 +341,20 @@ export default {
             
         },
         mounted() {
+            
+            this.VueComponent.forEach(item=>{
+                
+                // this.$refs[item.base.uuid][uuid] = item.base.uuid
+                // console.log( this.$refs[item.base.uuid])
+                this.$C.addComponentsUuidMap(item.base.uuid, {
+                    name: this.$refs[item.base.uuid].$attrs.id,
+                    base: this.$refs[item.base.uuid],
+                    extend: this.$refs[item.uuid].$children[0],
+                    function: [],
+                    event: []
+                })
+            })
+            
             this.$nextTick(()=>{
                 this.pageSize = {...this.pageSize,...this.setPageSize}
                 this.CanvasInit(this.pageSize);
@@ -349,6 +365,10 @@ export default {
             
         },
         methods: {
+            activated(item,index){
+                console.log(item)
+                this.$C.setFocus([item.base.uuid]);
+            },
             getCommonStyle(styleObj, scalingRatio = 1) {
                 let needUnitStr = ['width', 'height','top', 'left', 'paddingTop', 'paddingLeft', 'paddingRight', 'paddingBottom', 'marginTop', 'marginLeft', 'marginRight', 'marginBottom', 'borderWidth','fontSize', 'borderRadius', 'letterSpacing']
                 let style ={}
@@ -703,7 +723,135 @@ export default {
                 this.navigatorLine.valueY = y != null ? parseInt(y * this.pageSize.scale / this.pageSize.scale) :
                     this.navigatorLine.valueY;
             },
-            
+            /**
+             * 获取元素offsetLeft，offsetTop
+             * @param {目标元素} el 
+             * @param {层级，默认body} pname
+             */
+            getOffset(el, pname = 'body'){
+                let left = el.offsetLeft;
+                let top = el.offsetTop;console.log(left)
+                if (el.offsetParent && el.offsetParent.tagName !== pname) {
+                let p = this.getOffset(el.offsetParent, pname);
+                left += p.left;
+                top += p.top;
+                }
+                return {left, top};
+            },
+            mousedown(event){
+                // if(this.styleConfig.dragStart) return;
+                event.preventDefault();
+                let div = document.getElementById('MousemoveActive');
+                let scrollElement = document.getElementById('ruler-canvas-scroll');
+                let offset = this.getOffset(event.target);
+                
+                let startX = event.clientX - offset.left + scrollElement.scrollLeft;
+                let startY = event.clientY - offset.top + scrollElement.scrollTop;
+                /**
+                 * 当前画布缩放比例
+                 */
+                let scale = this.pageSize.scale;
+                let canvasW = parseInt(this.pageSize.width);
+                let canvasH = parseInt(this.pageSize.height);
+
+                startX /= scale;
+                startY /= scale;
+
+                if(!div){
+                    div = document.createElement("div");
+                    div.id = 'MousemoveActive';
+                    div.style.left = startX + "px";
+                    div.style.top = startY + "px";
+                    div.style.border =  `1px dashed #fff`;
+                    div.style.width = `0px`;
+                    div.style.height = `0px`;
+                    div.style.position = `absolute`;
+                    event.target.appendChild(div);
+                }
+
+                /**
+                 * 防止停用开启
+                 */
+                // this.components.map(item => {
+                //     item._props.deactive = true;
+                // })
+                
+                document.onmousemove = (ev) => {
+                    ev.preventDefault();
+                    let mouseLeft = (ev.clientX - offset.left + scrollElement.scrollLeft) / scale;
+                    let mouseTop = (ev.clientY - offset.top + scrollElement.scrollTop) / scale;
+                    let selected = {
+                        lt: [0, 0],
+                        rb: [0, 0]
+                    }
+                    /**
+                     * 溢出限制
+                     */
+                    mouseLeft = mouseLeft <= 0 ? 0 : mouseLeft >= canvasW ? canvasW : mouseLeft;
+                    mouseTop = mouseTop <= 0 ? 0 : mouseTop >= canvasH ? canvasH : mouseTop;
+
+                    if(mouseLeft < startX) {
+                        div.style.width = startX - mouseLeft + 'px';
+                        div.style.left = mouseLeft + 'px';
+                        selected.lt[0] = mouseLeft;
+                        selected.rb[0] = startX;
+                    }else {
+                        div.style.width = mouseLeft - startX + 'px';
+                        div.style.left = startX + 'px';
+                        selected.lt[0] = startX;
+                        selected.rb[0] = mouseLeft;
+                    }
+
+                    if(mouseTop < startY) {
+                        div.style.height = startY - mouseTop + 'px';
+                        div.style.top = mouseTop + 'px';
+                        selected.lt[1] = mouseTop;
+                        selected.rb[1] = startY;
+                    }else {
+                        div.style.height = mouseTop - startY + 'px';
+                        div.style.top = startY + 'px';
+                        selected.lt[1] = startY;
+                        selected.rb[1] = mouseTop;
+                    }
+                    /**
+                     * 碰撞检测
+                     */
+                    // if(this.components.length){
+                    //     this.components.map(item => {
+                    //         if(
+                    //             (   // 左上角 对比组件右下角
+                    //                 selected.lt[0] < (item._props.basics.left + item._props.basics.width) &&
+                    //                 selected.lt[1] < (item._props.basics.top + item._props.basics.height)
+                    //             ) &&
+                    //             (   // 右下角 对比组件左上角
+                    //                 selected.rb[0] > item._props.basics.left &&
+                    //                 selected.rb[1] > item._props.basics.top
+                    //             )
+                    //         ){
+                    //             this.$emit('setShiftComponents', item, true);
+                    //         }else {
+                    //             this.$emit('setShiftComponents', item, false);
+                    //         }
+                    //         return item;
+                    //     })
+                    // }
+                }
+                document.onmouseup = (ev) => {
+                    const endLeft = ev.clientX
+                    const endTop = ev.clientY
+                    // div.remove()
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    /**
+                     * 防止停用关闭
+                     */
+                    // this.components.map(item => {
+                    //     item._props.deactive = false;
+                    // })
+                    // console.log('starLeft',starLeft,'starTop',starTop,'endleft',endLeft,'endtop',endTop)
+                }
+                
+            }
         },
         watch: {
             pageSize: {
@@ -726,7 +874,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+    #MousemoveActive {
+        border: 1px dashed #fff;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+    }
 
     .ruler-canvas-content {
         flex: 1;

@@ -62,6 +62,10 @@ export default {
   replace: true,
   name: 'vue-draggable-resizable',
   props: {
+    uuid: {
+        type: String,
+        default: ''
+    },
     className: {
       type: String,
       default: 'vdr'
@@ -269,6 +273,13 @@ export default {
     this.resetBoundsAndMouseState()
   },
   mounted: function () {
+    this.$C.addComponentsUuidMap(this.uuid, {
+        name: this.$children[0].$attrs.id,
+        base: this,
+        extend: this.$children[0],
+        function: [],
+        event: []
+    })
     if (!this.enableNativeDrag) {
       this.$el.ondragstart = () => false
     }
@@ -362,6 +373,7 @@ export default {
     },
     // 元素按下
     elementDown (e) {
+      
       this.down()
       
       const target = e.target || e.srcElement

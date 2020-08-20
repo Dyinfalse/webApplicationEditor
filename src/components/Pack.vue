@@ -34,9 +34,9 @@ export default {
             }
         }
     },
-    // beforeDestroy(){
-    //     this.$C.deleteUuidMap(this.Uuid);
-    // },
+    beforeDestroy(){
+        this.$C.deleteUuidMap(this.uuid);
+    },
     methods: {
         focus() {
             /**
@@ -66,7 +66,9 @@ export default {
         this.$C.addComponentsUuidMap(this.uuid, {
             name: this.$children[0].$attrs.id,
             base: this,
-            extend: this.$children[0]
+            extend: this.$children[0],
+            function: [],
+            event: []
         })
     }
 }

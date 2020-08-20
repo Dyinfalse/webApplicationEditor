@@ -11,8 +11,8 @@ import PageUtils from './utils/PageUtils';
 
 Vue.config.productionTip = false
 
-Vue.prototype.$C = new ComponentUtils();
 Vue.prototype.$P = new PageUtils(router);
+Vue.prototype.$C = new ComponentUtils();
 
 new Vue({
   router,

@@ -7,10 +7,9 @@
       <button @click="removeComponent()">remove</button>
     </div>
     <ruler :VueComponent='cList'></ruler>
-    <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
-      {{item}}
+    <!-- <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
       <component :id="item.name" :is="item.name"/>
-    </Pack>
+    </Pack> -->
   </div>
 </template>
 

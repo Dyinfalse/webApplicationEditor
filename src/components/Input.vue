@@ -2,7 +2,7 @@
   
     <div class="Input" :style="{fontSize: style.fontSize + 'px', color: style.color}">
       this's Input component
-      <input type="text" v-model="value">
+      <input type="text" v-model="data.value">
     </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
   name: 'Input',
   data() {
     return {
-      value: '11',
       timer: '',
       style: {
         color: 0,
@@ -28,16 +27,20 @@ export default {
   },
   methods: {
     add () {
-      
+      this.data.value ++;
+    },
+    clear(){
+      this.data.value = '';
     }
   },
   mounted(){
-    this.$C.addFunction(this, "add");
+    this.$C.addFunction(this.$parent.uuid, "add");
+    this.$C.addFunction(this.$parent.uuid, "clear");
     // this.style.fontSize = 20;
 
-    this.timer = setTimeout(() => {
-      this.value = '22';
-    }, 100000)
+    // this.timer = setTimeout(() => {
+    //   this.value = '22';
+    // }, 100000)
   }
 }
 </script>
