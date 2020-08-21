@@ -14,11 +14,10 @@
 </template>
 
 <script>
-import Ctrl from '../components/Ctrl';
 import ruler from '@/components/edit-web-components/view-urler'
 export default {
   name: 'BaseView',
-  components: { Ctrl ,ruler},
+  components: { ruler},
   data() {
     return {
         components: [],

@@ -77,11 +77,11 @@ export default class PageUtils {
             }
         }
     }
+
     /**
-     * 跳转路由方法, 保存跳转映射
+     * 获取所有增加的子页面
      */
-    routerPush() {
-        this.pathMap[current] = url;
-        this.router.push(url);
+    getAllRouterInfo () {
+        return this.router.options.routes.find(p => p.path === '/pageCtrl').children;
     }
 }

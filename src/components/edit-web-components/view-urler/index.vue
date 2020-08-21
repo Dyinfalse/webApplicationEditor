@@ -741,8 +741,6 @@ export default {
             },
             mousedown(event){
                 
-                console.log(event)
-                
                 if(this.activeUUid) return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');

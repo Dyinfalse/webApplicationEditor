@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Ctrl from '../components/Ctrl';
+import Ctrl from '../components/ctrl/Ctrl';
 import BaseView from './BaseView';
 
 export default {
