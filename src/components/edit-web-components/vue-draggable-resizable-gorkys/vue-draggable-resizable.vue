@@ -124,12 +124,12 @@ export default {
       default: false
     },
     w: {
-      type: Number,
+      type: Number | String,
       default: 200,
       validator: (val) => val > 0
     },
     h: {
-      type: Number,
+      type: Number | String,
       default: 200,
       validator: (val) => val > 0
     },
@@ -232,6 +232,13 @@ export default {
 
   data: function () {
     return {
+      baseStyle: {
+        width: this.w,
+        height: this.h,
+        left: this.x,
+        top: this.y,
+        zIndex: this.z,
+      },
       rawWidth: this.w,
       rawHeight: this.h,
       rawLeft: this.x,
@@ -259,7 +266,7 @@ export default {
       enabled: this.active,
       resizing: false,
       dragging: false,
-      zIndex: this.z
+      zIndex: this.z,
     }
   },
 
@@ -617,6 +624,8 @@ export default {
       this.snapCheck()
 
       this.$emit('dragging', this.left, this.top)
+      this.baseStyle.left = this.left;
+      this.baseStyle.top = this.top;
     },
     // 控制柄移动
     handleMove (e) {
@@ -641,6 +650,10 @@ export default {
       }
 
       this.$emit('resizing', this.left, this.top, this.width, this.height)
+      this.baseStyle.width = this.width;
+      this.baseStyle.height = this.height;
+      this.baseStyle.left = this.left;
+      this.baseStyle.top = this.top;
     },
     // 从控制柄松开
     async handleUp () {
@@ -660,12 +673,18 @@ export default {
         await this.conflictCheck()
         this.$emit('refLineParams', refLine)
         this.$emit('resizestop', this.left, this.top, this.width, this.height)
+        this.baseStyle.width = this.width;
+        this.baseStyle.height = this.height;
+        this.baseStyle.left = this.left;
+        this.baseStyle.top = this.top;
       }
       if (this.dragging) {
         this.dragging = false
         await this.conflictCheck()
         this.$emit('refLineParams', refLine)
         this.$emit('dragstop', this.left, this.top)
+        this.baseStyle.left = this.left;
+        this.baseStyle.top = this.top;
       }
       this.resetBoundsAndMouseState()
       removeEvent(document.documentElement, eventsFor.move, this.handleMove)
@@ -958,6 +977,7 @@ export default {
     z (val) {
       if (val >= 0 || val === 'auto') {
         this.zIndex = val
+        this.baseStyle.zIndex = this.zIndex
       }
     },
     rawLeft (newLeft) {
@@ -1100,7 +1120,7 @@ export default {
         this.bounds = this.calcResizeLimits()
       }
 
-      const delta = this.width - this.w
+      const delta = this.width - parseInt(this.w)
 
       if (delta % this.grid[0] === 0) {
         this.rawRight = this.right + delta
@@ -1115,7 +1135,7 @@ export default {
         this.bounds = this.calcResizeLimits()
       }
 
-      const delta = this.height - this.h
+      const delta = this.height - parseInt(this.h)
 
       if (delta % this.grid[1] === 0) {
         this.rawBottom = this.bottom + delta

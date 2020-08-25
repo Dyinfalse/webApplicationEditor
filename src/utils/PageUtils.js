@@ -46,6 +46,32 @@ export default class PageUtils {
     }
 
     /**
+     * 删除一个页面, 同时删除映射
+     * 跳转至附近页面, 如果没有附近页面, 跳转至上一层路由, pageId归零
+     */
+    removePage(pathName) {
+        delete this.pathUuidMap[pathName];
+        let routes = this.router.options.routes;
+        let childrenPage = routes.find(item => item.path == "/pageCtrl").children;
+        let index = childrenPage.findIndex(item => item.name === pathName);
+        childrenPage.splice(index, 1);
+        this.router.addRoutes(routes);
+        window.localStorage.setItem("router", JSON.stringify(routes));
+
+        let target = '/pageCtrl';
+        if(childrenPage[index - 1]){
+            target += '/' + childrenPage[index - 1].name;
+        } else if (childrenPage[index + 1]) {
+            target += '/' + childrenPage[index + 1].name;
+        }else {
+            this.pageId = -1;
+            window.localStorage.setItem("pageId", -1);
+        }
+
+        this.router.push(target);
+    }
+
+    /**
      * @TODO 路径做成默认当前路径
      * 增加一个组件uuid映射
      */

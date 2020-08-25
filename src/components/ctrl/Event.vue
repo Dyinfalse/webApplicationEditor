@@ -54,11 +54,12 @@
                     </select>
                 </p>
                 <div v-if="fitem.instance.hasOwnProperty('data')">
-                    <p v-for="field in fitem.instance.data" :key="field.key">
-                        key: <input type="text" v-model="field.key">
-                        val: <input type="text" v-model="field.value">
+                    请求参数
+                    <p v-for="field in fitem.instance.data" :key="field.id">
+                        key: <input style="width: 50px" type="text" v-model="field.key">
+                        val: <input style="width: 50px" type="text" v-model="field.value">
                     </p>
-                    <button @click="fitem.instance.data.push({key: '', value: ''})">addField</button>
+                    <button @click="fitem.instance.data.push({id: fitem.instance.data.lenhgth,key: '', value: ''})">addField</button>
                 </div>
             </div>
 
@@ -166,7 +167,6 @@ export default {
      * 添加子事件
      */
     addChildrenEvent(fitem) {
-        console.log(fitem.id + '-' + fitem.childrenEvent.length)
         fitem.childrenEvent.push({
             id: fitem.id + '-' + fitem.childrenEvent.length,
             type: '',

@@ -40,12 +40,14 @@ export default class Event {
         let _run = EventTree.instance.run;
 
         return () => {
-            
-            let r = _run();
-
+            let r;
+            try {
+                r = _run();
+            } catch (e) {
+                console.error("事件执行异常! 异常提示信息: ", e, "\r\n事件实例信息:", EventTree);
+            }
             if(r && r.toString() === '[object Promise]') {
                 r.then((resault) => {
-                    console.log(resault)
                     if(EventTree.childrenEvent.length > 0) {
                         for(let i = 0; i < EventTree.childrenEvent.length; i++){
                             this.buildRun(EventTree.childrenEvent[i])();

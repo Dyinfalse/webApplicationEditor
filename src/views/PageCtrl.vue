@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>页面列表</h1>
+    <!-- <h1>页面列表</h1> -->
 
     <div>
       <button @click="addView()" style="margin-right: 20px">add</button>
@@ -40,10 +40,10 @@ export default {
           this.$router.push(newPath);
       },
       removeView() {
-
+          this.$P.removePage(this.$router.currentRoute.name);
       },
       toUrl(router, index) {
-          this.$router.push("/pageCtrl/baseView_" + index);
+          this.$router.push("/pageCtrl/" + router.path);
       }
   }
 }

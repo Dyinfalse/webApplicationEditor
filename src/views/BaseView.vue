@@ -1,20 +1,22 @@
 <template>
   <div class="home">
-    <h1>{{cList.length}}组件列表</h1>
-
+    <!-- <h1>{{cList.length}}组件列表</h1> -->
     <div>
+      <select v-model="componentName">
+        <option :value="c" v-for="c in $C.ALL_COMPONENTS" :key="c">{{c}}</option>
+      </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
     </div>
-    <ruler :VueComponent='cList'></ruler>
-    <!-- <Pack v-for="item in cList" :uuid="item.base.uuid" :key="item.base.uuid">
-      <component :id="item.name" :is="item.name"/>
-    </Pack> -->
+    <div style="overflow:hidden">
+      <ruler :VueComponent='cList'></ruler>
+    </div>
   </div>
 </template>
 
 <script>
-import ruler from '@/components/edit-web-components/view-urler'
+import ruler from '@/components/edit-web-components/view-urler';
+
 export default {
   name: 'BaseView',
   components: { ruler},
@@ -22,23 +24,25 @@ export default {
     return {
         components: [],
         cList: [],
+        componentName: '',
     }
   },
   methods: {
       addComponent() {
-            let name = 'Input';
-            /**
-             * 实例了一个组件之后, 需要增加其配置信息到映射里面
-             */
-            let v = this.$C.addComponentsUuidMap(name);
-            /**
-             * 挂载并渲染
-             */
-            this.$C.install([name]) && this.cList.push(v);
-            /**
-             * 增加到页面映射关系`
-             */
-            this.$P.setPathUuidMap(this.$router.currentRoute.name, v.base.uuid);
+        if(!this.componentName) return;
+        let name = this.componentName;
+        /**
+         * 实例了一个组件之后, 需要增加其配置信息到映射里面
+         */
+        let v = this.$C.addComponentsUuidMap(name);
+        /**
+         * 挂载并渲染
+         */
+        this.$C.install([name]) && this.cList.push(v);
+        /**
+         * 增加到页面映射关系
+         */
+        this.$P.setPathUuidMap(this.$router.currentRoute.name, v.base.uuid);
       },
       removeComponent() {
         let uuids = this.$C.deleteUuidMap();

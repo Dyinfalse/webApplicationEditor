@@ -4,9 +4,15 @@ import Vue from "vue"
  */
 export default class ComponentUtils {
     /**
+     * 全部组件
+     */
+    ALL_COMPONENTS = [
+        "IdeText", "IdeInput", "IdeButton", "IdeImage"
+    ];
+    /**
      * 基础组件定义
      */
-    baseComponents = ['Pack'];
+    baseComponents = [];
 
     /**
      * 已经加过的组件记录
@@ -118,7 +124,7 @@ export default class ComponentUtils {
             uuid = this.randomUuID();
             let _config = {
                 name,
-                base: {$data: {style: {}}},
+                base: {$data: {baseStyle: {}}},
                 extend: {$data: {style: {}}},
                 function: [],
                 event: []

@@ -1,7 +1,6 @@
 <template>
   
     <div class="Input" :style="{fontSize: style.fontSize + 'px', color: style.color}">
-      this's Input component
       <input type="text" v-model="data.value">
     </div>
 </template>
@@ -9,7 +8,7 @@
 <script>
 
 export default {
-  name: 'Input',
+  name: 'IdeInput',
   data() {
     return {
       timer: '',
@@ -18,7 +17,7 @@ export default {
         fontSize: 20
       },
       data: {
-        value: '11',
+        value: '',
       }
     }
   },
@@ -46,7 +45,7 @@ export default {
   width: 100%;
 }
 .Input input {
-  width: 80%;
+  width: 100%;
   padding: 0px;
 }
 </style>

@@ -67,6 +67,11 @@
                         <vdr v-for="(item,index) in VueComponent" :ref="item.base.uuid" :uuid="item.base.uuid" :id="item.base.uuid" :key="index"
                             :parent="true"
                             :snap="false"
+                            :w="item.base.$data.baseStyle.width"
+                            :h="item.base.$data.baseStyle.height"
+                            :x="item.base.$data.baseStyle.left"
+                            :y="item.base.$data.baseStyle.top"
+                            :z="item.base.$data.baseStyle.zIndex"
                             :snapTolerance="20"
                             :scale-ratio="pageSize.scale"
                             @activated='activated(item,index)'
@@ -890,6 +895,7 @@ export default {
         position: relative;
         overflow: hidden;
         flex-direction: column;
+        height: 500px;
         
         .canvas-content-panel {
             flex: 1;
