@@ -3,6 +3,7 @@
     <!-- <h1>页面列表</h1> -->
 
     <div>
+      <button @click="save()">save</button>
       <button @click="addView()" style="margin-right: 20px">add</button>
       <button @click="removeView()">remove</button>
     </div>
@@ -35,16 +36,20 @@ export default {
       this.router = this.$router.options.routes;
   },
   methods: {
-      addView() {
-          let newPath = this.$P.addPage();
-          this.$router.push(newPath);
-      },
-      removeView() {
-          this.$P.removePage(this.$router.currentRoute.name);
-      },
-      toUrl(router, index) {
-          this.$router.push("/pageCtrl/" + router.path);
-      }
+    save() {
+      this.$P.save();
+      this.$C.save();
+    },
+    addView() {
+      let newPath = this.$P.addPage();
+      this.$router.push(newPath);
+    },
+    removeView() {
+        this.$P.removePage(this.$router.currentRoute.name);
+    },
+    toUrl(router, index) {
+        this.$router.push("/pageCtrl/" + router.path);
+    }
   }
 }
 </script>

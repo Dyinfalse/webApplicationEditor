@@ -1,3 +1,4 @@
+import Vue from "vue";
 /**
  * 基本事件类
  */
@@ -15,13 +16,17 @@ export default class Event {
      */
     bindFunction = null;
 
-    constructor () {
-
+    constructor (config) {
+        if(config){
+            this.action = config.action;
+            this.source = this.getVue(config.source);
+        }
     }
     /**
      * 事件绑定
      */
     bind(EventTree) {
+        console.log(EventTree)
         this.unbind();
         this.bindFunction = this.buildRun(EventTree);
         this.source.$el.addEventListener(this.action.replace(/^on/, ''), this.bindFunction);
@@ -31,6 +36,7 @@ export default class Event {
      */
     unbind() {
         this.source.$el.removeEventListener(this.action.replace(/^on/, ''), this.bindFunction);
+        this.bindFunction = null;
     }
     /**
      * 构建run
@@ -68,4 +74,24 @@ export default class Event {
      * return Promise 会使子事件等待执行
      */
     run () { }
+
+
+    /**
+     * 用于存储的方法, 将当前事件的实例转为JSON
+     */
+    toJson() {
+        return {
+            action: this.action,
+            source: this.source.$parent.uuid,
+            binded: this.bindFunction ? 1 : 0
+        }
+    }
+
+    /**
+     * 根据uuid获取组件Vue实例
+     */
+    getVue(uuid){
+        let v = Vue.prototype.$C.componentsUuidMap[uuid].extend;
+        return v._isVue ? v : {};
+    }
 }

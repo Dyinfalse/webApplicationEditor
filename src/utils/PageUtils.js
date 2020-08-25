@@ -21,6 +21,8 @@ export default class PageUtils {
 
     constructor (router) {
         this.router = router;
+        let catchPathUuidMap = window.localStorage.getItem("pathUuidMap");
+        this.pathUuidMap = catchPathUuidMap ? JSON.parse(catchPathUuidMap) : {};
     }
 
     /**
@@ -109,5 +111,12 @@ export default class PageUtils {
      */
     getAllRouterInfo () {
         return this.router.options.routes.find(p => p.path === '/pageCtrl').children;
+    }
+
+    /**
+     * 保存配置
+     */
+    save () {
+        window.localStorage.setItem("pathUuidMap", JSON.stringify(this.pathUuidMap));
     }
 }

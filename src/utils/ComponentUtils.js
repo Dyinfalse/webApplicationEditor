@@ -1,3 +1,4 @@
+import { Events }  from '../event';
 import Vue from "vue"
 /**
  * 组件工具类
@@ -51,6 +52,12 @@ export default class ComponentUtils {
         this.store = Vue.observable({ focus: [] });
         
         this.$P = Vue.prototype.$P;
+
+        /**
+         * 读缓存, 后续可能是服务端读取
+         */
+        let catchComponentsUuidMap = window.localStorage.getItem("componentsUuidMap");
+        this.componentsUuidMap = catchComponentsUuidMap ? JSON.parse(catchComponentsUuidMap) : {};
     }
     /**
      * 指定文件名称挂载组件 - 必须在 created 里面调用才生效
@@ -104,9 +111,10 @@ export default class ComponentUtils {
     /**
      * 增加一个组件的配置信息到映射中
      * @param {number} uuid 组件uuid 等同于Vue实例的_uid 非必传
-     * @param {Object}} config 增加的当前组件的配置信息, 其中包含base和extend
+     * @param {Object}} config 增加的当前组件的配置信息, 其中包含base和extend, config是包含了两者的vue引用, 在vue引用上可能存在组件的预设值, 需要被之前的修改覆盖掉
      * 
      * 创建组件的时候该方法会被执行两次, 第一次创建映射, 第二次更新组件引用
+     * config存在的情况下, 分为是否存在缓存, 如果componentsUuidMap已经存储过了之前的更改, 那么config的值会被覆盖
      * 
      * base是基础配置, 组件的Pack消化
      * extend是组件的配置信息, 由组件自身消化
@@ -114,9 +122,38 @@ export default class ComponentUtils {
     addComponentsUuidMap(uuid, config) {
         if(typeof uuid == 'string' && config) {
             /** update */
+            /**
+             * 同步数据
+             */
+            if(
+                this.componentsUuidMap[uuid].extend.$data.data &&
+                this.componentsUuidMap[uuid].extend.$data.style &&
+                this.componentsUuidMap[uuid].extend.$data.chart
+            ) {
+                config.extend.$data.style = {
+                    ...config.extend.$data.style,
+                    ...this.componentsUuidMap[uuid].extend.$data.style
+                };
+                config.extend.$data.data = {
+                    ...config.extend.$data.data,
+                    ...this.componentsUuidMap[uuid].extend.$data.data
+                };
+                config.extend.$data.chart = {
+                    ...config.extend.$data.chart,
+                    ...this.componentsUuidMap[uuid].extend.$data.chart
+                };
+            }
+            /**
+             * 同步引用
+             */
             this.componentsUuidMap[uuid].name = config.name;
             this.componentsUuidMap[uuid].base = config.base;
             this.componentsUuidMap[uuid].extend = config.extend;
+            /**
+             * 同步事件, 如果新增加组件的时候 event 不为空, 则认为是渲染缓存的组件
+             */
+            this.componentsUuidMap[uuid].event = this.setEventConfig(this.componentsUuidMap[uuid].event);
+            console.log(this.componentsUuidMap[uuid].event)
         } else if(typeof uuid == 'string' && !config) {
             /** create by name */
             if(!uuid) throw "创建映射异常: 缺少必要的name字段";
@@ -125,7 +162,7 @@ export default class ComponentUtils {
             let _config = {
                 name,
                 base: {$data: {baseStyle: {}}},
-                extend: {$data: {style: {}}},
+                extend: {$data: {style: {}, data: {}, chart: {}}},
                 function: [],
                 event: []
             }
@@ -215,6 +252,86 @@ export default class ComponentUtils {
             }
         } catch (e) {
             console.error("添加函数异常", e)
+        }
+    }
+    /**
+     * 保存配置
+     */
+    save () {
+        let _componentsUuidMap = {};
+        for(let k in this.componentsUuidMap) {
+            let c = this.componentsUuidMap[k];
+            _componentsUuidMap[k] = {
+                name: c.name,
+                base: this.getBaseConfig(c.base),
+                extend: this.getExtendsConfig(c.extend),
+                event: this.getEventConfig(c.event),
+                function: c.function,
+            }
+        }
+        console.log(_componentsUuidMap)
+        window.localStorage.setItem("componentsUuidMap", JSON.stringify(_componentsUuidMap));
+    }
+
+    /**
+     * 从Vue对象中剥离base配置
+     */
+    getBaseConfig(base) {
+        if(!base._isVue) throw "存储对象base 必须是Vue实例";
+        return {
+            uuid: base.uuid,
+            $data: {
+                baseStyle: base.baseStyle
+            }
+        }
+    }
+    /**
+     * 从Vue对象中剥离base配置
+     */
+    getExtendsConfig(extend) {
+        if(!extend._isVue) throw "存储对象extend 必须是Vue实例";
+        return {
+            $data: {
+                data: extend.$data.data,
+                style: extend.$data.style,
+                chart: extend.$data.chart,
+            }
+        }
+    }
+    /**
+     * 递归函数
+     * 获取事件配置
+     */
+    getEventConfig(events) {
+        if(events.length > 0){
+            return events.map(event => {
+                return {
+                    id: event.id,
+                    type: event.type.name,
+                    instance: event.instance.toJson(),
+                    childrenEvent: this.getEventConfig(event.childrenEvent)
+                }
+            });
+        } else {
+            return [];
+        }
+    }
+    /**
+     * 递归函数
+     * 读取组件的缓存, 并且同步到componentsUuidMap里
+     */
+    setEventConfig (events) {
+        if(events.length > 0) {
+            return events.map(event => {
+                return {
+                    id: event.id,
+                    type: Events[event.type],
+                    instance: new Events[event.type](event.instance),
+                    childrenEvent: this.setEventConfig(event.childrenEvent)
+                }
+            });
+        } else {
+            return [];
         }
     }
 }

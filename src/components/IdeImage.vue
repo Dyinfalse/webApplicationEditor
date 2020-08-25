@@ -1,5 +1,8 @@
 <template>
-    <div class="Image" :style="{fontSize: style.fontSize + 'px', color: style.color}">
+    <div class="Image" :style="{
+          fontSize: style.fontSize + 'px',
+          color: style.color
+        }">
       <img :src="data.src" alt="">
     </div>
 </template>
@@ -12,7 +15,7 @@ export default {
     return {
       timer: '',
       style: {
-          border: ''
+        
       },
       data: {
         src: require('../assets/loginbg.png'),
@@ -33,5 +36,11 @@ export default {
 .Image {
   display: inline-block;
   width: 100%;
+  height: 100%;
+}
+
+.Image img {
+  width: 100%;
+  height: 100%;
 }
 </style>

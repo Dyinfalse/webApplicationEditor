@@ -1,7 +1,7 @@
 <template>
   
-    <div class="Input" :style="{fontSize: style.fontSize + 'px', color: style.color}">
-      <input type="text" v-model="data.value">
+    <div class="Input">
+      <input type="text" v-model="data.value" :style="_style">
     </div>
 </template>
 
@@ -13,8 +13,17 @@ export default {
     return {
       timer: '',
       style: {
-        color: 0,
-        fontSize: 20
+        color: '#fff',
+        fontSize: 20,
+        background: '',
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 0,
+        paddingBottom: 0,
+        borderLeft: '',
+        borderRight: '',
+        borderTop: '',
+        borderBottom: '',
       },
       data: {
         value: '',
@@ -22,7 +31,24 @@ export default {
     }
   },
   created() {
-    this.style.color = "#000";
+
+  },
+  computed: {
+    _style() {
+      return {
+        fontSize: this.style.fontSize + 'px',
+        color: this.style.color,
+        background: this.style.background,
+        paddingLeft: this.style.paddingLeft + 'px',
+        paddingRight: this.style.paddingRight + 'px',
+        paddingTop: this.style.paddingTop + 'px',
+        paddingBottom: this.style.paddingBottom + 'px',
+        borderLeft: this.style.borderLeft,
+        borderRight: this.style.borderRight,
+        borderTop: this.style.borderTop,
+        borderBottom: this.style.borderBottom,
+      }
+    }
   },
   methods: {
     add () {
@@ -43,9 +69,12 @@ export default {
 .Input {
   display: inline-block;
   width: 100%;
+  height: 100%;
 }
 .Input input {
   width: 100%;
-  padding: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
 }
 </style>

@@ -59,7 +59,7 @@
                         key: <input style="width: 50px" type="text" v-model="field.key">
                         val: <input style="width: 50px" type="text" v-model="field.value">
                     </p>
-                    <button @click="fitem.instance.data.push({id: fitem.instance.data.lenhgth,key: '', value: ''})">addField</button>
+                    <button @click="fitem.instance.data.push({id: fitem.instance.data.length,key: '', value: ''})">addField</button>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import Events from '../../event';
+import { Events } from '../../event';
 /**
  * 事件面板递归组件
  */

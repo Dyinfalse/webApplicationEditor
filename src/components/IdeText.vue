@@ -1,6 +1,6 @@
 <template>
-    <div class="Text" :style="{fontSize: style.fontSize + 'px', color: style.color}">
-      <div>{{data.value}}</div>
+    <div class="Text">
+      <div :style="_style">{{data.value}}</div>
     </div>
 </template>
 
@@ -12,10 +12,20 @@ export default {
     return {
       style: {
         color: 0,
-        fontSize: 20
+        fontSize: 20,
+        lineHeight: 20
       },
       data: {
         value: '默认数据',
+      }
+    }
+  },
+  computed: {
+    _style() {
+      return {
+        fontSize: this.style.fontSize + 'px',
+        color: this.style.color,
+        lineHeight: this.style.lineHeight + 'px'
       }
     }
   },

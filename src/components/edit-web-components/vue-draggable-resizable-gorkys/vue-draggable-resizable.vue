@@ -154,14 +154,14 @@ export default {
       validator: (val) => val >= 0
     },
     x: {
-      type: Number,
+      type: Number | String,
       default: 0,
-      validator: (val) => typeof val === 'number'
+      validator: (val) => typeof val === 'number' || typeof val === 'string'
     },
     y: {
-      type: Number,
+      type: Number | String,
       default: 0,
-      validator: (val) => typeof val === 'number'
+      validator: (val) => typeof val === 'number' || typeof val === 'string'
     },
     z: {
       type: [String, Number],
@@ -1057,6 +1057,7 @@ export default {
       this.bottom = newBottom
     },
     x () {
+      let intX = parseInt(this.x)
       if (this.resizing || this.dragging) {
         return
       }
@@ -1065,14 +1066,15 @@ export default {
         this.bounds = this.calcDragLimits()
       }
 
-      const delta = this.x - this.left
+      const delta = intX - this.left
 
       if (delta % this.grid[0] === 0) {
-        this.rawLeft = this.x
+        this.rawLeft = intX
         this.rawRight = this.right - delta
       }
     },
     y () {
+      let intY = parseInt(this.y)
       if (this.resizing || this.dragging) {
         return
       }
@@ -1081,10 +1083,10 @@ export default {
         this.bounds = this.calcDragLimits()
       }
 
-      const delta = this.y - this.top
+      const delta = intY - this.top
 
       if (delta % this.grid[1] === 0) {
-        this.rawTop = this.y
+        this.rawTop = intY
         this.rawBottom = this.bottom - delta
       }
     },

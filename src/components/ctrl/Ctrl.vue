@@ -45,7 +45,21 @@ const TRANSLATE_ENUM = {
     "background": "背景色",
     "color": "颜色",
     "fontSize": "字体尺寸",
-    "zIndex": "字体尺寸"
+    "zIndex": "字体尺寸",
+    "borderLeft": "左边框",
+    "borderRight": "右边框",
+    "borderTop": "上边框",
+    "borderBottom": "下边框",
+    "lineHeight": "行高",
+    "paddingLeft": "左内边距",
+    "paddingRight": "右内边距",
+    "paddingTop": "上内边距",
+    "paddingBottom": "下内边距",
+    "marginLeft": "左外边距",
+    "marginRight": "右外边距",
+    "marginTop": "上外边距",
+    "marginBottom": "下外边距",
+    "borderRadius": "圆角"
 }
 
 export default {

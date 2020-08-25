@@ -349,18 +349,18 @@ export default {
         },
         mounted() {
             
-            this.VueComponent.forEach(item=>{
+            // this.VueComponent.forEach(item=>{
                 
-                // this.$refs[item.base.uuid][uuid] = item.base.uuid
-                // console.log( this.$refs[item.base.uuid])
-                this.$C.addComponentsUuidMap(item.base.uuid, {
-                    name: this.$refs[item.base.uuid].$attrs.id,
-                    base: this.$refs[item.base.uuid],
-                    extend: this.$refs[item.uuid].$children[0],
-                    function: [],
-                    event: []
-                })
-            })
+            //     // this.$refs[item.base.uuid][uuid] = item.base.uuid
+            //     // console.log( this.$refs[item.base.uuid])
+            //     this.$C.addComponentsUuidMap(item.base.uuid, {
+            //         name: this.$refs[item.base.uuid].$attrs.id,
+            //         base: this.$refs[item.base.uuid],
+            //         extend: this.$refs[item.uuid].$children[0],
+            //         function: [],
+            //         event: []
+            //     })
+            // })
             
             this.$nextTick(()=>{
                 this.pageSize = {...this.pageSize,...this.setPageSize}
@@ -386,9 +386,9 @@ export default {
 
                 for (let key in styleObj){
                     if(needUnitStr.includes(key)){
-                    style[key] = (styleObj[key] * scalingRatio) + 'px'
+                        style[key] = (styleObj[key] * scalingRatio) + 'px'
                     }else{
-                    style[key] = styleObj[key]
+                        style[key] = styleObj[key]
                     }
                 }
                 style.transform = `rotate(${style.rotate}deg) scale(${style.scale}) translate(-50%, -50%)`

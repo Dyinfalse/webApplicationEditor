@@ -65,10 +65,6 @@ export default {
     if(this.$P.pathUuidMap[path]){
         this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
         this.$C.install(this.cList.map(c => c.name));
-
-        for(let i = 0; i < 1000; i++){
-          this.$C.install(["Input"]);
-        }
     }
     
     /**

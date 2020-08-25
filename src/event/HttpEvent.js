@@ -17,11 +17,16 @@ export default class HttpEvent extends Event {
      */
     data = [];
 
-    constructor () {
-        super();
+    constructor (config) {
+        super(config);
+        if(config){
+            this.url = config.url;
+            this.method = config.method;
+            this.data = config.data;
+        }
     }
     /**
-     * @override
+     * @Override
      * 请求方法封装
      */
     run = () => {
@@ -35,5 +40,18 @@ export default class HttpEvent extends Event {
             url: this.url,
             data: _data
         });
+    }
+
+
+    /**
+     * @Override
+     */
+    toJson() {
+        return {
+            ...super.toJson(),
+            url: this.url,
+            method: this.method,
+            data: this.data
+        }
     }
 }
