@@ -20,14 +20,16 @@ export default class Event {
         if(config){
             this.action = config.action;
             this.source = this.getVue(config.source);
+            this.bindFunction = config.binded ? () => {} : null;
         }
     }
     /**
      * 事件绑定
      */
     bind(EventTree) {
-        console.log(EventTree)
-        this.unbind();
+        if(this.bindFunction) {
+            this.unbind();
+        }
         this.bindFunction = this.buildRun(EventTree);
         this.source.$el.addEventListener(this.action.replace(/^on/, ''), this.bindFunction);
     }
@@ -63,7 +65,7 @@ export default class Event {
             }else {
                 if(EventTree.childrenEvent.length > 0) {
                     for(let i = 0; i < EventTree.childrenEvent.length; i++){
-                        this.buildRun(EventTree.childrenEvent[0])();
+                        this.buildRun(EventTree.childrenEvent[i])();
                     }
                 }
             }
@@ -91,7 +93,6 @@ export default class Event {
      * 根据uuid获取组件Vue实例
      */
     getVue(uuid){
-        let v = Vue.prototype.$C.componentsUuidMap[uuid].extend;
-        return v._isVue ? v : {};
+        return Vue.prototype.$C.componentsUuidMap[uuid].extend;
     }
 }

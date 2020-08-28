@@ -1,5 +1,5 @@
 <template>
-    <div class="Ctrl" v-if="$C.store.focus.length > 0">
+    <div class="Ctrl" v-if="focusMap">
         <div class="flex-box">
             <p @click="changTab(1)">基础属性</p>
             <p @click="changTab(2)">扩展属性</p>
@@ -98,12 +98,13 @@ export default {
         position: absolute;
         right: 0px;
         top: 0px;
-        width: 300px;
+        width: 500px;
         border: 1px solid #ccc;
         background: #fff;
         z-index: 2;
         height: 300px;
         overflow: auto;
+        text-align: left;
     }
     .flex-box {
         display: flex;

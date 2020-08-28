@@ -64,7 +64,7 @@
                 <!-- 画布 -->
                 <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle" @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box"> 
-                        <vdr v-for="(item,index) in VueComponent" :ref="item.base.uuid" :uuid="item.base.uuid" :id="item.base.uuid" :key="index"
+                        <vdr v-for="(item,index) in VueComponent" :ref="item.base.uuid" :uuid="item.base.uuid" :id="item.base.uuid" :key="item.base.uuid"
                             :parent="true"
                             :snap="false"
                             :w="item.base.$data.baseStyle.width"

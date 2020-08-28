@@ -4,7 +4,7 @@ import Event from './Event';
  */
 export default class CallEvent extends Event {
     /**
-     * 调用目标元素 VueComponent
+     * 调用目标元素 uuid
      */
     target = null;
     /**
@@ -15,7 +15,7 @@ export default class CallEvent extends Event {
     constructor (config) {
         super(config);
         if(config) {
-            this.target = this.getVue(config.target);
+            this.target = config.target;
             this.functionName = config.functionName;
         }
     }
@@ -26,7 +26,7 @@ export default class CallEvent extends Event {
     run = () => {
         if(!this.target) {throw "请选择目标组件元素"}
         if(!this.functionName) {throw "请选择方法名称"}
-        this.target[this.functionName]();
+        return this.getVue(this.target)[this.functionName]();
     }
     /**
      * @Override
@@ -34,7 +34,7 @@ export default class CallEvent extends Event {
     toJson() {
         return {
             ...super.toJson(),
-            target: this.target.$parent.uuid,
+            target: this.target,
             functionName: this.functionName
         }
     }

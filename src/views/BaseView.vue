@@ -47,7 +47,6 @@ export default {
       removeComponent() {
         let uuids = this.$C.deleteUuidMap();
         this.$P.deletePathUuidMap(this.$router.currentRoute.name, uuids);
-
         for(let i = 0; i < this.cList.length; i++) {
           if(uuids.indexOf(this.cList[i].base.uuid) > -1) {
             this.cList.splice(i,1);
@@ -66,6 +65,7 @@ export default {
         this.cList = this.$P.pathUuidMap[path].map(uuid => this.$C.componentsUuidMap[uuid]);
         this.$C.install(this.cList.map(c => c.name));
     }
+    console.log(this.cList)
     
     /**
      * 定时删除组件

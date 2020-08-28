@@ -5,7 +5,11 @@
         fontSize: style.fontSize + 'px',
         background: style.background,
         color: style.color,
-        borderRadius: style.borderRadius + 'px'
+        borderRadius: style.borderRadius + 'px',
+        borderLeft: style.borderLeft,
+        borderRight: style.borderRight,
+        borderTop: style.borderTop,
+        borderBottom: style.borderBottom,
         }">{{data.value}}</button>
     </div>
 </template>
@@ -18,10 +22,14 @@ export default {
     return {
       timer: '',
       style: {
-        color: 0,
+        color: '#fff',
         background: '',
         fontSize: 20,
         borderRadius: '',
+        borderLeft: '',
+        borderRight: '',
+        borderTop: '',
+        borderBottom: '',
       },
       data: {
         value: '默认数据',

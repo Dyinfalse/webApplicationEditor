@@ -32,7 +32,14 @@ export default class HttpEvent extends Event {
     run = () => {
         let _data = {};
         this.data.map(field => {
-            _data[field.key] = field.value;
+            /**
+             * 判断该参数是组件映射还是手动输入
+             */
+            if(field.mapping == 'unMapping') {
+                _data[field.key] = field.value;
+            } else {
+                _data[field.key] = this.getVue(field.mapping).$data.data[field.mappingKey];
+            }
         })
 
         return axios({

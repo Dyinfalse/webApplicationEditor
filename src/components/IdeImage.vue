@@ -1,9 +1,8 @@
 <template>
-    <div class="Image" :style="{
-          fontSize: style.fontSize + 'px',
-          color: style.color
+    <div class="Image">
+      <img :src="data.src" alt="" :style="{
+          borderRadius: style.borderRadius + 'px'
         }">
-      <img :src="data.src" alt="">
     </div>
 </template>
 
@@ -15,7 +14,7 @@ export default {
     return {
       timer: '',
       style: {
-        
+        borderRadius: 0,
       },
       data: {
         src: require('../assets/loginbg.png'),

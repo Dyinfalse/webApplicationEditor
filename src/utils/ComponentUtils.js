@@ -5,10 +5,11 @@ import Vue from "vue"
  */
 export default class ComponentUtils {
     /**
-     * 全部组件
+     * @MOCK
+     * 全部组件, 用于页面新增组件的选项, 后面替换成服务端获取
      */
     ALL_COMPONENTS = [
-        "IdeText", "IdeInput", "IdeButton", "IdeImage"
+        "IdeText", "IdeInput", "IdeButton", "IdeImage", "IdeTabBox"
     ];
     /**
      * 基础组件定义
@@ -21,19 +22,16 @@ export default class ComponentUtils {
     installed = {};
 
     /**
-     * 所有组件的Uuid映射
+     * 所有组件的Uuid映射, 每个uuid对应一个组件的配置, 如果页面没加载, 对应的是一个和Vue实例长得一样的集合, 可以使用_isVue区分
+     * @Type <Uuid, VueComponent>
      */
     componentsUuidMap = {};
 
     /**
      * 当前焦点组件uuid
+     * 响应式数据集合, 目前存放焦点组件的Uuid, 后面可以扩展存放全项目响应式数据
      */
     store = {};
-
-    /**
-     * 组件id, 自增
-     */
-    cid = 0;
 
     /**
      * 页面工具类实例
@@ -46,7 +44,6 @@ export default class ComponentUtils {
          */
         this.installBase();
         /**
-         * 响应式数据集合, 目前存放焦点组件的Uuid, 后面可以扩展存放全项目响应式数据
          * 缺点 -> 没有主动函数可以调用, 如果要调用方法 只能监听(watch) $C.store.focus
          */
         this.store = Vue.observable({ focus: [] });
@@ -103,7 +100,7 @@ export default class ComponentUtils {
     }
 
     /**
-     * 安装基础组件, 目前只有一个 Pack
+     * 安装基础组件
      */
     installBase() {
         return this.install(this.baseComponents);
@@ -116,8 +113,6 @@ export default class ComponentUtils {
      * 创建组件的时候该方法会被执行两次, 第一次创建映射, 第二次更新组件引用
      * config存在的情况下, 分为是否存在缓存, 如果componentsUuidMap已经存储过了之前的更改, 那么config的值会被覆盖
      * 
-     * base是基础配置, 组件的Pack消化
-     * extend是组件的配置信息, 由组件自身消化
      */
     addComponentsUuidMap(uuid, config) {
         if(typeof uuid == 'string' && config) {
@@ -150,10 +145,13 @@ export default class ComponentUtils {
             this.componentsUuidMap[uuid].base = config.base;
             this.componentsUuidMap[uuid].extend = config.extend;
             /**
-             * 同步事件, 如果新增加组件的时候 event 不为空, 则认为是渲染缓存的组件
+             * 当前组件是否已经被替换引用, 如果被替换过, 说明在componentsUuidMap中可以拿到组件的Vue实例, 并且已经实例化了事件对象
+             * 所以下面的部分只会在读取缓存内容和新增组件的时候执行
              */
-            this.componentsUuidMap[uuid].event = this.setEventConfig(this.componentsUuidMap[uuid].event);
-            console.log(this.componentsUuidMap[uuid].event)
+            if(!this.componentsUuidMap[uuid].replace){
+                this.componentsUuidMap[uuid].replace = true;
+                this.componentsReplaced();
+            }
         } else if(typeof uuid == 'string' && !config) {
             /** create by name */
             if(!uuid) throw "创建映射异常: 缺少必要的name字段";
@@ -164,7 +162,8 @@ export default class ComponentUtils {
                 base: {$data: {baseStyle: {}}},
                 extend: {$data: {style: {}, data: {}, chart: {}}},
                 function: [],
-                event: []
+                event: [],
+                replace: false
             }
 
             this.componentsUuidMap[uuid] = _config;
@@ -203,7 +202,7 @@ export default class ComponentUtils {
     }
     /**
      * 设置当前的焦点组件, 可以是多个
-     * @param {Array<Uuid>}} uuids 组件的Uuid数组
+     * @param {Array<Uuid>} uuids 组件的Uuid数组
      */
     setFocus(uuids) {
         /**
@@ -256,6 +255,7 @@ export default class ComponentUtils {
     }
     /**
      * 保存配置
+     * 暂时存在localStorage
      */
     save () {
         let _componentsUuidMap = {};
@@ -269,34 +269,41 @@ export default class ComponentUtils {
                 function: c.function,
             }
         }
-        console.log(_componentsUuidMap)
         window.localStorage.setItem("componentsUuidMap", JSON.stringify(_componentsUuidMap));
     }
 
     /**
-     * 从Vue对象中剥离base配置
+     * 从Vue对象中剥离base配置用来缓存
+     * 如果不是Vue对象, 很可能是其他页面没有渲染的组件, 没有渲染就没有Vue实例, 不用剥离直接保存
      */
     getBaseConfig(base) {
-        if(!base._isVue) throw "存储对象base 必须是Vue实例";
-        return {
-            uuid: base.uuid,
-            $data: {
-                baseStyle: base.baseStyle
+        if(base._isVue) {
+            return {
+                uuid: base.uuid,
+                $data: {
+                    baseStyle: base.baseStyle
+                }
             }
+        } else {
+            return base;
         }
     }
     /**
-     * 从Vue对象中剥离base配置
+     * 从Vue对象中剥离extend配置
      */
     getExtendsConfig(extend) {
-        if(!extend._isVue) throw "存储对象extend 必须是Vue实例";
-        return {
-            $data: {
-                data: extend.$data.data,
-                style: extend.$data.style,
-                chart: extend.$data.chart,
+        if(extend._isVue) {
+            return {
+                $data: {
+                    data: extend.$data.data,
+                    style: extend.$data.style,
+                    chart: extend.$data.chart,
+                }
             }
+        }else {
+            return extend;
         }
+        
     }
     /**
      * 递归函数
@@ -305,11 +312,18 @@ export default class ComponentUtils {
     getEventConfig(events) {
         if(events.length > 0){
             return events.map(event => {
-                return {
-                    id: event.id,
-                    type: event.type.name,
-                    instance: event.instance.toJson(),
-                    childrenEvent: this.getEventConfig(event.childrenEvent)
+                /**
+                 * 如果没有toJson方法, 说明该事件是没有被实例化过的, 没有访问到的页面的事件, 直接返回, 可以再次保存
+                 */
+                if(event.instance.toJson) {
+                    return {
+                        id: event.id,
+                        type: event.type.name,
+                        instance: event.instance.toJson(),
+                        childrenEvent: this.getEventConfig(event.childrenEvent)
+                    }
+                }else {
+                    return event;
                 }
             });
         } else {
@@ -323,6 +337,10 @@ export default class ComponentUtils {
     setEventConfig (events) {
         if(events.length > 0) {
             return events.map(event => {
+                /**
+                 * 如果type不是string类型, 说明已经被替换成构造函数, 所以不需要在执行后面的.
+                 */
+                if(typeof event.type !== 'string') return event;
                 return {
                     id: event.id,
                     type: Events[event.type],
@@ -332,6 +350,55 @@ export default class ComponentUtils {
             });
         } else {
             return [];
+        }
+    }
+
+    /**
+     * 所有组件都被替换引用之后执行该方法
+     * @TODO 如果组件太多, 这个方法需要优化, 每次加载一个组件和新增一个组件都会检查所有组件的replace
+     */
+    componentsReplaced() {
+        let replaced = true;
+        
+        for(let uuid of this.$P.pathUuidMap[this.$P.router.currentRoute.name]){
+            if(!this.componentsUuidMap[uuid].replace){
+                replaced = false;
+            }
+        }
+        if(replaced) {
+            console.log(this.$P.router.currentRoute.name + '页面组件渲染完毕, 开始挂载当前页面的事件')
+            for(let uuid of this.$P.pathUuidMap[this.$P.router.currentRoute.name]){
+                this.componentsUuidMap[uuid].event = this.setEventConfig(this.componentsUuidMap[uuid].event);
+                /**
+                 * 如果bindFunction存在,说明保存的时候,事已经绑定, 再次读取的时候也要绑定上
+                 */
+                this.componentsUuidMap[uuid].event.map(e => {
+                    if(e.instance.bindFunction){
+                        e.instance.bind(e);
+                    }
+                })
+            }
+        }
+    }
+
+    /**
+     * 组件增加选中样式
+     * 样式设置在(components/edit-web-components/vue-draggable-resizable-gorkys/vue-draggable-resizable.css)
+     * .vdr.is-active::after
+     */
+    setActiveComponent(uuid){
+        try {
+            this.componentsUuidMap[uuid].base.$data.isActive = true;
+        } catch (e) {
+            console.error("组件uuid不正确:", e);
+        }
+    }
+    /**
+     * 清除选中样式
+     */
+    clearActiveComponent() {
+        for(let _uuid in this.componentsUuidMap) {
+            this.componentsUuidMap[_uuid].base.$data.isActive = false;
         }
     }
 }

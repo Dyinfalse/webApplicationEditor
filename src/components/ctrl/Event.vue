@@ -1,7 +1,7 @@
 <template>
     <div class="Event" v-if="$C.store.focus.length > 0">
-        <p v-if="isRoot">事件 <button @click="addEvent()">addEvent</button></p>
-        <div v-for="(fitem, index) in eventList" :key="fitem.id">
+        <p v-if="isRoot">事件树 <button @click="addEvent()">addEvent</button></p>
+        <div :class="isRoot ? 'root-event': 'event-item'" v-for="(fitem, index) in eventList" :key="fitem.id">
             <p>
                 {{(isRoot ? '' : '子') + fitem.id}}事件类型
                 <select v-model="fitem.type" @change="domEventType(fitem)">
@@ -21,21 +21,26 @@
                     目标路径
                     <select v-model="fitem.instance.path" @change="pathChange(fitem.instance.path)">
                         <!-- 目前是获取整个实例的所有组件实例 -->
+                        <option value="http://">外部连接</option>
                         <option :value="p.path" v-for="p in allPath" :key="p.path">{{p.name}}</option>
                     </select>
+                </p>
+                <p v-if="fitem.instance.path == 'http://'">
+                    外部连接
+                    <input type="text" v-model="fitem.instance.link">
                 </p>
                 <!-- 函数调用事件配置项 -->
                 <p v-if="fitem.instance.hasOwnProperty('target')">
                     目标元素
-                    <select v-model="fitem.instance.target" @change="targetChange(fitem.instance.target)">
+                    <i-select v-model="fitem.instance.target" style="width: 100px" @on-change="targetChange(fitem)">
                         <!-- 目前是获取整个实例的所有组件实例 -->
-                        <option :value="v.extend" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</option>
-                    </select>
+                        <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</i-option>
+                    </i-select>
                 </p>
                 <p v-if="fitem.instance.hasOwnProperty('functionName')">
                     方法名称
                     <select v-model="fitem.instance.functionName">
-                        <option :value="f" v-for="(f, index) in functionList" :key="index">{{f}}</option>
+                        <option :value="f" v-for="(f, index) in fitem.functionList" :key="index">{{f}}</option>
                     </select>
                 </p>
                 <!-- Http事件 -->
@@ -54,12 +59,21 @@
                     </select>
                 </p>
                 <div v-if="fitem.instance.hasOwnProperty('data')">
-                    请求参数
+                    请求参数 <button @click="fitem.instance.data.push({id: fitem.instance.data.length, key: '', value: '', mapping: 'unMapping', mappingKey: ''})">addField</button>
                     <p v-for="field in fitem.instance.data" :key="field.id">
-                        key: <input style="width: 50px" type="text" v-model="field.key">
-                        val: <input style="width: 50px" type="text" v-model="field.value">
+                        key: <input class="param-key" type="text" v-model="field.key">
+                        val: <input v-if="field.mapping == 'unMapping'" class="param-value" type="text" v-model="field.value">
+
+                        <i-select v-model="field.mapping" style="width: 100px" @on-change="mappingChange(field)">
+                            <!-- 目前是获取整个实例的所有组件实例, 但是存在一些页面没有加载的, 所以组件也没有实例化 -->
+                            <i-option value="unMapping">手动输入</i-option>
+                            <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</i-option>
+                        </i-select>
+                        <!-- 从选中组件中选择一个属性绑定映射 -->
+                        <i-select v-if="field.mappingKey" v-model="field.mappingKey" style="width: 100px" @on-change="mappingKeyChange(field)">
+                            <i-option :value="k" v-for="(v, k) in $C.componentsUuidMap[field.mapping].extend.$data.data" :key="k">{{k}}</i-option>
+                        </i-select>
                     </p>
-                    <button @click="fitem.instance.data.push({id: fitem.instance.data.length,key: '', value: ''})">addField</button>
                 </div>
             </div>
 
@@ -86,7 +100,9 @@ export default {
        */
       eventList: {
           type: Array,
-          default: () => []
+          default: () => {
+            return [];
+          }
       },
       /**
        * 是否为根节点
@@ -118,11 +134,7 @@ export default {
   },
   computed: {
       focusMap () {
-            /**
-             * 设置函数名称选项
-             */
-            this.targetChange(this.$C.getFocusUuidMap()[0].extend);
-            return this.$C.getFocusUuidMap()[0];
+        return this.$C.getFocusUuidMap()[0];
       }
   },
   methods: {
@@ -144,7 +156,9 @@ export default {
      * 修改目标元素的时候同步目标元素抛出的方法
      */
     targetChange(t) {
-        this.functionList = this.$C.componentsUuidMap[t.$parent.uuid].function;
+        if(t.instance.target){
+            t.functionList = this.$C.componentsUuidMap[t.instance.target].function;
+        }
     },
     /**
      * 选择路径
@@ -209,22 +223,72 @@ export default {
          * 设置默认目标为当前元素
          */
         if(fitem.instance.hasOwnProperty('target')){
-            fitem.instance.target = this.focusMap.extend;
+            fitem.instance.target = this.focusMap.base.uuid;
+            this.targetChange(fitem)
         }
+    },
+    /**
+     * 选择字段映射
+     */
+    mappingChange(field) {
+        if(field.mapping !== 'unMapping'){
+            field.mappingKey = field.mapping;
+        } else {
+            field.mappingKey = '';
+        }
+    },
+    /**
+     * 选择映射的key
+     */
+    mappingKeyChange(field){
+
+    },
+    /**
+     * 选中组件
+     */
+    selectedComponent(uuid){
+        this.$C.setActiveComponent(uuid);
+    },
+    clearSelected() {
+        this.$C.clearActiveComponent();
     }
   },
   mounted() {
-      /**
-       * 设置事件名称选项
-       */
-      this.domEventList = this.getDomEventList();
-      /**
-       * 获取所有路由信息
-       */
-      this.allPath = this.$P.getAllRouterInfo();
+    /**
+     * 设置事件名称选项
+     */
+    this.domEventList = this.getDomEventList();
+    /**
+     * 获取所有路由信息
+     */
+    this.allPath = this.$P.getAllRouterInfo();
+    /**
+     * 设置函数名称选项
+     */
+    this.eventList.map(e => {
+        this.targetChange(e);
+    })
   }
 }
 </script>
 
 <style scoped>
+
+.Event .event-item {
+    border: 1px solid #ccc;
+    margin: 5px 0px 5px 20px;
+    padding: 5px;
+}
+.Event .root-event {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
+}
+
+.Event .param-value,
+.Event .param-key {
+    padding: 0px 3px;
+    width: 100px;
+    font-size: 12px;
+}
 </style>

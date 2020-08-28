@@ -6,7 +6,8 @@
       [classNameDragging]: dragging,
       [classNameResizing]: resizing,
       [classNameDraggable]: draggable,
-      [classNameResizable]: resizable
+      [classNameResizable]: resizable,
+      'is-active': isActive
     }, className]"
     @mousedown="elementDown"
     @touchstart="elementTouchDown"
@@ -166,7 +167,7 @@ export default {
     z: {
       type: [String, Number],
       default: 'auto',
-      validator: (val) => (typeof val === 'string' ? val === 'auto' : val >= 0)
+      validator: (val) => (val === 'auto' || val >= 0)
     },
     handles: {
       type: Array,
@@ -239,6 +240,7 @@ export default {
         top: this.y,
         zIndex: this.z,
       },
+      isActive: false,
       rawWidth: this.w,
       rawHeight: this.h,
       rawLeft: this.x,
@@ -281,12 +283,13 @@ export default {
   },
   mounted: function () {
     this.$C.addComponentsUuidMap(this.uuid, {
-        name: this.$children[0].$attrs.id,
-        base: this,
-        extend: this.$children[0],
-        function: [],
-        event: []
+      name: this.$children[0].$attrs.id,
+      base: this,
+      extend: this.$children[0],
+      function: [],
+      event: []
     })
+
     if (!this.enableNativeDrag) {
       this.$el.ondragstart = () => false
     }
@@ -304,6 +307,7 @@ export default {
     addEvent(window, 'resize', this.checkParentSize)
   },
   beforeDestroy: function () {
+    this.$C.deleteUuidMap(this.uuid);
     removeEvent(document.documentElement, 'mousedown', this.deselect)
     removeEvent(document.documentElement, 'touchstart', this.handleUp)
     removeEvent(document.documentElement, 'mousemove', this.move)
@@ -313,7 +317,6 @@ export default {
 
     removeEvent(window, 'resize', this.checkParentSize)
   },
-
   methods: {
     // 重置边界和鼠标状态
     resetBoundsAndMouseState () {

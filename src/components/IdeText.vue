@@ -11,9 +11,11 @@ export default {
   data() {
     return {
       style: {
-        color: 0,
+        color: '#fff',
         fontSize: 20,
-        lineHeight: 20
+        lineHeight: 20,
+        background: '',
+        borderRadius: 0,
       },
       data: {
         value: '默认数据',
@@ -25,7 +27,9 @@ export default {
       return {
         fontSize: this.style.fontSize + 'px',
         color: this.style.color,
-        lineHeight: this.style.lineHeight + 'px'
+        lineHeight: this.style.lineHeight + 'px',
+        background: this.style.background,
+        borderRadius: this.style.borderRadius + 'px'
       }
     }
   },
@@ -43,5 +47,10 @@ export default {
 .Text {
   display: inline-block;
   width: 100%;
+  height: 100%;
+}
+.Text div {
+  width: 100%;
+  height: 100%;
 }
 </style>
