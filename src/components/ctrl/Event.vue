@@ -43,6 +43,12 @@
                         <option :value="f" v-for="(f, index) in fitem.functionList" :key="index">{{f}}</option>
                     </select>
                 </p>
+                <div v-if="fitem.instance.hasOwnProperty('functionName')">
+                    方法参数 <button @click="fitem.instance.paramList.push({id: fitem.instance.paramList.length, value: '', mapping: 'unMapping', mappingKey: ''})">addParam</button>
+                    <p v-for="param in fitem.instance.paramList" :key="param.id">
+                        <SelectMapping :hasKey="false" :set="param" />
+                    </p>
+                </div>
                 <!-- Http事件 -->
                 <p v-if="fitem.instance.hasOwnProperty('method')">
                     请求方法
@@ -61,18 +67,7 @@
                 <div v-if="fitem.instance.hasOwnProperty('data')">
                     请求参数 <button @click="fitem.instance.data.push({id: fitem.instance.data.length, key: '', value: '', mapping: 'unMapping', mappingKey: ''})">addField</button>
                     <p v-for="field in fitem.instance.data" :key="field.id">
-                        key: <input class="param-key" type="text" v-model="field.key">
-                        val: <input v-if="field.mapping == 'unMapping'" class="param-value" type="text" v-model="field.value">
-
-                        <i-select v-model="field.mapping" style="width: 100px" @on-change="mappingChange(field)">
-                            <!-- 目前是获取整个实例的所有组件实例, 但是存在一些页面没有加载的, 所以组件也没有实例化 -->
-                            <i-option value="unMapping">手动输入</i-option>
-                            <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</i-option>
-                        </i-select>
-                        <!-- 从选中组件中选择一个属性绑定映射 -->
-                        <i-select v-if="field.mappingKey" v-model="field.mappingKey" style="width: 100px" @on-change="mappingKeyChange(field)">
-                            <i-option :value="k" v-for="(v, k) in $C.componentsUuidMap[field.mapping].extend.$data.data" :key="k">{{k}}</i-option>
-                        </i-select>
+                        <SelectMapping :set="field" />
                     </p>
                 </div>
             </div>
@@ -89,11 +84,13 @@
 
 <script>
 import { Events } from '../../event';
+import SelectMapping from './SelectMapping';
 /**
  * 事件面板递归组件
  */
 export default {
   name: 'Event',
+  components: { SelectMapping },
   props: {
       /**
        * 事件 list
@@ -227,31 +224,6 @@ export default {
             this.targetChange(fitem)
         }
     },
-    /**
-     * 选择字段映射
-     */
-    mappingChange(field) {
-        if(field.mapping !== 'unMapping'){
-            field.mappingKey = field.mapping;
-        } else {
-            field.mappingKey = '';
-        }
-    },
-    /**
-     * 选择映射的key
-     */
-    mappingKeyChange(field){
-
-    },
-    /**
-     * 选中组件
-     */
-    selectedComponent(uuid){
-        this.$C.setActiveComponent(uuid);
-    },
-    clearSelected() {
-        this.$C.clearActiveComponent();
-    }
   },
   mounted() {
     /**
@@ -283,12 +255,5 @@ export default {
     border: 1px solid #ccc;
     margin: 5px;
     padding: 5px;
-}
-
-.Event .param-value,
-.Event .param-key {
-    padding: 0px 3px;
-    width: 100px;
-    font-size: 12px;
 }
 </style>

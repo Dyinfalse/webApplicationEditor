@@ -34,6 +34,7 @@ export default {
      * 增加一个标签
      */
     addTab(value) {
+        if(this.data.tabList.find(t => t.value == value)) return;
         this.data.tabList.push({
             value
         })
