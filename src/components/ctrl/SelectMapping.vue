@@ -6,7 +6,7 @@
         <i-select v-model="set.mapping" style="width: 100px" @on-change="mappingChange(set)">
             <!-- 目前是获取整个实例的所有组件实例, 但是存在一些页面没有加载的, 所以组件也没有实例化 -->
             <i-option value="unMapping">手动输入</i-option>
-            <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</i-option>
+            <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in pageComponentsUuidMap" :key="k">{{v.name}}</i-option>
         </i-select>
         
         <!-- 从选中组件中选择一个属性绑定映射 -->
@@ -43,6 +43,19 @@ export default {
         
     }
   },
+  computed: {
+      /**
+       * 选择映射的时候只能选择当前页面内的组件
+       */
+      pageComponentsUuidMap() {
+          let pageUuids = this.$P.pathUuidMap[this.$router.currentRoute.name];
+          let pc = {};
+          pageUuids.map(uuid => {
+              pc[uuid] = this.$C.componentsUuidMap[uuid];
+          })
+          return pc;
+      }
+  },
   methods: {
     /**
      * 选择字段映射
@@ -71,7 +84,7 @@ export default {
     }
   },
   mounted(){
-
+      console.log(this.pageComponentsUuidMap)
   }
 }
 </script>
