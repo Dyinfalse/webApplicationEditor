@@ -8,8 +8,9 @@
             <i-option value="unMapping">手动输入</i-option>
             <i-option @mouseenter.native="selectedComponent(k)" @mouseleave.native="clearSelected(k)" :value="k" v-for="(v, k) in $C.componentsUuidMap" :key="k">{{v.name}}</i-option>
         </i-select>
+        
         <!-- 从选中组件中选择一个属性绑定映射 -->
-        <i-select v-if="set.mappingKey != ''" v-model="set.mappingKey" style="width: 100px" @on-change="mappingKeyChange(set)">
+        <i-select v-if="$C.componentsUuidMap[set.mapping]" v-model="set.mappingKey" style="width: 100px" @on-change="mappingKeyChange(set)">
             <i-option :value="k" v-for="(v, k) in $C.componentsUuidMap[set.mapping].extend.$data.data" :key="k">{{k}}</i-option>
         </i-select>
     </div>
@@ -47,7 +48,7 @@ export default {
      * 选择字段映射
      */
     mappingChange(set) {
-        if(set.mapping !== 'unMapping'){
+        if(set.mapping != 'unMapping'){
             set.mappingKey = set.mapping;
         } else {
             set.mappingKey = '';

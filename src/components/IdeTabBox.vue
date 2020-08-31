@@ -28,6 +28,7 @@ export default {
      * 删除一个标签
      */
     removeTab(index) {
+        if(index < 0) return;
         this.data.tabList.splice(index, 1);
     },
     /**
@@ -38,6 +39,16 @@ export default {
         this.data.tabList.push({
             value
         })
+    },
+    /**
+     * 操作list
+     */
+    operationTab(value, check){
+        if(check){
+            this.addTab(value);
+        }else {
+            this.removeTab(this.data.tabList.findIndex(t => t.value == value));
+        }
     }
   },
   mounted(){

@@ -9,7 +9,7 @@ export default class ComponentUtils {
      * 全部组件, 用于页面新增组件的选项, 后面替换成服务端获取
      */
     ALL_COMPONENTS = [
-        "IdeText", "IdeInput", "IdeButton", "IdeImage", "IdeTabBox"
+        "IdeText", "IdeInput", "IdeButton", "IdeImage", "IdeTabBox", "IdeCheckTab"
     ];
     /**
      * 基础组件定义

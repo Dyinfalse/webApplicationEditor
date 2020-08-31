@@ -224,6 +224,15 @@ export default {
             this.targetChange(fitem)
         }
     },
+    /**
+     * 选中组件
+     */
+    selectedComponent(uuid){
+        this.$C.setActiveComponent(uuid);
+    },
+    clearSelected() {
+        this.$C.clearActiveComponent();
+    }
   },
   mounted() {
     /**
