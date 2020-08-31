@@ -28,7 +28,7 @@ export default class CallEvent extends Event {
      * @Override
      * 事件执行方法, 不是箭头函数获取的this是触发事件的dom, 同一个事件不可绑定多次
      */
-    run = () => {
+    run = ($parent) => {
         if(!this.target) {throw "目标组件元素缺失"}
         if(!this.functionName) {throw "目标方法名称缺失"}
 

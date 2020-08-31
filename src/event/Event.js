@@ -47,10 +47,10 @@ export default class Event {
         
         let _run = EventTree.instance.run;
 
-        return () => {
+        return ($parent) => {
             let r;
             try {
-                r = _run();
+                r = _run($parent);
             } catch (e) {
                 console.error("事件执行异常! 异常提示信息: ", e, "\r\n事件实例信息:", EventTree);
             }
@@ -58,14 +58,14 @@ export default class Event {
                 r.then((resault) => {
                     if(EventTree.childrenEvent.length > 0) {
                         for(let i = 0; i < EventTree.childrenEvent.length; i++){
-                            this.buildRun(EventTree.childrenEvent[i])();
+                            this.buildRun(EventTree.childrenEvent[i])(resault);
                         }
                     }
                 })
             }else {
                 if(EventTree.childrenEvent.length > 0) {
                     for(let i = 0; i < EventTree.childrenEvent.length; i++){
-                        this.buildRun(EventTree.childrenEvent[i])();
+                        this.buildRun(EventTree.childrenEvent[i])(r);
                     }
                 }
             }

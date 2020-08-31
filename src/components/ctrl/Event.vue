@@ -70,6 +70,18 @@
                         <SelectMapping :set="field" />
                     </p>
                 </div>
+                <!-- 自定义事件 -->
+                <div v-if="fitem.instance.hasOwnProperty('dependents')">
+                    依赖 <button @click="fitem.instance.dependents.push({id: fitem.instance.dependents.length, key: '', value: '', mapping: 'unMapping', mappingKey: ''})">addDependents</button>
+                    <p v-for="field in fitem.instance.dependents" :key="field.id">
+                        <SelectMapping :set="field" />
+                    </p>
+                </div>
+                <!-- 自定义事件 -->
+                <div v-if="fitem.instance.hasOwnProperty('code')">
+                    代码
+                    <textarea v-model="fitem.instance.code" cols="30" rows="10"></textarea>
+                </div>
             </div>
 
             <button v-if="isRoot" @click="bind(fitem)">bind</button>
