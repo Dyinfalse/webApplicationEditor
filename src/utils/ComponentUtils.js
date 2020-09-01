@@ -401,4 +401,16 @@ export default class ComponentUtils {
             this.componentsUuidMap[_uuid].base.$data.isActive = false;
         }
     }
+    /**
+     * 增加响应式数据
+     */
+    addStore(data) {
+        for(let k in data){
+            if(this.store.hasOwnProperty(k)) {
+                console.warn('store上已经存在key: ['+ k +']的映射, 不会覆盖原值, 请修改新key')
+            }else{
+                Vue.set(this.store, k, data[k])
+            }
+        }
+    }
 }

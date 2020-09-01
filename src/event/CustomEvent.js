@@ -35,7 +35,7 @@ export default class CustomEvent extends Event {
                 }
             })
             tempFunction = new Function(this.code);
-            tempFunction()(this, $parent);
+            return tempFunction()(this, $parent);
         } catch (e) {
             console.error("自定义函数异常", e);
         }

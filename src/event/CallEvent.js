@@ -31,8 +31,10 @@ export default class CallEvent extends Event {
     run = ($parent) => {
         if(!this.target) {throw "目标组件元素缺失"}
         if(!this.functionName) {throw "目标方法名称缺失"}
+        let fn = this.getVue(this.target)[this.functionName];
+        if(!fn) {throw "方法不存在"}
 
-        return this.getVue(this.target)[this.functionName](...this.paramList.map(p => {
+        return fn(...this.paramList.map(p => {
             if(p.mapping == 'unMapping'){
                 return p.value;
             } else {

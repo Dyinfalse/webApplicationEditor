@@ -1,6 +1,6 @@
 <template>
     <div class="IdeTabBox">
-        <div class="tab" v-for="(tab, index) in data.tabList" :key="tab.value">
+        <div class="tab" v-for="(tab, index) in $C.store.tabList" :key="tab.value">
             <span>{{tab.value}}</span>
             <i class="close" @click="removeTab(index)">x</i>
         </div>
@@ -16,10 +16,7 @@ export default {
       style: {
       },
       data: {
-          tabList: [
-              {value: 'test'},
-              {value: 'test2'},
-          ]
+
       }
     }
   },
@@ -29,14 +26,15 @@ export default {
      */
     removeTab(index) {
         if(index < 0) return;
-        this.data.tabList.splice(index, 1);
+        this.$C.store.tabList.splice(index, 1);
+        console.log(this.$C.store.tabList)
     },
     /**
      * 增加一个标签
      */
     addTab(value) {
-        if(this.data.tabList.find(t => t.value == value)) return;
-        this.data.tabList.push({
+        if(this.$C.store.tabList.find(t => t.value == value)) return;
+        this.$C.store.tabList.push({
             value
         })
     },
@@ -47,9 +45,15 @@ export default {
         if(check){
             this.addTab(value);
         }else {
-            this.removeTab(this.data.tabList.findIndex(t => t.value == value));
+            this.removeTab(this.$C.store.tabList.findIndex(t => t.value == value));
         }
     }
+  },
+  created() {
+    this.$C.addStore({ tabList :[
+        {value: 'test'},
+        {value: 'test2'},
+    ]})
   },
   mounted(){
     this.$C.addFunction(this);
