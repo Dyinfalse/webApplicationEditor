@@ -30,14 +30,14 @@ export default class CustomEvent extends Event {
         try { 
             this.dependents.map(dependent => {
                 this.dependentsMap[dependent.key] = {
-                    vue: dependent.mapping,
+                    vue: this.getVue(dependent.mapping),
                     field: dependent.mappingKey
                 }
             })
             tempFunction = new Function(this.code);
             return tempFunction()(this, $parent);
         } catch (e) {
-            console.error("自定义函数异常", e);
+            console.error("自定义函数执行异常", e);
         }
     }
     /**

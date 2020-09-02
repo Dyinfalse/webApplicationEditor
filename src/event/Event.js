@@ -54,6 +54,7 @@ export default class Event {
             } catch (e) {
                 console.error("事件执行异常! 异常提示信息: ", e, "\r\n事件实例信息:", EventTree);
             }
+            if(r === 'break') return;
             if(r && r.toString() === '[object Promise]') {
                 r.then((resault) => {
                     if(EventTree.childrenEvent.length > 0) {

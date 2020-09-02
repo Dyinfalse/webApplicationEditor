@@ -25,6 +25,9 @@ export default {
     let scaleW = scrollWidth / this.defaultWidth;
     let scaleH = scrollHeight / this.defaultHeight;
     this.style.transform = 'scale('+ scaleW +', '+ scaleH +')';
+    window.onresize = function() {
+        console.log(document.documentElement.scrollWidth, document.documentElement.scrollHeight)
+    }
   },
   methods: {
   }
