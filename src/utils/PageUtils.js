@@ -1,4 +1,5 @@
 import BaseView from '../views/BaseView';
+import BasePreview from '../views/BasePreview';
 /**
  * 构建多页路由工具类
  */
@@ -18,11 +19,16 @@ export default class PageUtils {
      * 页面路径和 组件uuid映射
      */
     pathUuidMap = {};
+    /**
+     * 预览读取的数据
+     */
+    __pathUuidMap = {};
 
     constructor (router) {
         this.router = router;
         let catchPathUuidMap = window.localStorage.getItem("pathUuidMap");
         this.pathUuidMap = catchPathUuidMap ? JSON.parse(catchPathUuidMap) : {};
+        this.__pathUuidMap = catchPathUuidMap ? JSON.parse(catchPathUuidMap) : {};
     }
 
     /**
@@ -97,11 +103,13 @@ export default class PageUtils {
      * @param {String} path 非必填, 默认是当前页面, 也可以指定页面删除
      * @param {String} uuid 必填要删除的组件的uuid
      */
-    deletePathUuidMap(path, uuids) {
-        for(let i = 0; i < this.pathUuidMap[path].length; i++){
-            if(uuids.find(u => u === this.pathUuidMap[path][i])){
-                this.pathUuidMap[path].splice(i, 1);
-                i--;
+    deletePathUuidMap(uuids) {
+        for(let path in this.pathUuidMap){
+            for(let i = 0; i < this.pathUuidMap[path].length; i++){
+                if(uuids.find(u => u === this.pathUuidMap[path][i])){
+                    this.pathUuidMap[path].splice(i, 1);
+                    i--;
+                }
             }
         }
     }
@@ -118,5 +126,38 @@ export default class PageUtils {
      */
     save () {
         window.localStorage.setItem("pathUuidMap", JSON.stringify(this.pathUuidMap));
+    }
+
+    /**
+     * 生成预览数据
+     */
+    preview() {
+        /**
+         * 增加预览路由
+         */
+        let routes = this.router.options.routes;
+        routes.find(item => item.path == "/preview").children = 
+        routes.find(item => item.path == "/pageCtrl").children.map(p => {
+            return {
+            path: p.path,
+            name: p.name,
+            vue: "BasePreview",
+            component: BasePreview
+            }
+        })
+        this.router.addRoutes(routes);
+        window.localStorage.setItem("router", JSON.stringify(routes));
+        this.router.push("/preview/" + routes.find(item => item.path == "/preview").children[0].path);
+        /**
+         * 获取最新的保存数据
+         */
+        this.__pathUuidMap = JSON.parse(window.localStorage.getItem("pathUuidMap"));
+    }
+
+    /**
+     * 是否是预览环境
+     */
+    isPreview(){
+        return this.router.currentRoute.fullPath.indexOf('/preview') > -1;
     }
 }

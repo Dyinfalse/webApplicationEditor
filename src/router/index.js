@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import BasePreview from '../views/BasePreview';
 
 Vue.use(VueRouter)
 let localRouter = JSON.parse(window.localStorage.getItem("router"));
@@ -15,6 +16,20 @@ const routes = localRouter || [
     vue: "PageCtrl",
     component: "PageCtrl",
     children: [
+    ]
+  },
+  {
+    path: '/preview',
+    name: 'Preview',
+    vue: "Preview",
+    component: "Preview",
+    children: [
+      // {
+      //   component: BasePreview,
+      //   name: "baseView_0",
+      //   path: "baseView_0",
+      //   vue: "BasePreview"
+      // }
     ]
   },
   {

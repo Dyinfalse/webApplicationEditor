@@ -93,6 +93,9 @@ export default class Event {
      * 根据uuid获取组件Vue实例
      */
     getVue(uuid){
-        return Vue.prototype.$C.componentsUuidMap[uuid].extend;
+        return Vue.prototype.$C[
+            Vue.prototype.$P.isPreview() ?
+            '__componentsUuidMap':
+            'componentsUuidMap'][uuid].extend;
     }
 }

@@ -22,7 +22,7 @@
                     <select v-model="fitem.instance.path" @change="pathChange(fitem.instance.path)">
                         <!-- 目前是获取整个实例的所有组件实例 -->
                         <option value="http://">外部连接</option>
-                        <option :value="p.path" v-for="p in allPath" :key="p.path">{{p.name}}</option>
+                        <option :value="p.name" v-for="p in allPath" :key="p.path">{{p.name}}</option>
                     </select>
                 </p>
                 <p v-if="fitem.instance.path == 'http://'">
@@ -144,6 +144,16 @@ export default {
   computed: {
       focusMap () {
         return this.$C.getFocusUuidMap()[0];
+      }
+  },
+  watch: {
+      eventList() {
+            /**
+             * 设置函数名称选项
+             */
+            this.eventList.map(e => {
+                this.targetChange(e);
+            })
       }
   },
   methods: {

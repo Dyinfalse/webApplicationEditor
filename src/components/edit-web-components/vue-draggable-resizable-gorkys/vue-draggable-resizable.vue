@@ -282,6 +282,7 @@ export default {
     this.resetBoundsAndMouseState()
   },
   mounted: function () {
+    if(this.$P.isPreview()) return;
     this.$C.addComponentsUuidMap(this.uuid, {
       name: this.$children[0].$attrs.id,
       base: this,

@@ -26,6 +26,10 @@ export default class ComponentUtils {
      * @Type <Uuid, VueComponent>
      */
     componentsUuidMap = {};
+    /**
+     * 预览数据
+     */
+    __componentsUuidMap = {};
 
     /**
      * 当前焦点组件uuid
@@ -55,6 +59,7 @@ export default class ComponentUtils {
          */
         let catchComponentsUuidMap = window.localStorage.getItem("componentsUuidMap");
         this.componentsUuidMap = catchComponentsUuidMap ? JSON.parse(catchComponentsUuidMap) : {};
+        this.__componentsUuidMap = catchComponentsUuidMap ? JSON.parse(catchComponentsUuidMap) : {};
     }
     /**
      * 指定文件名称挂载组件 - 必须在 created 里面调用才生效
@@ -187,6 +192,7 @@ export default class ComponentUtils {
      * @return {Array<Uuid>} 被删除的uuid数组
      */
     deleteUuidMap(uuid) {
+        console.log('删除组件' + uuid)
         /**
          * 默认当前选中uuid
          */
@@ -196,7 +202,7 @@ export default class ComponentUtils {
         if(!delete this.componentsUuidMap[uuid]){
             console.error("Uuid映射关系删除失败");
         }else {
-            this.$P.deletePathUuidMap(this.$P.router.currentRoute.name, [uuid]);
+            this.$P.deletePathUuidMap([uuid]);
         }
         return uuid;
     }
@@ -357,22 +363,24 @@ export default class ComponentUtils {
      * 所有组件都被替换引用之后执行该方法
      * @TODO 如果组件太多, 这个方法需要优化, 每次加载一个组件和新增一个组件都会检查所有组件的replace
      */
-    componentsReplaced() {
+    componentsReplaced(isPreview) {
+        let c_mapkey = isPreview ? '__componentsUuidMap' : 'componentsUuidMap';
+        let p_mapkey = isPreview ? '__pathUuidMap' : 'pathUuidMap';
         let replaced = true;
         
-        for(let uuid of this.$P.pathUuidMap[this.$P.router.currentRoute.name]){
-            if(!this.componentsUuidMap[uuid].replace){
+        for(let uuid of this.$P[p_mapkey][this.$P.router.currentRoute.name]){
+            if(!this[c_mapkey][uuid].replace){
                 replaced = false;
             }
         }
         if(replaced) {
             console.log(this.$P.router.currentRoute.name + '页面组件渲染完毕, 开始挂载当前页面的事件')
-            for(let uuid of this.$P.pathUuidMap[this.$P.router.currentRoute.name]){
-                this.componentsUuidMap[uuid].event = this.setEventConfig(this.componentsUuidMap[uuid].event);
+            for(let uuid of this.$P[p_mapkey][this.$P.router.currentRoute.name]){
+                this[c_mapkey][uuid].event = this.setEventConfig(this[c_mapkey][uuid].event);
                 /**
                  * 如果bindFunction存在,说明保存的时候,事已经绑定, 再次读取的时候也要绑定上
                  */
-                this.componentsUuidMap[uuid].event.map(e => {
+                this[c_mapkey][uuid].event.map(e => {
                     if(e.instance.bindFunction){
                         e.instance.bind(e);
                     }
@@ -412,5 +420,20 @@ export default class ComponentUtils {
                 Vue.set(this.store, k, data[k])
             }
         }
+    }
+    /**
+     * 生成预览数据
+     */
+    preview() {
+        this.__componentsUuidMap = JSON.parse(window.localStorage.getItem("componentsUuidMap"));
+    }
+    /**
+     * 替换预览数据中的vue实例
+     */
+    replacePreviewVue(uuid, config) {
+        this.__componentsUuidMap[uuid].base = config.base;
+        this.__componentsUuidMap[uuid].extend = config.extend;
+        this.__componentsUuidMap[uuid].replace = true;
+        this.componentsReplaced(true);
     }
 }

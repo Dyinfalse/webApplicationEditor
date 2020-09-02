@@ -343,12 +343,9 @@ export default {
             comStyle:function(){
                 // this.pageSize = Object.assign({},this.pageSize,this.setPageSize);
                 return this.getCommonStyle(this.pageSize)
-            }
-
-            
+            }            
         },
         mounted() {
-            
             // this.VueComponent.forEach(item=>{
                 
             //     // this.$refs[item.base.uuid][uuid] = item.base.uuid
@@ -363,6 +360,8 @@ export default {
             // })
             
             this.$nextTick(()=>{
+                if(this.$P.isPreview()) return;
+                
                 this.pageSize = {...this.pageSize,...this.setPageSize}
                 this.CanvasInit(this.pageSize);
                 document.getElementById('ruler-canvas-panel').addEventListener('mousewheel', this.scrollFunc, false);
@@ -874,6 +873,7 @@ export default {
         beforeDestroy () {
             // window.removeEventListener('keydown', this.keydownCode,true)
             this.$refs['ruler-panel'].removeEventListener('scroll', this.handleScroll)
+            if(!document.getElementById('ruler-canvas-panel')) return;
             document.getElementById('ruler-canvas-panel').removeEventListener('mousewheel', this.scrollFunc, false);
             
         },
