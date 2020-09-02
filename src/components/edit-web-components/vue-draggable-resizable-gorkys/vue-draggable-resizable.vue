@@ -308,7 +308,7 @@ export default {
     addEvent(window, 'resize', this.checkParentSize)
   },
   beforeDestroy: function () {
-    this.$C.deleteUuidMap(this.uuid);
+    // this.$C.deleteUuidMap(this.uuid);
     removeEvent(document.documentElement, 'mousedown', this.deselect)
     removeEvent(document.documentElement, 'touchstart', this.handleUp)
     removeEvent(document.documentElement, 'mousemove', this.move)

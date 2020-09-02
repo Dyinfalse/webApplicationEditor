@@ -120,6 +120,7 @@ export default class ComponentUtils {
      * 
      */
     addComponentsUuidMap(uuid, config) {
+        console.log('addComponentsUuidMap')
         if(typeof uuid == 'string' && config) {
             /** update */
             /**
@@ -431,6 +432,7 @@ export default class ComponentUtils {
      * 替换预览数据中的vue实例
      */
     replacePreviewVue(uuid, config) {
+        console.log('replacePreviewVue')
         this.__componentsUuidMap[uuid].base = config.base;
         this.__componentsUuidMap[uuid].extend = config.extend;
         this.__componentsUuidMap[uuid].replace = true;
