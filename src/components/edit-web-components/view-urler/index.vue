@@ -361,7 +361,7 @@ export default {
             
             this.$nextTick(()=>{
                 if(this.$P.isPreview()) return;
-                
+
                 this.pageSize = {...this.pageSize,...this.setPageSize}
                 this.CanvasInit(this.pageSize);
                 document.getElementById('ruler-canvas-panel').addEventListener('mousewheel', this.scrollFunc, false);
@@ -864,7 +864,7 @@ export default {
         watch: {
             pageSize: {
                 handler: function (val) {
-                    this.ZOOM_RATIO = parseInt(val.scale * 100)
+                    // this.ZOOM_RATIO = parseInt(val.scale * 100)
                     this.CanvasInit(val)
                 },
                 deep: true

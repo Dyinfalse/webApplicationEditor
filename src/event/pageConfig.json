@@ -1,0 +1,1612 @@
+{
+    "pathUuidMap": {
+        "baseView_0": ["bb7c4c2f-1d19-4dd6-b178-8faab12cfd9d-1598324905805", "585b2ab4-eef0-4e88-bcf8-344c1702c316-1598326191544", "5e99c2af-934c-4126-9847-a346a988840e-1598327327548", "521031a8-9737-4e26-abdc-2070eacc10a1-1598335990345", "ea35fa2a-526b-40f5-8b95-69b198200a6c-1598336206765", "d339fcd8-7ce5-419d-b8a7-61259600de8b-1598338229396", "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713", "5b2eb600-cf62-44c7-b12b-f9e233267129-1598338748527", "fd2c20a6-e468-465f-b584-5a27d8f9e9e7-1598339336086"],
+        "baseView_1": ["75288d79-14c0-48e6-b420-be82a57b6bc1-1598498620381", "091c3b69-7872-4fff-8915-147cf1e0d78e-1598498651535", "fa064e86-30a1-4c2a-9fbc-368194a49dbd-1598498717255", "84ead29c-c5f6-4299-a99f-4f7e45d7eae7-1598498756158", "d6502b4f-7086-4bb7-ba00-d0646c2c5438-1598498824176", "613ac3cd-7c9c-46f3-8ebc-54ba595531c2-1598498870454", "501ce581-91a4-4ba2-b894-85853d6ccbc7-1598499289696", "24dd2911-7b54-46de-b30e-16ba3a711716-1598499326769", "8aa7e43f-675b-4370-b979-a03eccd106d4-1598499395645", "60dd7bf0-48f1-451e-b37f-4ea50d518f6b-1598499442253", "cc4a4289-2e13-4308-baae-9ab71d143b35-1598499589979", "f0854d33-a051-48de-bfe7-66c00e13ef5a-1598499889386", "a09c11f6-3bcb-4778-bf35-d48105a0db6b-1598518514505", "0c6408d6-6154-4d01-9ff5-82b2ecabf537-1598519617956", "98312a02-c875-4706-ba59-767838cbe2f0-1598520786832", "908e8e3d-d224-4cda-98d9-68c822a01d42-1598520857125", "72201032-d56d-4f56-ab74-58d21acfdc6c-1598520898021", "5983d663-a096-4453-bcb5-ab49006f574a-1598520924474", "969c9142-c90c-4c85-9100-1416498bea62-1598521016250", "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212", "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827", "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985", "4ce7e647-30c4-452a-a367-5c558738269c-1598599410890", "e9c38ef7-9d2a-4a2a-90ce-bae475f207cc-1598599411034", "3efec06f-2e17-4e2a-ac23-c59488065d89-1598599646513", "96750188-503e-488f-b4e5-99eeb08d80db-1598599694589", "ff5523a9-7f37-4d2b-a8a8-a8885551ac57-1598599751539", "678b751a-8ebb-4755-9769-3aaff324fc30-1598599778647", "c42a3391-f661-47e1-a13f-ee284a7eb5c4-1598599838230", "2ad32346-f8cf-405c-bfa6-6493d34d6956-1598599879431", "cee59875-6631-4677-8398-499dcd7a850f-1598599928597", "9f9026ae-4261-47ba-bfdc-967debe9cef3-1598599982614", "3c3655b2-d483-4276-86b4-343d18aa2c73-1598600006702"]
+    },
+    "componentsUuidMap": {
+        "bb7c4c2f-1d19-4dd6-b178-8faab12cfd9d-1598324905805": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "bb7c4c2f-1d19-4dd6-b178-8faab12cfd9d-1598324905805",
+                "$data": {
+                    "baseStyle": {
+                        "width": 1920,
+                        "height": 1080,
+                        "left": 0,
+                        "top": 0,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0,
+                        "border": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "585b2ab4-eef0-4e88-bcf8-344c1702c316-1598326191544": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "585b2ab4-eef0-4e88-bcf8-344c1702c316-1598326191544",
+                "$data": {
+                    "baseStyle": {
+                        "width": 478,
+                        "height": "36",
+                        "left": 1216,
+                        "top": 326,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "合肥卷烟厂智能制造集控中心"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": "36",
+                        "lineHeight": "36",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "5e99c2af-934c-4126-9847-a346a988840e-1598327327548": {
+            "name": "IdeInput",
+            "base": {
+                "uuid": "5e99c2af-934c-4126-9847-a346a988840e-1598327327548",
+                "$data": {
+                    "baseStyle": {
+                        "width": 465,
+                        "height": 47,
+                        "left": 1222,
+                        "top": 465,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "admin"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": "20",
+                        "background": "transparent",
+                        "paddingLeft": "50",
+                        "paddingRight": "10",
+                        "paddingTop": 0,
+                        "paddingBottom": 0,
+                        "borderLeft": "",
+                        "borderRight": "",
+                        "borderTop": "",
+                        "borderBottom": "1px solid rgba(61,71,82,1)"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["add", "clear"]
+        },
+        "521031a8-9737-4e26-abdc-2070eacc10a1-1598335990345": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "521031a8-9737-4e26-abdc-2070eacc10a1-1598335990345",
+                "$data": {
+                    "baseStyle": {
+                        "width": 46,
+                        "height": 21,
+                        "left": "1222",
+                        "top": "477",
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "账号"
+                    },
+                    "style": {
+                        "color": "#747C86",
+                        "fontSize": 20,
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "ea35fa2a-526b-40f5-8b95-69b198200a6c-1598336206765": {
+            "name": "IdeInput",
+            "base": {
+                "uuid": "ea35fa2a-526b-40f5-8b95-69b198200a6c-1598336206765",
+                "$data": {
+                    "baseStyle": {
+                        "width": "465",
+                        "height": "47",
+                        "left": 1222,
+                        "top": 560,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "ys123456"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": 20,
+                        "background": "transparent",
+                        "paddingLeft": "50",
+                        "paddingRight": 10,
+                        "paddingTop": 0,
+                        "paddingBottom": 0,
+                        "borderLeft": "",
+                        "borderRight": "",
+                        "borderTop": "",
+                        "borderBottom": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["add", "clear"]
+        },
+        "d339fcd8-7ce5-419d-b8a7-61259600de8b-1598338229396": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "d339fcd8-7ce5-419d-b8a7-61259600de8b-1598338229396",
+                "$data": {
+                    "baseStyle": {
+                        "width": 45,
+                        "height": 21,
+                        "left": 1222,
+                        "top": "573",
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "密码"
+                    },
+                    "style": {
+                        "color": "#747C86",
+                        "fontSize": 20,
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713": {
+            "name": "IdeButton",
+            "base": {
+                "uuid": "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713",
+                "$data": {
+                    "baseStyle": {
+                        "width": "465",
+                        "height": "60",
+                        "left": 1222,
+                        "top": 720,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "登录"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "background": "#4198FC",
+                        "fontSize": 20,
+                        "borderRadius": "16",
+                        "borderLeft": "",
+                        "borderRight": "",
+                        "borderTop": "",
+                        "borderBottom": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "HttpEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713",
+                    "binded": 1,
+                    "url": "http://app.cloud_nide.ys.com:9190/us_UserLoginInAction.do",
+                    "method": "POST",
+                    "data": [{
+                        "id": 0,
+                        "key": "org_user_id",
+                        "value": "admin",
+                        "mapping": "5e99c2af-934c-4126-9847-a346a988840e-1598327327548",
+                        "mappingKey": "value"
+                    }, {
+                        "id": 1,
+                        "key": "org_dept_id",
+                        "value": "",
+                        "mapping": "unMapping",
+                        "mappingKey": ""
+                    }, {
+                        "id": 2,
+                        "key": "org_term_no",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 3,
+                        "key": "orguser_cn_name",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 4,
+                        "key": "orgdept_cn_name",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 5,
+                        "key": "org_channel_code",
+                        "value": "01",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 6,
+                        "key": "org_work_code",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 7,
+                        "key": "submit_type",
+                        "value": "1",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 8,
+                        "key": "org_dprl_expls",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 9,
+                        "key": "br_sbsbno",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 10,
+                        "key": "work_seq",
+                        "value": "",
+                        "mapping": "unMapping"
+                    }, {
+                        "id": 11,
+                        "key": "user_passwd",
+                        "value": "ys123456",
+                        "mapping": "ea35fa2a-526b-40f5-8b95-69b198200a6c-1598336206765",
+                        "mappingKey": "value"
+                    }, {
+                        "id": 12,
+                        "key": "org_srv_name",
+                        "value": "us_UserLoginInAction",
+                        "mapping": "unMapping"
+                    }]
+                },
+                "childrenEvent": [{
+                    "id": "0-0",
+                    "type": "CustomEvent",
+                    "instance": {
+                        "action": "onclick",
+                        "source": "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713",
+                        "binded": 0,
+                        "dependents": [{
+                            "id": 0,
+                            "key": "testdep",
+                            "value": "",
+                            "mapping": "585b2ab4-eef0-4e88-bcf8-344c1702c316-1598326191544",
+                            "mappingKey": "value"
+                        }],
+                        "code": "return function (event, $parent) {\nconsole.log(event, $parent);\n//return 'break';\n}"
+                    },
+                    "childrenEvent": [{
+                        "id": "0-0-0",
+                        "type": "RouterEvent",
+                        "instance": {
+                            "action": "onclick",
+                            "source": "1ac19f09-63fa-4878-9a5e-3bd7fac1ec19-1598338298713",
+                            "binded": 0,
+                            "path": "baseView_1",
+                            "link": "http://"
+                        },
+                        "childrenEvent": []
+                    }]
+                }]
+            }],
+            "function": []
+        },
+        "5b2eb600-cf62-44c7-b12b-f9e233267129-1598338748527": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "5b2eb600-cf62-44c7-b12b-f9e233267129-1598338748527",
+                "$data": {
+                    "baseStyle": {
+                        "width": 68,
+                        "height": "16",
+                        "left": 1561,
+                        "top": 625,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "忘记密码"
+                    },
+                    "style": {
+                        "color": "#FFFFFF",
+                        "fontSize": "16",
+                        "lineHeight": "16",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "fd2c20a6-e468-465f-b584-5a27d8f9e9e7-1598339336086": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "fd2c20a6-e468-465f-b584-5a27d8f9e9e7-1598339336086",
+                "$data": {
+                    "baseStyle": {
+                        "width": 35,
+                        "height": "16",
+                        "left": "1653",
+                        "top": 625,
+                        "zIndex": "auto"
+                    }
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "注册"
+                    },
+                    "style": {
+                        "color": "#FFFFFF",
+                        "fontSize": "16",
+                        "lineHeight": "16",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "RouterEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "fd2c20a6-e468-465f-b584-5a27d8f9e9e7-1598339336086",
+                    "binded": 1,
+                    "path": "http://",
+                    "link": "http://www.baidu.com"
+                },
+                "childrenEvent": []
+            }],
+            "function": []
+        },
+        "3f4191fc-12f0-4071-87c8-6937b135c5f5-1598493446572": {
+            "name": "IdeButton",
+            "base": {
+                "uuid": "3f4191fc-12f0-4071-87c8-6937b135c5f5-1598493446572",
+                "$data": {
+                    "baseStyle": {
+                        "width": 200,
+                        "height": 200,
+                        "left": 931,
+                        "top": 141,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "默认数据"
+                    },
+                    "style": {
+                        "color": 0,
+                        "background": "",
+                        "fontSize": 20,
+                        "borderRadius": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "328f148b-64e8-4157-a548-0848e6c9a2c9-1598493449474": {
+            "name": "IdeButton",
+            "base": {
+                "uuid": "328f148b-64e8-4157-a548-0848e6c9a2c9-1598493449474",
+                "$data": {
+                    "baseStyle": {
+                        "width": 200,
+                        "height": 200,
+                        "left": 469,
+                        "top": 70,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "默认数据"
+                    },
+                    "style": {
+                        "color": 0,
+                        "background": "",
+                        "fontSize": 20,
+                        "borderRadius": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "75288d79-14c0-48e6-b420-be82a57b6bc1-1598498620381": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "75288d79-14c0-48e6-b420-be82a57b6bc1-1598498620381",
+                "$data": {
+                    "baseStyle": {
+                        "width": "99",
+                        "height": "48",
+                        "left": "18",
+                        "top": "13",
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "091c3b69-7872-4fff-8915-147cf1e0d78e-1598498651535": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "091c3b69-7872-4fff-8915-147cf1e0d78e-1598498651535",
+                "$data": {
+                    "baseStyle": {
+                        "width": "152",
+                        "height": "26",
+                        "left": 135,
+                        "top": 24,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "智能制造集控中心"
+                    },
+                    "style": {
+                        "color": "#A8A8A8",
+                        "fontSize": "19",
+                        "lineHeight": "26",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "fa064e86-30a1-4c2a-9fbc-368194a49dbd-1598498717255": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "fa064e86-30a1-4c2a-9fbc-368194a49dbd-1598498717255",
+                "$data": {
+                    "baseStyle": {
+                        "width": "85",
+                        "height": "22",
+                        "left": "1509",
+                        "top": "31",
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "2020.05.08"
+                    },
+                    "style": {
+                        "color": "#4F637B",
+                        "fontSize": "16",
+                        "lineHeight": "22",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "84ead29c-c5f6-4299-a99f-4f7e45d7eae7-1598498756158": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "84ead29c-c5f6-4299-a99f-4f7e45d7eae7-1598498756158",
+                "$data": {
+                    "baseStyle": {
+                        "width": "82",
+                        "height": "28",
+                        "left": 1598,
+                        "top": 27,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "11:19:34"
+                    },
+                    "style": {
+                        "color": "#BAE0FF",
+                        "fontSize": 20,
+                        "lineHeight": "28",
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "d6502b4f-7086-4bb7-ba00-d0646c2c5438-1598498824176": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "d6502b4f-7086-4bb7-ba00-d0646c2c5438-1598498824176",
+                "$data": {
+                    "baseStyle": {
+                        "width": "46",
+                        "height": "22",
+                        "left": "1708",
+                        "top": "31",
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "-13°"
+                    },
+                    "style": {
+                        "color": "#BAE0FF",
+                        "fontSize": "16",
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "613ac3cd-7c9c-46f3-8ebc-54ba595531c2-1598498870454": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "613ac3cd-7c9c-46f3-8ebc-54ba595531c2-1598498870454",
+                "$data": {
+                    "baseStyle": {
+                        "width": "31",
+                        "height": "31",
+                        "left": 1852,
+                        "top": 21,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": "20"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "501ce581-91a4-4ba2-b894-85853d6ccbc7-1598499289696": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "501ce581-91a4-4ba2-b894-85853d6ccbc7-1598499289696",
+                "$data": {
+                    "baseStyle": {
+                        "width": "27",
+                        "height": "23",
+                        "left": "26",
+                        "top": "90",
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "24dd2911-7b54-46de-b30e-16ba3a711716-1598499326769": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "24dd2911-7b54-46de-b30e-16ba3a711716-1598499326769",
+                "$data": {
+                    "baseStyle": {
+                        "width": "32",
+                        "height": "22",
+                        "left": "68",
+                        "top": "95",
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "首页"
+                    },
+                    "style": {
+                        "color": "#ADDAFF",
+                        "fontSize": "16",
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "8aa7e43f-675b-4370-b979-a03eccd106d4-1598499395645": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "8aa7e43f-675b-4370-b979-a03eccd106d4-1598499395645",
+                "$data": {
+                    "baseStyle": {
+                        "width": "16",
+                        "height": "22",
+                        "left": 114,
+                        "top": 95,
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "我"
+                    },
+                    "style": {
+                        "color": "#ADDAFF",
+                        "fontSize": "16",
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "60dd7bf0-48f1-451e-b37f-4ea50d518f6b-1598499442253": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "60dd7bf0-48f1-451e-b37f-4ea50d518f6b-1598499442253",
+                "$data": {
+                    "baseStyle": {
+                        "width": "32",
+                        "height": "22",
+                        "left": "147",
+                        "top": 95,
+                        "zIndex": "1"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "订阅"
+                    },
+                    "style": {
+                        "color": "#ADDAFF",
+                        "fontSize": "16",
+                        "lineHeight": 20,
+                        "background": "",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "CallEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "60dd7bf0-48f1-451e-b37f-4ea50d518f6b-1598499442253",
+                    "binded": 1,
+                    "target": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                    "functionName": "addTab",
+                    "paramList": [{
+                        "id": 0,
+                        "value": "",
+                        "mapping": "60dd7bf0-48f1-451e-b37f-4ea50d518f6b-1598499442253",
+                        "mappingKey": "value"
+                    }]
+                },
+                "childrenEvent": []
+            }],
+            "function": []
+        },
+        "cc4a4289-2e13-4308-baae-9ab71d143b35-1598499589979": {
+            "name": "IdeButton",
+            "base": {
+                "uuid": "cc4a4289-2e13-4308-baae-9ab71d143b35-1598499589979",
+                "$data": {
+                    "baseStyle": {
+                        "width": "170",
+                        "height": "42",
+                        "left": 1535,
+                        "top": 124,
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "取消"
+                    },
+                    "style": {
+                        "color": "#287BDD",
+                        "background": "#141823",
+                        "fontSize": "16",
+                        "borderRadius": "4",
+                        "borderLeft": "1px solid #287BDD",
+                        "borderRight": "1px solid #287BDD",
+                        "borderTop": "1px solid #287BDD",
+                        "borderBottom": "1px solid #287BDD"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "f0854d33-a051-48de-bfe7-66c00e13ef5a-1598499889386": {
+            "name": "IdeButton",
+            "base": {
+                "uuid": "f0854d33-a051-48de-bfe7-66c00e13ef5a-1598499889386",
+                "$data": {
+                    "baseStyle": {
+                        "width": "170",
+                        "height": "42",
+                        "left": 1725,
+                        "top": 124,
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "确定"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "background": "#007FFF",
+                        "fontSize": "16",
+                        "borderRadius": "4",
+                        "borderLeft": "",
+                        "borderRight": "",
+                        "borderTop": "",
+                        "borderBottom": ""
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "a09c11f6-3bcb-4778-bf35-d48105a0db6b-1598518514505": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "a09c11f6-3bcb-4778-bf35-d48105a0db6b-1598518514505",
+                "$data": {
+                    "baseStyle": {
+                        "width": 1920,
+                        "height": "1010",
+                        "left": 0,
+                        "top": 70,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": ""
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": 20,
+                        "lineHeight": 20,
+                        "background": "#141823",
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "0c6408d6-6154-4d01-9ff5-82b2ecabf537-1598519617956": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "0c6408d6-6154-4d01-9ff5-82b2ecabf537-1598519617956",
+                "$data": {
+                    "baseStyle": {
+                        "width": "75",
+                        "height": "924",
+                        "left": 25,
+                        "top": 124,
+                        "zIndex": "2"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": ""
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": 20,
+                        "lineHeight": 20,
+                        "background": "linear-gradient(180deg,rgba(22,33,52,0.73) 0%,rgba(22,32,51,1) 49%,rgba(21,31,49,0.72) 100%)",
+                        "borderRadius": "16"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "98312a02-c875-4706-ba59-767838cbe2f0-1598520786832": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "98312a02-c875-4706-ba59-767838cbe2f0-1598520786832",
+                "$data": {
+                    "baseStyle": {
+                        "width": "75",
+                        "height": "70",
+                        "left": 25,
+                        "top": 124,
+                        "zIndex": "3"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": ""
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": 20,
+                        "lineHeight": 20,
+                        "background": "linear-gradient(226deg,rgba(70,155,227,1) 0%,rgba(0,107,198,0.17) 100%)",
+                        "borderRadius": "16"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "908e8e3d-d224-4cda-98d9-68c822a01d42-1598520857125": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "908e8e3d-d224-4cda-98d9-68c822a01d42-1598520857125",
+                "$data": {
+                    "baseStyle": {
+                        "width": "31",
+                        "height": "28",
+                        "left": 47,
+                        "top": 145,
+                        "zIndex": "4"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "72201032-d56d-4f56-ab74-58d21acfdc6c-1598520898021": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "72201032-d56d-4f56-ab74-58d21acfdc6c-1598520898021",
+                "$data": {
+                    "baseStyle": {
+                        "width": "30",
+                        "height": "30",
+                        "left": 47,
+                        "top": 223,
+                        "zIndex": "4"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "5983d663-a096-4453-bcb5-ab49006f574a-1598520924474": {
+            "name": "IdeImage",
+            "base": {
+                "uuid": "5983d663-a096-4453-bcb5-ab49006f574a-1598520924474",
+                "$data": {
+                    "baseStyle": {
+                        "width": "30",
+                        "height": "30",
+                        "left": "47",
+                        "top": "300",
+                        "zIndex": "4"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "src": "/img/loginbg.a7921de8.png"
+                    },
+                    "style": {
+                        "borderRadius": 0
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "969c9142-c90c-4c85-9100-1416498bea62-1598521016250": {
+            "name": "IdeText",
+            "base": {
+                "uuid": "969c9142-c90c-4c85-9100-1416498bea62-1598521016250",
+                "$data": {
+                    "baseStyle": {
+                        "width": "235",
+                        "height": "70",
+                        "left": 105,
+                        "top": 124,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "数据选项卡自定义"
+                    },
+                    "style": {
+                        "color": "#fff",
+                        "fontSize": "24",
+                        "lineHeight": "70",
+                        "background": "linear-gradient(226deg,rgba(70,155,227,1) 0%,rgba(0,107,198,0.17) 100%)",
+                        "borderRadius": "8"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": []
+        },
+        "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212": {
+            "name": "IdeTabBox",
+            "base": {
+                "uuid": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                "$data": {
+                    "baseStyle": {
+                        "width": 466,
+                        "height": "841",
+                        "left": 119,
+                        "top": 207,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "tabList": []
+                    },
+                    "style": {},
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "CallEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                    "binded": 0,
+                    "target": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                    "functionName": "addTab",
+                    "paramList": [{
+                        "id": 0,
+                        "value": "",
+                        "mapping": "unMapping",
+                        "mappingKey": ""
+                    }]
+                },
+                "childrenEvent": []
+            }],
+            "function": ["removeTab", "addTab", "operationTab"]
+        },
+        "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 603,
+                        "top": 207,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "万支卷烟综合能耗",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "CallEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827",
+                    "binded": 1,
+                    "target": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                    "functionName": "operationTab",
+                    "paramList": [{
+                        "id": 0,
+                        "value": "",
+                        "mapping": "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827",
+                        "mappingKey": "value"
+                    }, {
+                        "id": 1,
+                        "value": "",
+                        "mapping": "37093ba9-63c5-4cb8-9f2c-5e2c2b86bd15-1598599082827",
+                        "mappingKey": "check"
+                    }]
+                },
+                "childrenEvent": []
+            }],
+            "function": ["changeCheck"]
+        },
+        "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 864,
+                        "top": 207,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "单箱耗叶",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "CallEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985",
+                    "binded": 1,
+                    "target": "1e62c6ed-4512-4c9c-a09f-1f499d1acc6f-1598578663212",
+                    "functionName": "operationTab",
+                    "paramList": [{
+                        "id": 0,
+                        "value": "",
+                        "mapping": "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985",
+                        "mappingKey": "value"
+                    }, {
+                        "id": 1,
+                        "value": "",
+                        "mapping": "2342253c-80cc-46cf-be05-0675e6a75c15-1598599351985",
+                        "mappingKey": "check"
+                    }]
+                },
+                "childrenEvent": []
+            }],
+            "function": ["changeCheck"]
+        },
+        "4ce7e647-30c4-452a-a367-5c558738269c-1598599410890": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "4ce7e647-30c4-452a-a367-5c558738269c-1598599410890",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": "1386",
+                        "top": "207",
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "市场投诉",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "e9c38ef7-9d2a-4a2a-90ce-bae475f207cc-1598599411034": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "e9c38ef7-9d2a-4a2a-90ce-bae475f207cc-1598599411034",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 1125,
+                        "top": 207,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "单支克重标偏",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "3efec06f-2e17-4e2a-ac23-c59488065d89-1598599646513": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "3efec06f-2e17-4e2a-ac23-c59488065d89-1598599646513",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": "1647",
+                        "top": "207",
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "万支卷烟综合能耗",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "96750188-503e-488f-b4e5-99eeb08d80db-1598599694589": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "96750188-503e-488f-b4e5-99eeb08d80db-1598599694589",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 603,
+                        "top": 274,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "RPA流程状态",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "ff5523a9-7f37-4d2b-a8a8-a8885551ac57-1598599751539": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "ff5523a9-7f37-4d2b-a8a8-a8885551ac57-1598599751539",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 864,
+                        "top": 274,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "流程汇总",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "678b751a-8ebb-4755-9769-3aaff324fc30-1598599778647": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "678b751a-8ebb-4755-9769-3aaff324fc30-1598599778647",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 1125,
+                        "top": 274,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "流程评价",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "c42a3391-f661-47e1-a13f-ee284a7eb5c4-1598599838230": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "c42a3391-f661-47e1-a13f-ee284a7eb5c4-1598599838230",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 603,
+                        "top": 398,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "任务准时化排名",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "2ad32346-f8cf-405c-bfa6-6493d34d6956-1598599879431": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "2ad32346-f8cf-405c-bfa6-6493d34d6956-1598599879431",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 864,
+                        "top": 398,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "任务延迟排行",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "cee59875-6631-4677-8398-499dcd7a850f-1598599928597": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "cee59875-6631-4677-8398-499dcd7a850f-1598599928597",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 603,
+                        "top": 521,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "MES",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [{
+                "id": 0,
+                "type": "CustomEvent",
+                "instance": {
+                    "action": "onclick",
+                    "source": "cee59875-6631-4677-8398-499dcd7a850f-1598599928597",
+                    "binded": 1,
+                    "dependents": [{
+                        "id": 0,
+                        "key": "test",
+                        "value": "",
+                        "mapping": "969c9142-c90c-4c85-9100-1416498bea62-1598521016250",
+                        "mappingKey": "value"
+                    }],
+                    "code": "return function (event, $parent) {\nconsole.log(\nevent.getVue(event.dependentsMap.test.vue).data[event.dependentsMap.test.field]\n)\n}"
+                },
+                "childrenEvent": []
+            }],
+            "function": ["changeCheck"]
+        },
+        "9f9026ae-4261-47ba-bfdc-967debe9cef3-1598599982614": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "9f9026ae-4261-47ba-bfdc-967debe9cef3-1598599982614",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 864,
+                        "top": 521,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "WMS",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        },
+        "3c3655b2-d483-4276-86b4-343d18aa2c73-1598600006702": {
+            "name": "IdeCheckTab",
+            "base": {
+                "uuid": "3c3655b2-d483-4276-86b4-343d18aa2c73-1598600006702",
+                "$data": {
+                    "baseStyle": {
+                        "width": "240",
+                        "height": "55",
+                        "left": 1125,
+                        "top": 521,
+                        "zIndex": "auto"
+                    },
+                    "isActive": false
+                }
+            },
+            "extend": {
+                "$data": {
+                    "data": {
+                        "value": "CPS",
+                        "check": false
+                    },
+                    "style": {
+                        "background": "#191E2A"
+                    },
+                    "chart": {}
+                }
+            },
+            "event": [],
+            "function": ["changeCheck"]
+        }
+    }
+}
