@@ -1,5 +1,5 @@
 <template>
-    <div class="Ctrl" v-if="focusMap">
+    <div class="Ctrl" v-if="$P.store.focus[0]">
         <div class="flex-box">
             <p @click="changTab(1)">基础属性</p>
             <p @click="changTab(2)">扩展属性</p>
@@ -8,34 +8,21 @@
         </div>
 
         <div v-show="tab === 1">
-            <div v-for="(v, k) in focusMap.base.$data.baseStyle" :key="k">
-                <span>{{k}}</span>
-                <input type="text" v-model="focusMap.base.$data.baseStyle[k]" name="" />
-            </div>
-        </div>
-
-        <div v-show="tab === 2">
-            <p v-for="(v, k) in focusMap.extend.$data.style" :key="k">
+            <p v-for="(v, k) in $P.store.focus[0].style" :key="k">
+                {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
-                <input type="text" v-model="focusMap.extend.$data.style[k]" name="">
+                <input type="text" v-model="$P.store.focus[0].style[k]">
             </p>
+        </div>
+        <div v-show="tab === 2">
         </div>
         <div v-show="tab === 3">
-            <p v-for="(v, k) in focusMap.extend.$data.data" :key="k">
-                <span>{{k}}</span>
-                <input type="text" v-model="focusMap.extend.$data.data[k]" name="">
-            </p>
         </div>
         
-        <div v-show="tab === 4">
-            <Event :eventList="focusMap.event"/>
-        </div>
     </div>
 </template>
 
 <script>
-import Events from '../../event';
-import Event from './Event';
 /**
  * 翻译枚举
  */
@@ -64,7 +51,6 @@ const TRANSLATE_ENUM = {
 
 export default {
   name: 'Ctrl',
-  components: { Event },
   data() {
       return {
           TRANSLATE_ENUM,
@@ -78,9 +64,6 @@ export default {
       }
   },
   computed: {
-      focusMap () {
-        return this.$C.getFocusUuidMap()[0];
-      }
   },
   methods: {
       changTab(tab) {

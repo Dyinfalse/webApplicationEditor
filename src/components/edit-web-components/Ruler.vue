@@ -63,26 +63,16 @@
                 </div>
                 <!-- 画布 -->
                 <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle" @mousedown='mousedown'>
-                    <div class="gridBack ruler-canvas-panel-box"> 
-                        <vdr v-for="(item,index) in VueComponent" :ref="item.base.uuid" :uuid="item.base.uuid" :id="item.base.uuid" :key="item.base.uuid"
-                            :parent="true"
-                            :snap="false"
-                            :w="item.base.$data.baseStyle.width"
-                            :h="item.base.$data.baseStyle.height"
-                            :x="item.base.$data.baseStyle.left"
-                            :y="item.base.$data.baseStyle.top"
-                            :z="item.base.$data.baseStyle.zIndex"
-                            :snapTolerance="20"
-                            :scale-ratio="pageSize.scale"
-                            @activated='activated(item,index)'
-                            @deactivated="deactivated(item,index)"
-                            >
-                            <component :id="item.name" :is="item.name" /> 
-                        </vdr>
+                    <div class="gridBack ruler-canvas-panel-box">
+                        <div v-for="(item) in VueComponent" :ref="item.uuid" :id="item.uuid" :key="item.uuid">
+                            <component
+                            :id="item.name"
+                            :is="item.name"
+                            :styleConfig="item.style"
+                            :uuid="item.uuid"/>
+                        </div>
                     </div>
                 </div>
-                <!-- <ide-ruler-canvas ref="ruler-canvas-panel" :common-style='comStyle'
-                    ></ide-ruler-canvas> -->
             </div>
         </div>
         <!-- 缩放 -->
@@ -118,7 +108,7 @@
 </template>
 
 <script>
-import vdr from '../vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
+import vdr from './vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
 export default {
         components:{
             vdr
@@ -346,21 +336,7 @@ export default {
             }            
         },
         mounted() {
-            // this.VueComponent.forEach(item=>{
-                
-            //     // this.$refs[item.base.uuid][uuid] = item.base.uuid
-            //     // console.log( this.$refs[item.base.uuid])
-            //     this.$C.addComponentsUuidMap(item.base.uuid, {
-            //         name: this.$refs[item.base.uuid].$attrs.id,
-            //         base: this.$refs[item.base.uuid],
-            //         extend: this.$refs[item.uuid].$children[0],
-            //         function: [],
-            //         event: []
-            //     })
-            // })
-            
             this.$nextTick(()=>{
-                if(this.$P.isPreview()) return;
 
                 this.pageSize = {...this.pageSize,...this.setPageSize}
                 this.CanvasInit(this.pageSize);

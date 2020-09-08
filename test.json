@@ -1,0 +1,80 @@
+{
+    "base_0": {
+      "path": "base_0",
+      "name": "base_0",
+      "vue": "BaseView",
+      "style": {"width": "100%", "background": "#777"},
+      "childPage": [],
+      "elements": [{
+        "uuid": "8b64e0d4-211c-49ae-8036-dcecc4436764-1599550055742",
+        "name": "IdeDiv",
+        "style": {
+          "width": "200px",
+          "height": "200px",
+          "background": "#ccc"
+        },
+        "childElement": []
+      }, {
+        "uuid": "aff20fac-34e5-42c1-ab47-ac3524038ddc-1599550055878",
+        "name": "IdeDiv",
+        "style": {
+          "width": "200px",
+          "height": "200px",
+          "background": "#000"
+        },
+        "childElement": []
+      }]
+    },
+    "base_1": {
+      "path": "base_1",
+      "name": "base_1",
+      "vue": "BaseView",
+      "style": {},
+      "childPage": [],
+      "elements": [{
+        "uuid": "177795ee-7820-425a-8598-a33dd81d637c-1599550125272",
+        "name": "IdeDiv",
+        "style": {
+          "width": "200px",
+          "height": "100px",
+          "background": "#fff"
+        },
+        "childElement": []
+      }, {
+        "uuid": "b45a8356-5bc5-4cad-8048-cdacd833b17c-1599550135923",
+        "name": "IdeDiv",
+        "style": {
+          "width": "200px",
+          "height": "100px",
+          "background": "green"
+        },
+        "childElement": []
+      }, {
+        "uuid": "8134331e-74ac-482c-9b75-1c8a42583ecf-1599550148910",
+        "name": "IdeDiv",
+        "style": {
+          "width": "200px",
+          "height": "100px",
+          "background": "#666"
+        },
+        "childElement": []
+      }]
+    },
+    "base_2": {
+      "path": "base_2",
+      "name": "base_2",
+      "vue": "BaseView",
+      "style": {"width": "100%", "height": "500px"},
+      "childPage": [],
+      "elements": [{
+        "uuid": "23b53ef2-fef8-442b-97e7-00de63e9abb5-1599550168389",
+        "name": "IdeDiv",
+        "style": {
+          "width": "100%",
+          "height": "1080px",
+          "background": "#999"
+        },
+        "childElement": []
+      }]
+    }
+  }

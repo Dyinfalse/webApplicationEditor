@@ -6,13 +6,11 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 
 Vue.use(ViewUI);
-import ComponentUtils from './utils/ComponentUtils';
 import PageUtils from './utils/PageUtils';
 
 Vue.config.productionTip = false
 
 Vue.prototype.$P = new PageUtils(router);
-Vue.prototype.$C = new ComponentUtils();
 
 new Vue({
   router,
