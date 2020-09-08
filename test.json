@@ -3,24 +3,24 @@
     "path": "base_0",
     "name": "base_0",
     "vue": "BaseView",
-    "style": {"width": "100%", "background": "#777"},
+    "style": {},
     "childPage": {},
     "elements": [{
-      "uuid": "8b64e0d4-211c-49ae-8036-dcecc4436764-1599550055742",
+      "uuid": "043d5b9c-f167-4a83-9763-b830f096cf23-1599558097414",
       "name": "IdeDiv",
       "style": {
-        "width": "200px",
-        "height": "200px",
-        "background": "#ccc"
+        "width": "100px",
+        "height": "100px",
+        "background": "#fff"
       },
       "childElement": []
     }, {
-      "uuid": "aff20fac-34e5-42c1-ab47-ac3524038ddc-1599550055878",
+      "uuid": "eeb2e340-5e4f-4b7b-bf29-1625c63f1f92-1599558097575",
       "name": "IdeDiv",
       "style": {
-        "width": "200px",
-        "height": "200px",
-        "background": "#000"
+        "width": "100px",
+        "height": "100px",
+        "background": "red"
       },
       "childElement": []
     }]
@@ -32,30 +32,30 @@
     "style": {},
     "childPage": {},
     "elements": [{
-      "uuid": "177795ee-7820-425a-8598-a33dd81d637c-1599550125272",
+      "uuid": "bc7e9cb4-4f60-40eb-9310-8be13c16163d-1599558099327",
       "name": "IdeDiv",
       "style": {
-        "width": "200px",
+        "width": "100px",
         "height": "100px",
-        "background": "#fff"
+        "background": "red"
       },
       "childElement": []
     }, {
-      "uuid": "b45a8356-5bc5-4cad-8048-cdacd833b17c-1599550135923",
+      "uuid": "4433a9dc-bc0a-4d4e-adac-ca8c1ab39cd1-1599558099497",
       "name": "IdeDiv",
       "style": {
-        "width": "200px",
+        "width": "100px",
         "height": "100px",
-        "background": "green"
+        "background": "red"
       },
       "childElement": []
     }, {
-      "uuid": "8134331e-74ac-482c-9b75-1c8a42583ecf-1599550148910",
+      "uuid": "e026bcac-643e-4b4e-9ffc-ea56ce827bf9-1599558099807",
       "name": "IdeDiv",
       "style": {
-        "width": "200px",
+        "width": "100px",
         "height": "100px",
-        "background": "#666"
+        "background": "red"
       },
       "childElement": []
     }]
@@ -64,15 +64,15 @@
     "path": "base_2",
     "name": "base_2",
     "vue": "BaseView",
-    "style": {"width": "100%", "height": "500px"},
+    "style": {},
     "childPage": {},
     "elements": [{
-      "uuid": "23b53ef2-fef8-442b-97e7-00de63e9abb5-1599550168389",
+      "uuid": "ccd12b03-63e9-4683-b4b4-d089e67e1d46-1599558101368",
       "name": "IdeDiv",
       "style": {
         "width": "100%",
         "height": "1080px",
-        "background": "#999"
+        "background": "#ccc"
       },
       "childElement": []
     }]
