@@ -3,9 +3,8 @@ import VueRouter from 'vue-router'
 import Designer from '../views/Designer';
 
 Vue.use(VueRouter)
-let localRouter = JSON.parse(window.localStorage.getItem("router"));
 
-const routes = localRouter || [
+const routes = [
   {
     path: '/',
     redirect:'/designer'

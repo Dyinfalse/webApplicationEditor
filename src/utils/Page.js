@@ -24,7 +24,7 @@ export default class Page {
     /**
      * 子页面
      */
-    childPage = [];
+    childPage = {};
     /**
      * 页面对应的Vue, 默认是BaseView
      */
@@ -58,12 +58,17 @@ export default class Page {
      * 转Json 用于保存
      */
     toJson() {
+        let childPageJson = {};
+        for(let k in this.childPage) {
+            childPageJson[k] = this.pageSet[k].toJson();
+        }
+
         return {
             path: this.path,
             name: this.name,
             vue: this.vue.name,
             style: this.style,
-            childPage: this.childPage.map(p => p.toJson()),
+            childPage: childPageJson,
             elements: this.elements.map(e => e.toJson())
         }
     }

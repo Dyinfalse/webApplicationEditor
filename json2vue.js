@@ -8,13 +8,11 @@ const TAG_ENUM = {
 
 for (let path in pageConfig) {
     let fileContext = createVuePage(pageConfig[path]);
-    console.log(fileContext)
 }
 /**
  * 构建路由
  */
-
-
+let router = buildRouter(pageConfig, '');
 /**
  * 创建一个Vue页面
  * 页面模版可以根据config.vue指定的vue文件去查找
@@ -49,7 +47,6 @@ function createVuePage(config) {
         }
         </script>`;
 }
-
 /**
  * 创建vue页面中的元素
  */
@@ -70,6 +67,21 @@ function createVueElement(element) {
                     ${ element.childElement.map(e => createVueElement(e)).join("\r\n") }
                 </${tagName}>`;
     }
+}
+/**
+ * 构建路由文件
+ */
+function buildRouter (pageConfig, parentPath) {
+    let router = [];
+    for(let path in pageConfig) {
+        router.push(`{
+    path: '${parentPath + '/' +path}',
+    name: '${ pageConfig[path].name }',
+    component: ${ pageConfig[path].name },
+    children: ${ buildRouter(pageConfig[path].childPage, (parentPath + '/' +path)) }
+}`);
+    }
+    return `[${ router.join(',') }]`;
 }
 /**
  * 转json
