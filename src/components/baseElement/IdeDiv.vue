@@ -1,17 +1,11 @@
 <template>
-    <div class="component-div" :style="styleConfig" @click="setFocus()">
-        <slot></slot>
-    </div>
+    <div :style="styleConfig"></div>
 </template>
 
 <script>
 export default {
     name: 'IdeDiv',
     props: {
-        uuid: {
-            type: String,
-            default: ''
-        },
         styleConfig: {
             type: Object,
             default: () => {return {}}
@@ -22,9 +16,6 @@ export default {
         }
     },
     methods: {
-        setFocus() {
-            this.$P.setFocus(this.uuid);
-        }
     },
     created() {
         

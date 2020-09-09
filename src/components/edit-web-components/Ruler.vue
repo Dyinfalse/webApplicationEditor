@@ -63,14 +63,8 @@
                 </div>
                 <!-- 画布 -->
                 <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle" @mousedown='mousedown'>
-                    <div class="gridBack ruler-canvas-panel-box">
-                        <div v-for="(item) in VueComponent" :ref="item.uuid" :id="item.uuid" :key="item.uuid">
-                            <component
-                            :id="item.name"
-                            :is="item.name"
-                            :styleConfig="item.style"
-                            :uuid="item.uuid"/>
-                        </div>
+                    <div class="gridBack ruler-canvas-panel-box" id="canvas-box">
+                        <Element v-for="(item) in VueComponent" :element="item" :key="item.uuid"></Element>
                     </div>
                 </div>
             </div>
@@ -109,9 +103,10 @@
 
 <script>
 import vdr from './vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
+import Element from '../Element';
 export default {
         components:{
-            vdr
+            vdr, Element
         },
         name: 'Ide-ruler',
         props: {
@@ -335,10 +330,7 @@ export default {
         computed: {
             comStyle:function(){
                 // this.pageSize = Object.assign({},this.pageSize,this.setPageSize);
-                return this.getCommonStyle({
-                    ...this.pageSize,
-                    ...this.pageStyle
-                })
+                return {...this.getCommonStyle(this.pageSize), ...this.pageStyle}
             }            
         },
         mounted() {
@@ -726,12 +718,12 @@ export default {
                 return {left, top};
             },
             mousedown(event){
-                
+                let box = document.getElementById('canvas-box');
                 if(this.activeUUid) return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');
                 let scrollElement = document.getElementById('ruler-canvas-scroll');
-                let offset = this.getOffset(event.target);
+                let offset = this.getOffset(box);
                 
                 let startX = event.clientX - offset.left + scrollElement.scrollLeft;
                 let startY = event.clientY - offset.top + scrollElement.scrollTop;
@@ -754,7 +746,7 @@ export default {
                     div.style.width = `0px`;
                     div.style.height = `0px`;
                     div.style.position = `absolute`;
-                    event.target.appendChild(div);
+                    box.appendChild(div);
                 }
 
                 /**
@@ -1149,7 +1141,9 @@ export default {
             .ruler-canvas-panel-box{
                 width: 100%;
                 height: 100%;
-                position: relative;  
+                position: relative;
+                overflow: hidden;
+                font-size: 0px; //
             }
         }
         .gridBack{

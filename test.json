@@ -3,96 +3,102 @@
         "path": "base_0",
         "name": "base_0",
         "vue": "BaseView",
-        "style": {},
+        "style": {
+            "background": "#ccc",
+            "width": "1920px",
+            "height": "1080px"
+        },
         "childPage": {},
         "elements": [{
-            "uuid": "54302326-6ab4-41c4-bab2-f7a3fc923a6a-1599559328983",
+            "uuid": "c7269e95-f079-40e3-89db-25010cea37ea-1599638742618",
             "name": "IdeDiv",
             "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff"
+                "width": "500px",
+                "height": "500px",
+                "background": "#111"
             },
-            "childElement": []
-        }, {
-            "uuid": "0aa283bd-9605-40a5-bce6-caa4134d75d4-1599559329564",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
-        }]
-    },
-    "base_1": {
-        "path": "base_1",
-        "name": "base_1",
-        "vue": "BaseView",
-        "style": {},
-        "childPage": {},
-        "elements": [{
-            "uuid": "f8fc3de1-e3cf-4a3b-88fa-d6296eebf0e6-1599559336481",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
-        }, {
-            "uuid": "3501ce1b-9481-4e72-b1b9-38adf06a9174-1599559336617",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
-        }, {
-            "uuid": "3c1171c5-6d6b-45ac-8d3a-49e6dc3ae664-1599559337529",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "yellow"
-            },
-            "childElement": []
-        }]
-    },
-    "base_2": {
-        "path": "base_2",
-        "name": "base_2",
-        "vue": "BaseView",
-        "style": {},
-        "childPage": {},
-        "elements": [{
-            "uuid": "0e1ae666-bc39-41dc-8d09-df983413289f-1599559346187",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
-        }, {
-            "uuid": "ac448cb9-fcf9-49ad-8164-26fb3274d6e2-1599559346332",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100%",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
-        }, {
-            "uuid": "5fa700aa-af07-4de6-a2e2-e8726a714336-1599559346474",
-            "name": "IdeDiv",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "red"
-            },
-            "childElement": []
+            "childElement": [{
+                "uuid": "7952bfe0-89c0-4062-a5e0-9f96bbdd4d03-1599638751128",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "450px",
+                    "height": "450px",
+                    "background": "#222"
+                },
+                "childElement": [{
+                    "uuid": "01918e6f-7a42-49a7-98c2-f968145b0769-1599638761702",
+                    "name": "IdeDiv",
+                    "style": {
+                        "width": "400px",
+                        "height": "400px",
+                        "background": "#333"
+                    },
+                    "childElement": [{
+                        "uuid": "7eda6b1f-86a8-44c4-927d-2e0906005958-1599638773085",
+                        "name": "IdeDiv",
+                        "style": {
+                            "width": "350px",
+                            "height": "350px",
+                            "background": "#444"
+                        },
+                        "childElement": [{
+                            "uuid": "43cf285d-1f64-47fd-8942-7b9d63f54df6-1599638784231",
+                            "name": "IdeDiv",
+                            "style": {
+                                "width": "300px",
+                                "height": "300px",
+                                "background": "#555"
+                            },
+                            "childElement": [{
+                                "uuid": "865a7d60-bda8-43c7-812d-19d7088fbbe8-1599638795556",
+                                "name": "IdeDiv",
+                                "style": {
+                                    "width": "250px",
+                                    "height": "250px",
+                                    "background": "#666"
+                                },
+                                "childElement": [{
+                                    "uuid": "593e2f9a-f4bc-436a-8ffa-ca3481d6b260-1599638807205",
+                                    "name": "IdeDiv",
+                                    "style": {
+                                        "width": "200px",
+                                        "height": "200px",
+                                        "background": "#777"
+                                    },
+                                    "childElement": [{
+                                        "uuid": "e9fe77ac-e9f6-482a-825f-6b257f0c83fb-1599638817594",
+                                        "name": "IdeDiv",
+                                        "style": {
+                                            "width": "150px",
+                                            "height": "150px",
+                                            "background": "#888"
+                                        },
+                                        "childElement": [{
+                                            "uuid": "d7223c7d-677d-4956-8ceb-ac097c3de305-1599638842654",
+                                            "name": "IdeDiv",
+                                            "style": {
+                                                "width": "100px",
+                                                "height": "100px",
+                                                "background": "#999"
+                                            },
+                                            "childElement": [{
+                                                "uuid": "ab4432d5-e633-4293-8c80-4064e723ac18-1599638854277",
+                                                "name": "IdeDiv",
+                                                "style": {
+                                                    "width": "50px",
+                                                    "height": "50px",
+                                                    "background": "#fff"
+                                                },
+                                                "childElement": []
+                                            }]
+                                        }]
+                                    }]
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
         }]
     }
 }

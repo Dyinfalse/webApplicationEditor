@@ -1,20 +1,28 @@
 <template>
     <div class="Ctrl" v-if="$P.store.focus[0]">
         <div class="flex-box">
-            <p @click="changTab(1)">基础属性</p>
-            <p @click="changTab(2)">扩展属性</p>
+            <p @click="changTab(1)">页面属性</p>
+            <p @click="changTab(2)">元素属性</p>
             <p @click="changTab(3)">数据</p>
             <p @click="changTab(4)">事件</p>
         </div>
 
         <div v-show="tab === 1">
+            <p><button @click="addChildPage()">addChildPage</button></p>
+            <p v-for="(v, k) in $P.pageSet[$router.currentRoute.name].style" :key="k">
+                {{k}}
+                <span>{{TRANSLATE_ENUM[k]}}</span>
+                <input type="text" v-model="$P.pageSet[$router.currentRoute.name].style[k]">
+            </p>
+        </div>
+
+        <div v-show="tab === 2">
+            <p><button @click="addChildElement()">addChildElement</button></p>
             <p v-for="(v, k) in $P.store.focus[0].style" :key="k">
                 {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.store.focus[0].style[k]">
             </p>
-        </div>
-        <div v-show="tab === 2">
         </div>
         <div v-show="tab === 3">
         </div>
@@ -68,6 +76,15 @@ export default {
   methods: {
       changTab(tab) {
           this.tab = tab;
+      },
+      /**
+       * 添加子元素
+       */
+      addChildElement() {
+            this.$P.store.focus[0].addChildElement()
+      },
+      addChildPage() {
+          this.$P.pageSet[this.$router.currentRoute.name].addChildPage();
       }
   },
   mounted() {

@@ -45,6 +45,7 @@ export default {
     removeView() {
     },
     toUrl(router, index) {
+        this.$P.setFocus();
         this.$router.push("/designer/" + router.path);
     },
     /**

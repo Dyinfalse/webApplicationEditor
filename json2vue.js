@@ -63,7 +63,14 @@ export default {
         
     }
 }
-</script>`;
+</script>
+<style>
+    .page {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+`;
 }
 /**
  * 创建vue页面中的元素

@@ -1,5 +1,5 @@
 import Vue from "vue"
-import IdeDiv from "../components/IdeDiv";
+let installed = {};
 /**
  * 组件工具类
  */
@@ -9,6 +9,10 @@ export default class Element {
     */
    uuid;
    /**
+    * 父级uuid
+    */
+   puuid;
+   /**
     * 元素的组件
     */
    name;
@@ -17,18 +21,33 @@ export default class Element {
     */
    childElement = [];
    /**
+    * 是否是块级元素
+    */
+   isBlock = true;
+   /**
     * 组件样式
     */
    style = {
       width: 100 + 'px',
       height: 100 + 'px',
-      background: 'red'
+      background: '#fff',
    }
+   /**
+    * 索引
+    */
+   index = 0;
 
-   constructor(name) {
-      Vue.component(IdeDiv.name, IdeDiv);
+   constructor(id, name) {
+      if(typeof installed[name] == 'number'){
+         installed[name] ++;
+      }else {
+         installed[name] = 0;
+         let c = require(`../components/baseElement/${name}.vue`).default;
+         Vue.component(c.name, c);
+      }
       this.uuid = this.randomUuid();
-      this.name = IdeDiv.name;
+      this.name = name;
+      this.id = id;
    }
 
    /**
@@ -38,7 +57,7 @@ export default class Element {
       var timestamp = new Date().getTime();
 
       return `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx-${timestamp}`.replace(/[xy]/g, function(c) {
-            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : ( r & 0x3 | 0x8);
             return v.toString(16);
       });
    }
@@ -46,7 +65,7 @@ export default class Element {
     * 添加一个子元素
     */
    addChildElement() {
-      
+      this.childElement.push(new Element(this.id + '-' + ++ this.index));
    }
 
    /**

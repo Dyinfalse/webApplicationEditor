@@ -17,9 +17,9 @@ export default class Page {
      * 页面样式
      */
     style = {
-        background: '#fff',
-        width: 1920,
-        height: 1080
+        background: '#ccc',
+        width: 1920 + 'px',
+        height: 1080 + 'px'
     };
     /**
      * 页面包含的元素
@@ -33,9 +33,13 @@ export default class Page {
      * 页面对应的Vue, 默认是BaseView
      */
     vue = null;
+    /**
+     * 索引位置, 页面级别
+     */
+    eindex = 0;
 
     constructor(path, name, vue) {
-        this.path = path || page;
+        this.path = path || 'page';
         this.name = name || path;
         this.vue = vue || BaseView;
         this.addRouter();
@@ -43,8 +47,8 @@ export default class Page {
     /**
      * 添加一个元素
      */
-    addElement() {
-        this.elements.push(new Element())
+    addElement(name) {
+        this.elements.push(new Element(++ this.eindex, name));
     }
     /**
      * 获取一个元素
@@ -55,8 +59,9 @@ export default class Page {
     /**
      * 添加子页面
      */
-    addChildPage() {
-
+    addChildPage(path) {
+        this.childPage[path] = new Page(path);
+        console.log(this.childPage)
     }
     /**
      * 转Json 用于保存
@@ -84,7 +89,8 @@ export default class Page {
         designerRoutes.children.push({
             path: this.path,
             name: this.name,
-            component: this.vue
+            component: this.vue,
+            children: []
         })
         /**
          * 更新路由信息

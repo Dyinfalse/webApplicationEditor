@@ -31,7 +31,7 @@ export default class PageUtils {
         let path = "base_" + this.pageId;
         let page = new Page(path);
         this.pageSet[path] = page;
-        this.pageId++;
+        this.pageId ++;
     }
 
     /**
@@ -46,8 +46,20 @@ export default class PageUtils {
     /**
      * 设置选中元素
      */
-    setFocus(uuid) {
-        this.store.focus = [this.pageSet[this.router.currentRoute.name].elements.find(element => element.uuid == uuid)];
+    setFocus(id) {
+        if(!id) {
+            this.store.focus = [];
+            return;
+        }
+        let ids = id.toString().split('-');
+        let elements = this.pageSet[this.router.currentRoute.name].elements;
+        ids.map((id, index) => {
+            elements =
+                index === ids.length -1 ?
+                elements[parseInt(id) - 1] :
+                elements = elements[parseInt(id) - 1].childElement;
+        });
+        this.store.focus = [elements];
     }
     /**
      * 获取页面的所有配置JSON信息
@@ -57,6 +69,6 @@ export default class PageUtils {
         for(let k in this.pageSet) {
             config[k] = this.pageSet[k].toJson();
         }
-        console.log(JSON.stringify(config))
+        return JSON.stringify(config);
     }
 }
