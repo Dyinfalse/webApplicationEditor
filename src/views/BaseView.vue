@@ -5,7 +5,7 @@
       <button @click="removeComponent()">remove</button>
     </div>
     <div style="overflow:hidden">
-      <Ruler :VueComponent='page.elements'></Ruler>
+      <Ruler :pageStyle="page.style" :VueComponent='page.elements'></Ruler>
     </div>
   </div>
 </template>

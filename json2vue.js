@@ -72,9 +72,9 @@ function createVueElement(element) {
     /**
      * 获取标签名称
      */
-    let tagName = TAG_ENUM[element.name];
+    let tagName = TAG_ENUM[element.name] || element.name;
     /**
-     * 单双标签
+     * 单双标签, 默认都是双标签
      */
     let single = element.childElement.length === 0;
     return `
@@ -117,13 +117,13 @@ const routes = ${context}
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push (location) {
-return originalPush.call(this, location).catch(err => err)
+    return originalPush.call(this, location).catch(err => err)
 }
 
 const router = new VueRouter({
-mode: 'history',
-base: process.env.BASE_URL,
-routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router

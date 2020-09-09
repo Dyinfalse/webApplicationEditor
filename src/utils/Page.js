@@ -16,7 +16,11 @@ export default class Page {
     /**
      * 页面样式
      */
-    style = {};
+    style = {
+        background: '#fff',
+        width: 1920,
+        height: 1080
+    };
     /**
      * 页面包含的元素
      */

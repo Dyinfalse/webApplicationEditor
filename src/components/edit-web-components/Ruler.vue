@@ -115,7 +115,10 @@ export default {
         },
         name: 'Ide-ruler',
         props: {
-                
+            pageStyle: {
+                type: Object,
+                default: () => {return {}}
+            },
             scroll: {
                 type: Boolean,
                 default () {
@@ -332,7 +335,10 @@ export default {
         computed: {
             comStyle:function(){
                 // this.pageSize = Object.assign({},this.pageSize,this.setPageSize);
-                return this.getCommonStyle(this.pageSize)
+                return this.getCommonStyle({
+                    ...this.pageSize,
+                    ...this.pageStyle
+                })
             }            
         },
         mounted() {
