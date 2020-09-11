@@ -46,20 +46,8 @@ export default class PageUtils {
     /**
      * 设置选中元素
      */
-    setFocus(id) {
-        // if(!id) {
-        //     this.store.focus = [];
-        //     return;
-        // }
-        // let ids = id.toString().split('-');
-        // let elements = this.getPage(this.router.currentRoute.fullPath).elements;
-        // ids.map((id, index) => {
-        //     elements =
-        //         index === ids.length -1 ?
-        //         elements[parseInt(id) - 1] :
-        //         elements = elements[parseInt(id) - 1].childElement;
-        // });
-        this.store.focus = [id];
+    setFocus(element) {
+        this.store.focus = [element];
     }
     /**
      * 获取页面的所有配置JSON信息

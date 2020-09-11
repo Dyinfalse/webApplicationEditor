@@ -1,8 +1,6 @@
-import BaseView from '../views/BaseView'; 
-import ChildView from '../views/ChildView';
+import BaseView from '../views/BaseView';
 import router from '../router';
 import Element from './Element';
-import Vue from 'vue';
 /**
  * 页面配置类
  */
@@ -62,8 +60,7 @@ export default class Page {
      * 添加子页面
      */
     addChildPage(path) {
-        let key = this.path + "/" + path;
-        Vue.prototype.$P.pageSet[key] = new Page(key, path, ChildView);
+
     }
     /**
      * 转Json 用于保存
@@ -97,16 +94,16 @@ export default class Page {
         }
         let designer = router.options.routes.find(r => r.name == "designer");
         let designerRoutes = designer.children;
-        if(fullPath.length >= 1){
-            fullPath.map(path => {
-                for(let i = 0; i < designerRoutes.length; i++){
-                    if(designerRoutes[i].path == path) {
-                        designerRoutes = designerRoutes[i].children;
-                        break;
-                    }
-                }
-            })
-        }
+        // if(fullPath.length >= 1){
+        //     fullPath.map(path => {
+        //         for(let i = 0; i < designerRoutes.length; i++){
+        //             if(designerRoutes[i].path == path) {
+        //                 designerRoutes = designerRoutes[i].children;
+        //                 break;
+        //             }
+        //         }
+        //     })
+        // }
         designerRoutes.push(initRouter)
         /**
          * 更新路由信息
