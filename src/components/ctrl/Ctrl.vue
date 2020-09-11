@@ -9,10 +9,10 @@
 
         <div v-show="tab === 1">
             <p><button @click="addChildPage()">addChildPage</button></p>
-            <p v-for="(v, k) in $P.pageSet[$router.currentRoute.name].style" :key="k">
+            <p v-for="(v, k) in $P.getPage($router.currentRoute.fullPath).style" :key="k">
                 {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
-                <input type="text" v-model="$P.pageSet[$router.currentRoute.name].style[k]">
+                <input type="text" v-model="$P.getPage($router.currentRoute.fullPath).style[k]">
             </p>
         </div>
 
@@ -84,7 +84,11 @@ export default {
             this.$P.store.focus[0].addChildElement()
       },
       addChildPage() {
-          this.$P.pageSet[this.$router.currentRoute.name].addChildPage();
+          try{
+              this.$P.getPage(this.$router.currentRoute.fullPath).addChildPage('base_2');
+          } catch (e) {
+              console.warn("添加页面失败", e)
+          }
       }
   },
   mounted() {

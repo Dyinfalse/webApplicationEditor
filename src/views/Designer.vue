@@ -1,7 +1,7 @@
 <template>
   <div class="PageCtrl">
     <!-- <h1>页面列表</h1> -->
-
+    <!-- <testComponent></testComponent> -->
     <div>
       <button @click="save()">save</button>
       <button @click="addView()" style="margin-right: 20px">add</button>
@@ -17,7 +17,7 @@
         使用name是因为预览和设计的时候name是保持一致的,
         所以在预览和设计之间切换的时候, 不会触发原组件的重新挂载(如果重新挂载,会导致资源浪费,并且会出错误)
       -->
-      <router-view :key="$route.fullPath"/>
+      <router-view :key="$route.fullPath.split('/')[1]"/>
     <Ctrl></Ctrl>
   </div>
 </template>

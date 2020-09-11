@@ -34,8 +34,8 @@ export default {
     }
   },
   created() {
+    console.log('BaseView 挂载');
     this.page = this.$P.getPage(this.$router.currentRoute.fullPath);
-    
   },
   mounted() {
     

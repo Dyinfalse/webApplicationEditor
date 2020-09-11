@@ -31,7 +31,7 @@ export default {
     methods: {
         setFocus(e) {
             e.stopPropagation();
-            this.$P.setFocus(this.element.id);
+            this.$P.setFocus(this.element);
         }
     },
     created() {

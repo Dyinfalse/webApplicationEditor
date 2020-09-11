@@ -24,7 +24,7 @@ export default {
     methods: {
     },
     created() {
-        
+        console.log('router-view 挂载')
     },
     mounted() {}
 }
