@@ -3,7 +3,6 @@
     <div>
       <select v-model="componentName">
         <option value="IdeDiv">IdeDiv</option>
-        <option value="IdeRouterView">IdeRouterView</option>
       </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>

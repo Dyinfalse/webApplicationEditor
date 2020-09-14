@@ -36,7 +36,6 @@ export default class PageUtils {
 
     /**
      * 获取一个页面的配置
-     * @TODO 应该是树型查找
      */
     getPage(path){
         path = path.replace(/^\/designer\//, '');

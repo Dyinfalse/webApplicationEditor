@@ -66,17 +66,11 @@ export default class Page {
      * 转Json 用于保存
      */
     toJson() {
-        let childPageJson = {};
-        for(let k in this.childPage) {
-            childPageJson[k] = this.pageSet[k].toJson();
-        }
-
         return {
             path: this.path,
             name: this.name,
             vue: this.vue.name,
             style: this.style,
-            childPage: childPageJson,
             elements: this.elements.map(e => e.toJson())
         }
     }
@@ -94,17 +88,7 @@ export default class Page {
         }
         let designer = router.options.routes.find(r => r.name == "designer");
         let designerRoutes = designer.children;
-        // if(fullPath.length >= 1){
-        //     fullPath.map(path => {
-        //         for(let i = 0; i < designerRoutes.length; i++){
-        //             if(designerRoutes[i].path == path) {
-        //                 designerRoutes = designerRoutes[i].children;
-        //                 break;
-        //             }
-        //         }
-        //     })
-        // }
-        designerRoutes.push(initRouter)
+        designerRoutes.push(initRouter);
         /**
          * 更新路由信息
          */
