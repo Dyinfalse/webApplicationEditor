@@ -9,10 +9,6 @@ export default class Element {
     */
    uuid;
    /**
-    * 父级uuid
-    */
-   puuid;
-   /**
     * 元素的组件
     */
    name;
@@ -33,11 +29,12 @@ export default class Element {
       background: '#fff',
    }
    /**
-    * 索引
+    * 当前子元素的个数
     */
-   index = 0;
+   childCount = 0;
 
    constructor(id, name) {
+      if(!name) throw "实例化组件异常! constructorElementExcepyion: param name is required"
       if(typeof installed[name] == 'number'){
          installed[name] ++;
       }else {
@@ -64,8 +61,9 @@ export default class Element {
    /**
     * 添加一个子元素
     */
-   addChildElement() {
-      this.childElement.push(new Element(this.id + '-' + ++ this.index));
+   addChildElement(name) {
+      this.childCount ++;
+      this.childElement.push(new Element(this.id + '-' + this.childCount, name));
    }
 
    /**

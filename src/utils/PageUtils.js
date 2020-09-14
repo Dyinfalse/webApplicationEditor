@@ -38,10 +38,16 @@ export default class PageUtils {
      * 获取一个页面的配置
      */
     getPage(path){
+        path = path ? path : this.router.currentRoute.fullPath;
         path = path.replace(/^\/designer\//, '');
         return this.pageSet[path];
     }
-
+    /**
+     * 删除选中组件
+     */
+    removeFocus(){
+        console.log(this.getPage(), this.store.focus)
+    }
     /**
      * 设置选中元素
      */

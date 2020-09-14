@@ -8,15 +8,20 @@
         </div>
 
         <div v-show="tab === 1">
-            <p v-for="(v, k) in $P.getPage($router.currentRoute.fullPath).style" :key="k">
+            <p v-for="(v, k) in $P.getPage().style" :key="k">
                 {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
-                <input type="text" v-model="$P.getPage($router.currentRoute.fullPath).style[k]">
+                <input type="text" v-model="$P.getPage().style[k]">
             </p>
         </div>
 
         <div v-show="tab === 2">
-            <p><button @click="addChildElement()">addChildElement</button></p>
+            <p>
+                <select v-model="componentName">
+                    <option value="IdeDiv">IdeDiv</option>
+                </select>
+                <button @click="addChildElement()">addChildElement</button>
+            </p>
             <p v-for="(v, k) in $P.store.focus[0].style" :key="k">
                 {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
@@ -62,12 +67,7 @@ export default {
       return {
           TRANSLATE_ENUM,
           tab: 1,
-          base: {
-              
-          },
-          extend: {
-
-          }
+          componentName: ''
       }
   },
   computed: {
@@ -80,7 +80,7 @@ export default {
        * 添加子元素
        */
       addChildElement() {
-            this.$P.store.focus[0].addChildElement()
+            this.$P.store.focus[0].addChildElement(this.componentName)
       }
   },
   mounted() {

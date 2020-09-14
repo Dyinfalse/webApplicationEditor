@@ -51,6 +51,12 @@ export default class Page {
         this.elements.push(new Element(++ this.eindex, name));
     }
     /**
+     * 删除指定组件
+     */
+    removeElement() {
+
+    }
+    /**
      * 获取一个元素
      */
     getElement() {

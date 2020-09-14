@@ -30,11 +30,21 @@ export default {
   methods: {
     addComponent() {
       this.page.addElement(this.componentName);
+    console.log(this.page)
+    },
+    /**
+     * 组件删除
+     */
+    removeComponent(){
+      /**
+       * 删除选中
+       */
+      this.$P.removeFocus();
     }
   },
   created() {
     console.log('BaseView 挂载');
-    this.page = this.$P.getPage(this.$router.currentRoute.fullPath);
+    this.page = this.$P.getPage();
   },
   mounted() {
     
