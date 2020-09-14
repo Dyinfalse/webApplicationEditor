@@ -6,8 +6,7 @@
             :styleConfig="element.style"
             :element="element"
             :uuid="element.uuid">
-
-            <Element v-for="item in element.childElement" :element="item" :key="item.key"></Element>
+            <Element v-for="item in element.childElement" :element="item" :key="item.uuid"></Element>
         </component>
     </Pack>
 </template>

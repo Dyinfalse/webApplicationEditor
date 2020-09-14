@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-import PageUtils from './utils/PageUtils';
+import PageUtils from './class/PageUtils';
 // require("http://127.0.0.1:8081/testComponent.js").then(() => {
   Vue.use(ViewUI);
 

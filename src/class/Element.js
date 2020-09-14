@@ -1,7 +1,7 @@
 import Vue from "vue"
 let installed = {};
 /**
- * 组件工具类
+ * 元素类
  */
 export default class Element {
    /**
@@ -34,7 +34,7 @@ export default class Element {
    childCount = 0;
 
    constructor(id, name) {
-      if(!name) throw "实例化组件异常! constructorElementExcepyion: param name is required"
+      if(!name) throw "实例化组件异常! constructorElementException: param name is required"
       if(typeof installed[name] == 'number'){
          installed[name] ++;
       }else {

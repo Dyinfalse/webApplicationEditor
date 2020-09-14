@@ -12,25 +12,25 @@
     <div style="display: flex">
         <div style="margin-right: 20px;" v-for="(r, index) in router[2].children" :key="r.path" @click="toUrl(r, index)">{{r.path}}</div>
     </div>
-
       <!-- 
         使用name是因为预览和设计的时候name是保持一致的,
         所以在预览和设计之间切换的时候, 不会触发原组件的重新挂载(如果重新挂载,会导致资源浪费,并且会出错误)
       -->
       <router-view :key="$route.fullPath"/>
     <Ctrl></Ctrl>
+    <ElementTree :pageSet="$P"></ElementTree>
   </div>
 </template>
 
 <script>
 import Ctrl from '../components/ctrl/Ctrl';
-
+import ElementTree from '../components/ctrl/ElementTree';
 export default {
   name: 'Designer',
-  components: { Ctrl },
+  components: { Ctrl, ElementTree },
   data() {
     return {
-        router: []
+        router: [],
     }
   },
   created() {
@@ -57,3 +57,16 @@ export default {
   }
 }
 </script>
+<style>
+.ElementTree {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: #fff;
+  z-index: 99;
+  width: 200px;
+  height: 500px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+</style>

@@ -11,7 +11,7 @@ export default class PageUtils {
     /**
      * 页面集合对象
      */
-    pageSet = { };
+    pageSet = {};
     /**
      * 页面标识id
      */
@@ -46,7 +46,11 @@ export default class PageUtils {
      * 删除选中组件
      */
     removeFocus(){
-        console.log(this.getPage(), this.store.focus)
+        this.store.focus.map(f => {
+            let es = this.getPage().elements;
+            es.splice(es.findIndex(e => e == f), 1);
+        });
+        this.store.focus = [];
     }
     /**
      * 设置选中元素

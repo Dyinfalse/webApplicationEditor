@@ -1,5 +1,7 @@
 <template>
-    <div :style="styleConfig"></div>
+    <div :style="styleConfig">
+        <slot></slot>
+    </div>
 </template>
 
 <script>
