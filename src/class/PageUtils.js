@@ -16,7 +16,9 @@ export default class PageUtils {
      * 页面标识id
      */
     pageId = 0;
-
+    /**
+     * 响应式数据源
+     */
     store = {};
 
     constructor(router) {
@@ -57,6 +59,10 @@ export default class PageUtils {
      * 设置选中元素
      */
     setFocus(element) {
+        if(this.store.focus[0]) {
+            this.store.focus[0].isFocus = false;
+        }
+        element.isFocus = true;
         this.store.focus = [element];
     }
     /**

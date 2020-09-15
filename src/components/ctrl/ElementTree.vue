@@ -2,7 +2,7 @@
     <div class="ElementTree">
       <div v-for="element in elements" :key="element.uuid">
         <div>
-            {{element.name}}
+            <p @click="setFocus(element)">{{element.name}}</p>
             <ElementTree :elements="element.childElement"></ElementTree>
         </div>
       </div>
@@ -28,7 +28,9 @@ export default {
     
   },
   methods: {
-      
+      setFocus(element) {
+          this.$P.setFocus(element);
+      }
   },
   mounted() {
   }

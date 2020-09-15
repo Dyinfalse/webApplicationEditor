@@ -85,7 +85,7 @@ function createVueElement(element) {
      */
     let single = element.childElement.length === 0;
     return `
-        <${tagName} :style="${json(element.style).replace(/\"/g, "'")}">
+        <${tagName} :style="${json({...element.style, ...element.packStyle}).replace(/\"/g, "'")}">
             ${ element.childElement.map(e => createVueElement(e)).join("\r\n") }
         </${tagName}>`;
 }
@@ -99,7 +99,6 @@ function buildRouter (pageConfig, parentPath) {
     path: '${parentPath + '/' +path}',
     name: '${ pageConfig[path].name }',
     component: ${ pageConfig[path].name },
-    children: ${ buildRouter(pageConfig[path].childPage, (parentPath + '/' +path)) }
 }`);
     }
     return `[${ router.join(',') }]`;

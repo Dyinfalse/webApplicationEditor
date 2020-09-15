@@ -9,7 +9,6 @@
 
         <div v-show="tab === 1">
             <p v-for="(v, k) in $P.getPage().style" :key="k">
-                {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.getPage().style[k]">
             </p>
@@ -22,13 +21,23 @@
                 </select>
                 <button @click="addChildElement()">addChildElement</button>
             </p>
+
             <p v-for="(v, k) in $P.store.focus[0].style" :key="k">
                 {{k}}
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.store.focus[0].style[k]">
             </p>
+
+            <p v-for="(v, k) in $P.store.focus[0].packStyle" :key="k">
+                {{k}}
+                <span>{{TRANSLATE_ENUM[k]}}</span>
+                <input type="text" v-model="$P.store.focus[0].packStyle[k]">
+            </p>
         </div>
         <div v-show="tab === 3">
+            
+        </div>
+        <div v-show="tab === 4">
         </div>
         
     </div>
@@ -49,6 +58,7 @@ const TRANSLATE_ENUM = {
     "borderRight": "右边框",
     "borderTop": "上边框",
     "borderBottom": "下边框",
+    "border": "边框",
     "lineHeight": "行高",
     "paddingLeft": "左内边距",
     "paddingRight": "右内边距",
@@ -58,7 +68,8 @@ const TRANSLATE_ENUM = {
     "marginRight": "右外边距",
     "marginTop": "上外边距",
     "marginBottom": "下外边距",
-    "borderRadius": "圆角"
+    "borderRadius": "圆角",
+    "position": "定位方式"
 }
 
 export default {

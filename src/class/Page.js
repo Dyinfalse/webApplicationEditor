@@ -37,6 +37,10 @@ export default class Page {
      * 索引位置, 页面级别
      */
     eindex = 0;
+    /**
+     * 组件数据
+     */
+    data = {};
 
     constructor(path, name, vue) {
         this.path = path || 'page';

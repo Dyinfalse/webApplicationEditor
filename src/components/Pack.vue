@@ -1,10 +1,15 @@
 <template>
     <div
-        class="pack"
+        :class="(element.isFocus ? 'focus' : '') + ' pack'"
         :style="{
             display: element.isBlock ? 'blcok' : 'inline-block',
             width: element.style.width,
-            height: element.style.height
+            height: element.style.height,
+            position: element.packStyle.position,
+            left: element.packStyle.left,
+            right: element.packStyle.right,
+            top: element.packStyle.top,
+            bottom: element.packStyle.bottom,
         }"
         @click="setFocus">
         <slot></slot>
@@ -41,5 +46,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.focus {
+    border: 2px dashed #000;
+    box-sizing: border-box;
+    overflow: hidden;
+}
 </style>

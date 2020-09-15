@@ -27,11 +27,28 @@ export default class Element {
       width: 100 + 'px',
       height: 100 + 'px',
       background: '#fff',
+      border: 'none',
+      fontSize: '14px',
+      borderRadius: '0px',
+   }
+   /**
+    * 包装样式
+    */
+   packStyle = {
+      position: 'none',
+      left: '0px',
+      right: '0px',
+      top: '0px',
+      bottom: '0px',
    }
    /**
     * 当前子元素的个数
     */
    childCount = 0;
+   /**
+    * 是否获得焦点
+    */
+   isFocus = false;
 
    constructor(id, name) {
       if(!name) throw "实例化组件异常! constructorElementException: param name is required"
