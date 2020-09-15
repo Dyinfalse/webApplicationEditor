@@ -1,6 +1,11 @@
 <template>
     <div class="ElementTree">
-
+      <div v-for="element in elements" :key="element.uuid">
+        <div>
+            {{element.name}}
+            <ElementTree :elements="element.childElement"></ElementTree>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -9,34 +14,29 @@
 export default {
   name: 'ElementTree',
   props: {
-    pageSet: {
-        type: Object,
+    elements: {
+        type: Array,
         default: () => {return {}}
-    }  
+    }
   },
   data() {
       return {
-          
+        
       }
   },
-  watch: {
-    // pageSet: {
-    //     handler:function(val,oldval){
-    //         console.log(1)
-    //     },
-    //     deep:true
-    // }
-  },
   computed: {
+    
   },
   methods: {
       
   },
   mounted() {
-      
   }
 }
 </script>
 
 <style scoped>
+.ElementTree {
+    margin-left: 20px;
+}
 </style>

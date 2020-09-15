@@ -30,7 +30,7 @@ export default {
   methods: {
     addComponent() {
       this.page.addElement(this.componentName);
-    console.log(this.page)
+      console.log(this.page)
     },
     /**
      * 组件删除

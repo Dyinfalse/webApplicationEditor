@@ -32,6 +32,7 @@ export default class PageUtils {
         let page = new Page(path);
         this.pageSet[path] = page;
         this.pageId ++;
+        return { path, page };
     }
 
     /**

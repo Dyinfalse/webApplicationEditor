@@ -18,16 +18,16 @@
       -->
       <router-view :key="$route.fullPath"/>
     <Ctrl></Ctrl>
-    <ElementTree :pageSet="$P"></ElementTree>
+    <PageTree :key="$router.currentRoute.name"></PageTree>
   </div>
 </template>
 
 <script>
 import Ctrl from '../components/ctrl/Ctrl';
-import ElementTree from '../components/ctrl/ElementTree';
+import PageTree from '../components/ctrl/PageTree';
 export default {
   name: 'Designer',
-  components: { Ctrl, ElementTree },
+  components: { Ctrl, PageTree },
   data() {
     return {
         router: [],
@@ -45,7 +45,7 @@ export default {
     removeView() {
     },
     toUrl(router, index) {
-        this.$P.setFocus();
+        this.$P.setFocus(null);
         this.$router.push("/designer/" + router.path);
     },
     /**
@@ -58,15 +58,4 @@ export default {
 }
 </script>
 <style>
-.ElementTree {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  background: #fff;
-  z-index: 99;
-  width: 200px;
-  height: 500px;
-  border: 1px solid #ccc;
-  overflow-y: scroll;
-}
 </style>
