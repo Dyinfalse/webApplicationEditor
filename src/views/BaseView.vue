@@ -4,6 +4,10 @@
       <select v-model="componentName">
         <option value="IdeDiv">IdeDiv</option>
         <option value="IdeText">IdeText</option>
+        <option value="IdeImage">IdeImage</option>
+        <option value="IdeInput">IdeInput</option>
+        <option value="IdeButton">IdeButton</option>
+        <option value="IdeSelect">IdeSelect</option>
       </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>

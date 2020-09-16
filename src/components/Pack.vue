@@ -5,11 +5,7 @@
             display: element.isBlock ? 'block' : 'inline-block',
             width: element.style.width,
             height: element.style.height,
-            position: element.packStyle.position,
-            left: element.packStyle.left,
-            right: element.packStyle.right,
-            top: element.packStyle.top,
-            bottom: element.packStyle.bottom,
+            ...element.packStyle
         }"
         @click="setFocus">
         <slot></slot>

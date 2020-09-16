@@ -14,12 +14,16 @@ export default class Page {
      */
     path;
     /**
+     * isPage
+     */
+    isPage = true;
+    /**
      * 页面样式
      */
     style = {
         background: '#ccc',
         width: 1920 + 'px',
-        height: 1080 + 'px'
+        height: 1080 + 'px',
     };
     /**
      * 页面包含的元素
@@ -52,7 +56,7 @@ export default class Page {
      * 添加一个元素
      */
     addElement(name) {
-        this.elements.push(new Element(++ this.eindex, name));
+        this.elements.push(new Element(++ this.eindex, name, this));
     }
     /**
      * 删除指定组件

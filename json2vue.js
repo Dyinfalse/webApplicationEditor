@@ -10,6 +10,7 @@ let targetDir = (__dirname + "/" + relativePath);
 const TAG_ENUM = {
     "IdeDiv": "div",
     "IdeText": "div",
+    "IdeImage": "img"
 }
 /**
  * 清空文件

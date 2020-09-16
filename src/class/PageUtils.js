@@ -49,10 +49,7 @@ export default class PageUtils {
      * 删除选中组件
      */
     removeFocus(){
-        this.store.focus.map(f => {
-            let es = this.getPage().elements;
-            es.splice(es.findIndex(e => e == f), 1);
-        });
+        this.store.focus.map(f => f.remove());
         this.store.focus = [];
     }
     /**

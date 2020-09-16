@@ -14,6 +14,10 @@ export default class Element {
     */
    name;
    /**
+    * isElement
+    */
+   isElement = true;
+   /**
     * 子元素
     */
    childElement = [];
@@ -41,6 +45,7 @@ export default class Element {
       right: '0px',
       top: '0px',
       bottom: '0px',
+      verticalAlign: 'top'
    }
    /**
     * 元素数据
@@ -54,8 +59,12 @@ export default class Element {
     * 是否获得焦点
     */
    isFocus = false;
+   /**
+    * 父级元素
+    */
+   parent = {};
 
-   constructor(id, name) {
+   constructor(id, name, parent) {
       if(!name) throw "实例化组件异常! constructorElementException: param name is required"
       if(typeof installed[name] == 'number'){
          installed[name] ++;
@@ -68,6 +77,7 @@ export default class Element {
       this.name = name;
       this.id = id;
       this.isBlock = isBlockSet.has(name);
+      this.parent = parent;
    }
 
    /**
@@ -86,7 +96,17 @@ export default class Element {
     */
    addChildElement(name) {
       this.childCount ++;
-      this.childElement.push(new Element(this.id + '-' + this.childCount, name));
+      this.childElement.push(new Element(this.id + '-' + this.childCount, name, this));
+   }
+   /**
+    * 从集合中删除这个元素, 页面或父节点
+    */
+   remove(){
+      if(this.parent.isPage) {
+         this.parent.elements.splice(this.parent.elements.findIndex(this), 1);
+      } else if (this.parent.isElement) {
+         this.parent.childElement.splice(this.parent.childElement.findIndex(e => e == this), 1);
+      }
    }
 
    /**

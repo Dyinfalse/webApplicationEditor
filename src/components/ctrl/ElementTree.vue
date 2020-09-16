@@ -2,7 +2,7 @@
     <div class="ElementTree">
       <div v-for="element in elements" :key="element.uuid">
         <div>
-            <p @click="setFocus(element)">{{element.name}}</p>
+            <p :class="$P.store.focus[0] == element ? 'focus' : ''"  @click="setFocus(element)">{{element.name}}</p>
             <ElementTree :elements="element.childElement"></ElementTree>
         </div>
       </div>
@@ -25,7 +25,7 @@ export default {
       }
   },
   computed: {
-    
+
   },
   methods: {
       setFocus(element) {
@@ -40,5 +40,10 @@ export default {
 <style scoped>
 .ElementTree {
     margin-left: 20px;
+}
+
+.ElementTree .focus {
+  background: #777;
+  color: #fff;
 }
 </style>

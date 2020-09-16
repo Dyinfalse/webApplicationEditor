@@ -18,6 +18,11 @@
             <p v-if="$P.store.focus[0].name == 'IdeDiv'">
                 <select v-model="componentName">
                     <option value="IdeDiv">IdeDiv</option>
+                    <option value="IdeText">IdeText</option>
+                    <option value="IdeImage">IdeImage</option>
+                    <option value="IdeInput">IdeInput</option>
+                    <option value="IdeButton">IdeButton</option>
+                    <option value="IdeSelect">IdeSelect</option>
                 </select>
                 <button @click="addChildElement()">addChildElement</button>
             </p>
@@ -35,10 +40,20 @@
             </p>
         </div>
         <div v-show="tab === 3">
-            <p v-for="(v, k) in $P.store.focus[0].data" :key="k">
-                <span>{{k}}</span>
-                <input type="text" v-model="$P.store.focus[0].data[k]">
-            </p>
+            <div v-for="(v, k) in $P.store.focus[0].data" :key="k">
+                <p v-if="k != 'options'">
+                    <span>{{k}}</span>
+                    <input type="text" v-model="$P.store.focus[0].data[k]">
+                </p>
+                <div v-if="k == 'options'">
+                    <span>{{k}}</span><button @click="$P.store.focus[0].data[k].push({name: '', value: ''})">addOptions</button>
+                    <p v-for="(options, index) in $P.store.focus[0].data[k]" :key="index">
+                        名称:<input type="text" v-model="options.name">
+                        <br/>
+                        值:<input type="text" v-model="options.value">
+                    </p>
+                </div>
+            </div>
         </div>
         <div v-show="tab === 4">
         </div>
@@ -72,7 +87,8 @@ const TRANSLATE_ENUM = {
     "marginTop": "上外边距",
     "marginBottom": "下外边距",
     "borderRadius": "圆角",
-    "position": "定位方式"
+    "position": "定位方式",
+    "verticalAlign": "对齐方式"
 }
 
 export default {

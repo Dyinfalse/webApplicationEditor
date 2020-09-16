@@ -719,7 +719,7 @@ export default {
             },
             mousedown(event){
                 let box = document.getElementById('canvas-box');
-                if(this.activeUUid) return;
+                if(event.target.id !== 'canvas-box') return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');
                 let scrollElement = document.getElementById('ruler-canvas-scroll');
