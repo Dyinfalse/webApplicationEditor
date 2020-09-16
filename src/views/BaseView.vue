@@ -3,6 +3,7 @@
     <div>
       <select v-model="componentName">
         <option value="IdeDiv">IdeDiv</option>
+        <option value="IdeText">IdeText</option>
       </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>

@@ -1,5 +1,6 @@
 import Vue from "vue"
 let installed = {};
+let isBlockSet = new Set(['IdeDiv']);
 /**
  * 元素类
  */
@@ -42,6 +43,10 @@ export default class Element {
       bottom: '0px',
    }
    /**
+    * 元素数据
+    */
+   data = {};
+   /**
     * 当前子元素的个数
     */
    childCount = 0;
@@ -62,6 +67,7 @@ export default class Element {
       this.uuid = this.randomUuid();
       this.name = name;
       this.id = id;
+      this.isBlock = isBlockSet.has(name);
    }
 
    /**
@@ -91,6 +97,9 @@ export default class Element {
          uuid: this.uuid,
          name: this.name,
          style: this.style,
+         packStyle: this.packStyle,
+         isBlock: this.isBlock,
+         data: this.data,
          childElement: this.childElement.map(e => e.toJson())
       }
    }

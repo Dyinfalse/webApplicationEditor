@@ -1143,7 +1143,8 @@ export default {
                 height: 100%;
                 position: relative;
                 overflow: hidden;
-                font-size: 0px; //
+                font-size: 0px;
+                text-align: left;
             }
         }
         .gridBack{

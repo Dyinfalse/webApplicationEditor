@@ -2,7 +2,7 @@
     <div
         :class="(element.isFocus ? 'focus' : '') + ' pack'"
         :style="{
-            display: element.isBlock ? 'blcok' : 'inline-block',
+            display: element.isBlock ? 'block' : 'inline-block',
             width: element.style.width,
             height: element.style.height,
             position: element.packStyle.position,
@@ -41,15 +41,17 @@ export default {
     created() {
     },
     mounted() {
-        
+        this.element.data = this.$children[0].$data;
     }
 }
 </script>
 
 <style scoped>
-.focus {
-    border: 2px dashed #000;
+.pack {
     box-sizing: border-box;
     overflow: hidden;
+}
+.focus {
+    border: 2px dashed #000;
 }
 </style>

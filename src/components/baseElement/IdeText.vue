@@ -1,17 +1,11 @@
 <template>
-    <div :style="styleConfig">
-        <router-view :key="element.uuid"></router-view>
-    </div>
+    <div :style="element.style">{{value}}</div>
 </template>
 
 <script>
 export default {
-    name: 'IdeRouterView',
+    name: 'IdeText',
     props: {
-        styleConfig: {
-            type: Object,
-            default: () => {return {}}
-        },
         element: {
             type: Object,
             default: () => {return {}}
@@ -19,12 +13,12 @@ export default {
     },
     data() {
         return {
+            value: ''
         }
     },
     methods: {
     },
     created() {
-        console.log('router-view 挂载')
     },
     mounted() {}
 }

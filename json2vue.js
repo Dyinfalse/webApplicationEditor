@@ -8,7 +8,8 @@ let targetDir = (__dirname + "/" + relativePath);
  * 标签枚举, 分辨是否是默认元素还是组件
  */
 const TAG_ENUM = {
-    "IdeDiv": "div"
+    "IdeDiv": "div",
+    "IdeText": "div",
 }
 /**
  * 清空文件
@@ -68,6 +69,12 @@ export default {
     .page {
         width: 100%;
         height: 100%;
+        text-align: left;
+        font-size: 0px;
+    }
+    .base {
+        box-sizing: border-box;
+        overflow: hidden;
     }
 </style>
 `;
@@ -80,13 +87,17 @@ function createVueElement(element) {
      * 获取标签名称
      */
     let tagName = TAG_ENUM[element.name] || element.name;
-    /**
-     * 单双标签, 默认都是双标签
-     */
-    let single = element.childElement.length === 0;
     return `
-        <${tagName} :style="${json({...element.style, ...element.packStyle}).replace(/\"/g, "'")}">
-            ${ element.childElement.map(e => createVueElement(e)).join("\r\n") }
+        <${tagName} class="base" :style="${json({
+            ...element.style,
+            ...element.packStyle,
+            display: (element.isBlock ? 'block' : 'inline-block')
+        }).replace(/\"/g, "'")}">
+            ${
+                element.isBlock ?
+                element.childElement.map(e => createVueElement(e)).join("\r\n"):
+                element.data.value
+            }
         </${tagName}>`;
 }
 /**

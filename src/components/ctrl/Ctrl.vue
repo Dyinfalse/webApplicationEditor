@@ -15,7 +15,7 @@
         </div>
 
         <div v-show="tab === 2">
-            <p>
+            <p v-if="$P.store.focus[0].name == 'IdeDiv'">
                 <select v-model="componentName">
                     <option value="IdeDiv">IdeDiv</option>
                 </select>
@@ -35,7 +35,10 @@
             </p>
         </div>
         <div v-show="tab === 3">
-            
+            <p v-for="(v, k) in $P.store.focus[0].data" :key="k">
+                <span>{{k}}</span>
+                <input type="text" v-model="$P.store.focus[0].data[k]">
+            </p>
         </div>
         <div v-show="tab === 4">
         </div>
