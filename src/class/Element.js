@@ -102,11 +102,10 @@ export default class Element {
     * 从集合中删除这个元素, 页面或父节点
     */
    remove(){
-      if(this.parent.isPage) {
-         this.parent.elements.splice(this.parent.elements.findIndex(this), 1);
-      } else if (this.parent.isElement) {
-         this.parent.childElement.splice(this.parent.childElement.findIndex(e => e == this), 1);
-      }
+         let key = this.parent.isElement ? 'childElement' : 'elements';
+         let i = this.parent[key].indexOf(this);
+         if(i == -1) throw "删除组件异常! removeElementException: can not find current element in parent";
+         this.parent[key].splice(i, 1);
    }
 
    /**

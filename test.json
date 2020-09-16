@@ -1,1 +1,197 @@
-{"base_0":{"path":"base_0","name":"base_0","vue":"BaseView","style":{"background":"#ccc","width":"1920px","height":"1080px"},"elements":[{"uuid":"b8662d2a-dcf6-4e0f-a1e1-77a5610ffc33-1600225898257","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":""},"childElement":[]},{"uuid":"40319ef8-28f8-4f44-909f-a35fb8e32992-1600225898400","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":""},"childElement":[]},{"uuid":"d1805b41-deec-41db-9dad-0dbf3c850f46-1600225898539","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":"123"},"childElement":[]},{"uuid":"9d8244d4-b38f-4bac-8e67-938603b774d0-1600225900288","name":"IdeDiv","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":true,"data":{},"childElement":[]},{"uuid":"9e8286e3-84db-4b5b-8da2-f273119b598f-1600225901826","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":"333"},"childElement":[]},{"uuid":"fa977682-e8c8-44ea-bdc4-47d95a7c02ae-1600225902080","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":""},"childElement":[]},{"uuid":"9e41796f-b3ba-4306-9755-6ca245b5bb8d-1600225902235","name":"IdeText","style":{"width":"100px","height":"100px","background":"#fff","border":"none","fontSize":"14px","borderRadius":"0px"},"packStyle":{"position":"none","left":"0px","right":"0px","top":"0px","bottom":"0px"},"isBlock":false,"data":{"value":"222"},"childElement":[]}]}}
+{
+    "base_0": {
+        "path": "base_0",
+        "name": "base_0",
+        "vue": "BaseView",
+        "style": {
+            "background": "#ccc",
+            "width": "1920px",
+            "height": "1080px"
+        },
+        "elements": [{
+            "uuid": "80024dbc-be09-4266-bb27-39a1b7773cbe-1600246131681",
+            "name": "IdeImage",
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
+            },
+            "childElement": []
+        }, {
+            "uuid": "3b9f303b-5a44-4f02-a959-ae8e468cf2f6-1600246145687",
+            "name": "IdeImage",
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
+            },
+            "childElement": []
+        }, {
+            "uuid": "4f8b6e86-0250-49d1-a591-2873597abc04-1600246152220",
+            "name": "IdeDiv",
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": true,
+            "data": {},
+            "childElement": []
+        }, {
+            "uuid": "60f7b45b-84df-45a3-ae9e-b70fb65ff22d-1600246176918",
+            "name": "IdeText",
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "11111"
+            },
+            "childElement": []
+        }, {
+            "uuid": "f74a32db-656c-4f9e-91bf-4d029fdd3c2a-1600246187119",
+            "name": "IdeInput",
+            "style": {
+                "width": "100px",
+                "height": "30px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px",
+                "paddingLeft": "10px",
+                "paddingRIght": "10px",
+                "paddingTop": "5px",
+                "paddingBottom": "5px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "testInput"
+            },
+            "childElement": []
+        }, {
+            "uuid": "e49937c0-d34c-4f88-a729-f84243dd1589-1600246196201",
+            "name": "IdeButton",
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "按钮"
+            },
+            "childElement": []
+        }, {
+            "uuid": "755669fb-dbf1-4c90-bfe2-628a6364b24a-1600246199928",
+            "name": "IdeSelect",
+            "style": {
+                "width": "100px",
+                "height": "30px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px",
+                "paddingLeft": "10px",
+                "paddingRIght": "10px",
+                "paddingTop": "5px",
+                "paddingBottom": "5px"
+            },
+            "packStyle": {
+                "position": "none",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "3",
+                "options": [{
+                    "name": "O1",
+                    "value": "1"
+                }, {
+                    "name": "O2",
+                    "value": "2"
+                }, {
+                    "name": "O3",
+                    "value": "3"
+                }]
+            },
+            "childElement": []
+        }]
+    }
+}

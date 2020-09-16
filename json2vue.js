@@ -10,8 +10,12 @@ let targetDir = (__dirname + "/" + relativePath);
 const TAG_ENUM = {
     "IdeDiv": "div",
     "IdeText": "div",
-    "IdeImage": "img"
+    "IdeImage": "img",
+    "IdeButton": "button",
+    "IdeSelect": "select",
+    "IdeInput": "input"
 }
+const BR = "\r\n";
 /**
  * 清空文件
  */
@@ -88,6 +92,11 @@ function createVueElement(element) {
      * 获取标签名称
      */
     let tagName = TAG_ENUM[element.name] || element.name;
+    if(tagName === 'input'){
+        return `
+
+        `
+    }
     return `
         <${tagName} class="base" :style="${json({
             ...element.style,
@@ -96,7 +105,7 @@ function createVueElement(element) {
         }).replace(/\"/g, "'")}">
             ${
                 element.isBlock ?
-                element.childElement.map(e => createVueElement(e)).join("\r\n"):
+                element.childElement.map(e => createVueElement(e)).join(BR):
                 element.data.value
             }
         </${tagName}>`;
