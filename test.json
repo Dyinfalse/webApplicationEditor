@@ -4,194 +4,235 @@
         "name": "base_0",
         "vue": "BaseView",
         "style": {
-            "background": "#ccc",
+            "background": "url(https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0) 100% / cover",
             "width": "1920px",
             "height": "1080px"
         },
         "elements": [{
-            "uuid": "80024dbc-be09-4266-bb27-39a1b7773cbe-1600246131681",
-            "name": "IdeImage",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-            },
-            "childElement": []
-        }, {
-            "uuid": "3b9f303b-5a44-4f02-a959-ae8e468cf2f6-1600246145687",
-            "name": "IdeImage",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-            },
-            "childElement": []
-        }, {
-            "uuid": "4f8b6e86-0250-49d1-a591-2873597abc04-1600246152220",
+            "uuid": "16c851f5-e4e7-4cfb-ade0-d5000c9e0985-1600307894033",
             "name": "IdeDiv",
             "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
+                "width": "700px",
+                "height": "500px",
+                "background": "",
                 "border": "none",
                 "fontSize": "14px",
                 "borderRadius": "0px"
             },
             "packStyle": {
-                "position": "none",
-                "left": "0px",
+                "position": "absolute",
+                "left": "calc(50% - 350px)",
                 "right": "0px",
-                "top": "0px",
+                "top": "200px",
                 "bottom": "0px",
                 "verticalAlign": "top"
             },
             "isBlock": true,
             "data": {},
-            "childElement": []
-        }, {
-            "uuid": "60f7b45b-84df-45a3-ae9e-b70fb65ff22d-1600246176918",
-            "name": "IdeText",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "value": "11111"
-            },
-            "childElement": []
-        }, {
-            "uuid": "f74a32db-656c-4f9e-91bf-4d029fdd3c2a-1600246187119",
-            "name": "IdeInput",
-            "style": {
-                "width": "100px",
-                "height": "30px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px",
-                "paddingLeft": "10px",
-                "paddingRIght": "10px",
-                "paddingTop": "5px",
-                "paddingBottom": "5px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "value": "testInput"
-            },
-            "childElement": []
-        }, {
-            "uuid": "e49937c0-d34c-4f88-a729-f84243dd1589-1600246196201",
-            "name": "IdeButton",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "value": "按钮"
-            },
-            "childElement": []
-        }, {
-            "uuid": "755669fb-dbf1-4c90-bfe2-628a6364b24a-1600246199928",
-            "name": "IdeSelect",
-            "style": {
-                "width": "100px",
-                "height": "30px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px",
-                "paddingLeft": "10px",
-                "paddingRIght": "10px",
-                "paddingTop": "5px",
-                "paddingBottom": "5px"
-            },
-            "packStyle": {
-                "position": "none",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "value": "3",
-                "options": [{
-                    "name": "O1",
-                    "value": "1"
+            "childElement": [{
+                "uuid": "2715f242-4122-45e2-9cd7-54bcac19f7f5-1600307993914",
+                "name": "IdeText",
+                "style": {
+                    "width": "100%",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "20px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": false,
+                "data": {
+                    "value": "一个小标题"
+                },
+                "childElement": []
+            }, {
+                "uuid": "bfd021d9-cff4-4bb7-b481-6c1017b9a544-1600308118874",
+                "name": "IdeText",
+                "style": {
+                    "width": "110px",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "20px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": false,
+                "data": {
+                    "value": "请输入姓名:"
+                },
+                "childElement": []
+            }, {
+                "uuid": "92949d96-99e1-4d3d-802d-7d3103c93b38-1600308193606",
+                "name": "IdeInput",
+                "style": {
+                    "width": "100px",
+                    "height": "30px",
+                    "background": "rgba(0,0,0,0)",
+                    "border": "1px solid #fff",
+                    "fontSize": "14px",
+                    "borderRadius": "0px",
+                    "paddingLeft": "10px",
+                    "paddingRight": "10px",
+                    "paddingTop": "5px",
+                    "paddingBottom": "5px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": false,
+                "data": {
+                    "value": "123"
+                },
+                "childElement": []
+            }, {
+                "uuid": "4b08e181-a129-4b5b-a86a-d87dba72b657-1600308394623",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "100%",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "339d1b44-a94d-46ef-b181-0adc870d3b98-1600308441853",
+                    "name": "IdeText",
+                    "style": {
+                        "width": "110px",
+                        "height": "100px",
+                        "background": "",
+                        "border": "none",
+                        "fontSize": "20px",
+                        "borderRadius": "0px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "请选择性别: "
+                    },
+                    "childElement": []
                 }, {
-                    "name": "O2",
-                    "value": "2"
-                }, {
-                    "name": "O3",
-                    "value": "3"
+                    "uuid": "caa13c5a-e200-4930-a7ca-8e7311debb31-1600308490007",
+                    "name": "IdeSelect",
+                    "style": {
+                        "width": "100px",
+                        "height": "30px",
+                        "background": "rgba(0,0,0,0)",
+                        "border": "1px solid #fff",
+                        "fontSize": "14px",
+                        "borderRadius": "0px",
+                        "paddingLeft": "10px",
+                        "paddingRight": "10px",
+                        "paddingTop": "5px",
+                        "paddingBottom": "5px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "1",
+                        "options": [{
+                            "name": "男",
+                            "value": "1"
+                        }, {
+                            "name": "女",
+                            "value": "2"
+                        }]
+                    },
+                    "childElement": []
                 }]
-            },
-            "childElement": []
+            }, {
+                "uuid": "cd3bc2a6-b951-4027-9d7d-e98978a0c9b3-1600308560907",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "100%",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "c55530aa-5464-4079-9e06-850bc1d91ded-1600308584806",
+                    "name": "IdeButton",
+                    "style": {
+                        "width": "100px",
+                        "height": "30px",
+                        "background": "#0ff",
+                        "border": "none",
+                        "fontSize": "14px",
+                        "borderRadius": "0px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "提交"
+                    },
+                    "childElement": []
+                }]
+            }]
         }]
     }
 }

@@ -23,7 +23,7 @@ export default {
             ...this.element.style,
             height: '30px',
             paddingLeft: '10px',
-            paddingRIght: '10px',
+            paddingRight: '10px',
             paddingTop: '5px',
             paddingBottom: '5px',
         }

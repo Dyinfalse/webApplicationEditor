@@ -1,36 +1,39 @@
 let pageConfig = require('./test.json');
 let arguments = process.argv.splice(2);
 let fs = require('fs');
-let relativePath = arguments[0];
-let targetDir = (__dirname + "/" + relativePath);
+let targetPath = arguments[0];
+let targetDir = (__dirname + "/" + targetPath);
+let viewsDir = targetDir + "src/views";
 
 /**
- * 标签枚举, 分辨是否是默认元素还是组件
+ * 标签枚举, 分辨是否是默认元素还是组件, 其中[input, img]会被写成单标签
  */
-const TAG_ENUM = {
-    "IdeDiv": "div",
-    "IdeText": "div",
-    "IdeImage": "img",
-    "IdeButton": "button",
-    "IdeSelect": "select",
-    "IdeInput": "input"
-}
+const TAG_MAP = new Map([
+    ["IdeDiv", "div"],
+    ["IdeText", "div"],
+    ["IdeImage", "img"],
+    ["IdeButton", "button"],
+    ["IdeSelect", "select"],
+    ["IdeInput", "input"]
+])
 const BR = "\r\n";
 /**
- * 清空文件
+ * 元素渲染的唯一标识
  */
-delDir(targetDir + "src/views");
+let eId = 0;
 /**
- * 创建新文件夹
+ * 清空 views文件
  */
-fs.mkdirSync(targetDir + "src/views");
-
+delDir(viewsDir);
+/**
+ * 解析配置
+ */
 for (let path in pageConfig) {
-    let fileContext = createVuePage(pageConfig[path]);
+    let fileContext = getVueContext(pageConfig[path]);
     fs.writeFileSync(
-        (targetDir + `src/views/${pageConfig[path].name}.vue`),
+        (`${ viewsDir }/${ pageConfig[path].name }.vue`),
         fileContext,
-        {encoding:'utf-8'}
+        { encoding:'utf-8' }
     );
     console.log(`${path}文件写入成功`);
 }
@@ -42,10 +45,13 @@ writeRouter(buildRouter(pageConfig, ''));
  * 创建一个Vue页面
  * 页面模版可以根据config.vue指定的vue文件去查找
  */
-function createVuePage(config) {
+function getVueContext(config) {
+    let dataMapping = {};
+    let styleMapping = {};
+    // console.log(config.elements)
     return `<template>
     <div class="page" :style="${ json(config.style).replace(/\"/g, "'") }">
-        ${ config.elements.map(e => createVueElement(e)).join("\r\n") }
+        ${ config.elements.map(e => createVueElement(e, dataMapping, styleMapping)).join("\r\n") }
     </div>
 </template>
 
@@ -55,9 +61,7 @@ export default {
     name: "${ config.name }",
     components: {  },
     data() {
-        return {
-            
-        }
+        return ${json(dataMapping, null, 4)}
     },
     methods: {
 
@@ -70,7 +74,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
     .page {
         width: 100%;
         height: 100%;
@@ -81,34 +85,105 @@ export default {
         box-sizing: border-box;
         overflow: hidden;
     }
+    ${getStyleMapping(styleMapping)}
 </style>
 `;
 }
 /**
  * 创建vue页面中的元素
  */
-function createVueElement(element) {
+function createVueElement(element, dataMapping, styleMapping) {
+    eId++;
+    /**
+     * 元素的className
+     */
+    let elementClassName = "element-" + eId;
     /**
      * 获取标签名称
      */
-    let tagName = TAG_ENUM[element.name] || element.name;
-    if(tagName === 'input'){
+    element.tagName = TAG_MAP.get(element.name) || element.name;
+    /**
+     * 是否是单标签
+     */
+    element.isSingle = (element.tagName == 'input' || element.tagName == 'img');
+    /**
+     * 注册数据
+     */
+    setDataMapping(element.data, dataMapping);
+    /**
+     * 注册样式
+     */
+    setStyleMapping({...element.style, ...element.packStyle, display: (element.isBlock ? 'block' : 'inline-block')}, styleMapping, elementClassName);
+    // console.log(styleMapping)
+    if(element.isSingle){
         return `
-
-        `
-    }
-    return `
-        <${tagName} class="base" :style="${json({
-            ...element.style,
-            ...element.packStyle,
-            display: (element.isBlock ? 'block' : 'inline-block')
-        }).replace(/\"/g, "'")}">
+        <${element.tagName} class="base ${elementClassName}" ${getDataMapping(element, dataMapping)}/>
+        `;
+    }else {
+        return `
+        <${element.tagName} class="base ${elementClassName}" ${ element.tagName == 'select' ? getDataMapping(element, dataMapping) : "" }>
             ${
+                element.tagName == 'select' ?
+                element.data.options.map(o => `<option value="${o.value}">${o.name}</option>`).join(BR):
                 element.isBlock ?
-                element.childElement.map(e => createVueElement(e)).join(BR):
-                element.data.value
+                element.childElement.map(e => createVueElement(e, dataMapping, styleMapping)).join(BR):
+                getDataMapping(element, dataMapping)
             }
-        </${tagName}>`;
+        </${element.tagName}>`;
+    }
+}
+/**
+ * 整合元素中的数据到页面数据集合
+ */
+function setDataMapping (data, dataMapping) {
+    for(let k in data) {
+        dataMapping[k + eId] = data[k]
+    }
+}
+/**
+ * 从集合中获取当前元素的渲染数据key
+ */
+function getDataMapping (element, dataMapping) {
+    for(let k in element.data){
+        if(dataMapping.hasOwnProperty(k + eId)){
+            if(element.tagName == 'input' || element.tagName == 'select'){
+                return 'v-model="'+ k + eId +'"';
+            }
+            if(element.tagName == 'img'){
+                return ':src="'+ k + eId +'"';
+            }
+            return "{{"+ k + eId +"}}";
+        }
+    }
+}
+/**
+ * 整合元素中的样式到页面样式集合
+ */
+function setStyleMapping (style, styleMapping, elementClassName) {
+    let s = {};
+    for(let k in style){
+        if(style[k]){
+            if(
+                (style.display == 'block' && k == 'verticalAlign') ||
+                (style.position == 'unset' && (k == 'position' || k == 'left' || k == 'right' || k == 'top' || k == 'bottom'))
+            ){
+                continue;
+            }
+            s[toLowerLine(k)] = style[k];
+        }
+    }
+    styleMapping[elementClassName] = json(s).replace(/\,\n/g, ';\n').replace(/\"/g, '');
+}
+/**
+ * 从集合中获取样式
+ */
+function getStyleMapping (styleMapping) {
+    let s = '';
+    for(let className in styleMapping){
+        s += '.' + className +' '+ styleMapping[className] + '\r\n';
+    }
+    console.log("css 写入完毕")
+    return s;
 }
 /**
  * 构建路由文件
@@ -166,7 +241,7 @@ export default router
  * 转json
  */
 function json (obj) {
-    return JSON.stringify(obj);
+    return JSON.stringify(obj, null, 4);
 }
 /**
  * 递归删除文件夹下所有文件
@@ -178,11 +253,24 @@ function delDir(path){
         files.forEach((file, index) => {
             let curPath = path + "/" + file;
             if(fs.statSync(curPath).isDirectory()){
-                delDir(curPath); //递归删除文件夹
+                delDir(curPath);
             } else {
-                fs.unlinkSync(curPath); //删除文件
+                fs.unlinkSync(curPath);
             }
         });
-        fs.rmdirSync(path);
+        // fs.rmdirSync(path);
     }
 }
+
+/**
+ * 驼峰转中划线
+ */
+function toLowerLine(str) {
+	var temp = str.replace(/[A-Z]/g, function (match) {	
+		return "-" + match.toLowerCase();
+  	});
+  	if(temp.slice(0,1) === '-'){
+  		temp = temp.slice(1);
+  	}
+	return temp;
+};

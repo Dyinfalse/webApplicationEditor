@@ -40,7 +40,7 @@ export default class Element {
     * 包装样式
     */
    packStyle = {
-      position: 'none',
+      position: 'unset',
       left: '0px',
       right: '0px',
       top: '0px',
