@@ -59,6 +59,9 @@ export default class PageUtils {
         if(this.store.focus[0]) {
             this.store.focus[0].isFocus = false;
         }
+        if(!element) {
+            return this.store.focus = [];
+        }
         element.isFocus = true;
         this.store.focus = [element];
     }

@@ -4,109 +4,33 @@
         "name": "base_0",
         "vue": "BaseView",
         "style": {
-            "background": "url(https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0) 100% / cover",
+            "background": "url(https://cn.bing.com/th?id=OHR.IcelandicRettir_ZH-CN7738923773_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0) 100% / cover",
             "width": "1920px",
             "height": "1080px"
         },
         "elements": [{
-            "uuid": "16c851f5-e4e7-4cfb-ade0-d5000c9e0985-1600307894033",
+            "uuid": "a198ffe7-dcf9-40b1-a47f-497c9d5414b6-1600394161049",
             "name": "IdeDiv",
             "style": {
-                "width": "700px",
-                "height": "500px",
+                "width": "300px",
+                "height": "300px",
                 "background": "",
-                "border": "none",
+                "border": "2px solid #AAAABC",
                 "fontSize": "14px",
                 "borderRadius": "0px"
             },
             "packStyle": {
                 "position": "absolute",
-                "left": "calc(50% - 350px)",
-                "right": "0px",
+                "left": "calc(50% - 150px)",
+                "right": "",
                 "top": "200px",
-                "bottom": "0px",
+                "bottom": "",
                 "verticalAlign": "top"
             },
             "isBlock": true,
             "data": {},
             "childElement": [{
-                "uuid": "2715f242-4122-45e2-9cd7-54bcac19f7f5-1600307993914",
-                "name": "IdeText",
-                "style": {
-                    "width": "100%",
-                    "height": "30px",
-                    "background": "",
-                    "border": "none",
-                    "fontSize": "20px",
-                    "borderRadius": "0px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "一个小标题"
-                },
-                "childElement": []
-            }, {
-                "uuid": "bfd021d9-cff4-4bb7-b481-6c1017b9a544-1600308118874",
-                "name": "IdeText",
-                "style": {
-                    "width": "110px",
-                    "height": "30px",
-                    "background": "",
-                    "border": "none",
-                    "fontSize": "20px",
-                    "borderRadius": "0px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "请输入姓名:"
-                },
-                "childElement": []
-            }, {
-                "uuid": "92949d96-99e1-4d3d-802d-7d3103c93b38-1600308193606",
-                "name": "IdeInput",
-                "style": {
-                    "width": "100px",
-                    "height": "30px",
-                    "background": "rgba(0,0,0,0)",
-                    "border": "1px solid #fff",
-                    "fontSize": "14px",
-                    "borderRadius": "0px",
-                    "paddingLeft": "10px",
-                    "paddingRight": "10px",
-                    "paddingTop": "5px",
-                    "paddingBottom": "5px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "123"
-                },
-                "childElement": []
-            }, {
-                "uuid": "4b08e181-a129-4b5b-a86a-d87dba72b657-1600308394623",
+                "uuid": "445c2705-13c4-400d-a02e-85b06813bda7-1600394278294",
                 "name": "IdeDiv",
                 "style": {
                     "width": "100%",
@@ -127,11 +51,11 @@
                 "isBlock": true,
                 "data": {},
                 "childElement": [{
-                    "uuid": "339d1b44-a94d-46ef-b181-0adc870d3b98-1600308441853",
+                    "uuid": "50067c50-8639-4e05-b46d-ca9fa881ff31-1600394336703",
                     "name": "IdeText",
                     "style": {
-                        "width": "110px",
-                        "height": "100px",
+                        "width": "100px",
+                        "height": "30px",
                         "background": "",
                         "border": "none",
                         "fontSize": "20px",
@@ -147,16 +71,16 @@
                     },
                     "isBlock": false,
                     "data": {
-                        "value": "请选择性别: "
+                        "value": "username"
                     },
                     "childElement": []
                 }, {
-                    "uuid": "caa13c5a-e200-4930-a7ca-8e7311debb31-1600308490007",
-                    "name": "IdeSelect",
+                    "uuid": "ede0fbad-309b-4599-8b6e-fc2db8d1f447-1600394363509",
+                    "name": "IdeInput",
                     "style": {
-                        "width": "100px",
+                        "width": "120px",
                         "height": "30px",
-                        "background": "rgba(0,0,0,0)",
+                        "background": "none",
                         "border": "1px solid #fff",
                         "fontSize": "14px",
                         "borderRadius": "0px",
@@ -175,19 +99,12 @@
                     },
                     "isBlock": false,
                     "data": {
-                        "value": "1",
-                        "options": [{
-                            "name": "男",
-                            "value": "1"
-                        }, {
-                            "name": "女",
-                            "value": "2"
-                        }]
+                        "value": "请输入用户名"
                     },
                     "childElement": []
                 }]
             }, {
-                "uuid": "cd3bc2a6-b951-4027-9d7d-e98978a0c9b3-1600308560907",
+                "uuid": "0d151cb2-72a2-49af-affb-c9d72cabfd09-1600394312365",
                 "name": "IdeDiv",
                 "style": {
                     "width": "100%",
@@ -208,14 +125,14 @@
                 "isBlock": true,
                 "data": {},
                 "childElement": [{
-                    "uuid": "c55530aa-5464-4079-9e06-850bc1d91ded-1600308584806",
-                    "name": "IdeButton",
+                    "uuid": "efe0d018-a1cb-4f81-ba08-2d038843d0f5-1600394440636",
+                    "name": "IdeText",
                     "style": {
                         "width": "100px",
-                        "height": "30px",
-                        "background": "#0ff",
+                        "height": "100px",
+                        "background": "",
                         "border": "none",
-                        "fontSize": "14px",
+                        "fontSize": "20px",
                         "borderRadius": "0px"
                     },
                     "packStyle": {
@@ -228,10 +145,168 @@
                     },
                     "isBlock": false,
                     "data": {
-                        "value": "提交"
+                        "value": "password"
+                    },
+                    "childElement": []
+                }, {
+                    "uuid": "67ce644c-e3db-486c-bc75-e4db5e141bc7-1600394466263",
+                    "name": "IdeInput",
+                    "style": {
+                        "width": "120px",
+                        "height": "30px",
+                        "background": "none",
+                        "border": "1px solid #fff",
+                        "fontSize": "14px",
+                        "borderRadius": "0px",
+                        "paddingLeft": "10px",
+                        "paddingRight": "10px",
+                        "paddingTop": "5px",
+                        "paddingBottom": "5px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "请输入密码"
                     },
                     "childElement": []
                 }]
+            }, {
+                "uuid": "c639695e-1ba4-4384-a548-3548c43aa5a2-1600394496161",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "100%",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "b6a93bdf-266e-4e35-9c5c-3f41fb829891-1600394511257",
+                    "name": "IdeButton",
+                    "style": {
+                        "width": "100px",
+                        "height": "30px",
+                        "background": "#0ff",
+                        "border": "none",
+                        "fontSize": "14px",
+                        "borderRadius": "5px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "登录"
+                    },
+                    "childElement": []
+                }]
+            }, {
+                "uuid": "56454031-a7ce-4537-9c10-ff8bd5a1193d-1600394618459",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "100%",
+                    "height": "30px",
+                    "background": "",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "e34d446e-94a1-40ba-b976-5659b94f6cb8-1600394630393",
+                    "name": "IdeSelect",
+                    "style": {
+                        "width": "150px",
+                        "height": "30px",
+                        "background": "none",
+                        "border": "1px solid #fff",
+                        "fontSize": "14px",
+                        "borderRadius": "0px",
+                        "paddingLeft": "10px",
+                        "paddingRight": "10px",
+                        "paddingTop": "5px",
+                        "paddingBottom": "5px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "value": "2",
+                        "options": [{
+                            "name": "采购部",
+                            "value": "1"
+                        }, {
+                            "name": "财务部",
+                            "value": "2"
+                        }, {
+                            "name": "技术部",
+                            "value": "3"
+                        }]
+                    },
+                    "childElement": []
+                }]
+            }, {
+                "uuid": "587a87fe-dc7b-4158-a2d2-c26922d1872d-1600394728991",
+                "name": "IdeImage",
+                "style": {
+                    "width": "100px",
+                    "height": "100px",
+                    "background": "#fff",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "50%"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": false,
+                "data": {
+                    "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
+                },
+                "childElement": []
             }]
         }]
     }
