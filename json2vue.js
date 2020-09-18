@@ -4,7 +4,6 @@ let fs = require('fs');
 let targetPath = arguments[0];
 let targetDir = (__dirname + "/" + targetPath);
 let viewsDir = targetDir + "src/views";
-
 /**
  * 标签枚举, 分辨是否是默认元素还是组件, 其中[input, img]会被写成单标签
  */
@@ -46,20 +45,30 @@ writeRouter(buildRouter(pageConfig, ''));
  * 页面模版可以根据config.vue指定的vue文件去查找
  */
 function getVueContext(config) {
+    /**
+     * 页面数据集合
+     */
     let dataMapping = {};
+    /**
+     * 页面样式集合
+     */
     let styleMapping = {};
+    /**
+     * 页面依赖集合
+     */
+    let dependency = [];
     // console.log(config.elements)
     return `<template>
     <div class="page" :style="${ json(config.style).replace(/\"/g, "'") }">
-        ${ config.elements.map(e => createVueElement(e, dataMapping, styleMapping)).join("\r\n") }
+        ${ config.elements.map(e => createVueElement(e, dataMapping, styleMapping, dependency)).join("\r\n") }
     </div>
 </template>
 
 <script>
-
+${getDependency(dependency)}
 export default {
     name: "${ config.name }",
-    components: {  },
+    components: {${getComponents(dependency)}},
     data() {
         return ${json(dataMapping, null, 4)}
     },
@@ -92,7 +101,7 @@ export default {
 /**
  * 创建vue页面中的元素
  */
-function createVueElement(element, dataMapping, styleMapping) {
+function createVueElement(element, dataMapping, styleMapping, dependency) {
     eId++;
     /**
      * 元素的className
@@ -114,6 +123,25 @@ function createVueElement(element, dataMapping, styleMapping) {
      * 注册样式
      */
     setStyleMapping({...element.style, ...element.packStyle, display: (element.isBlock ? 'block' : 'inline-block')}, styleMapping, elementClassName);
+    /**
+     * 判断该元素是否是外部依赖, 如果是, 需要从设计器拷贝vue文件到Runner
+     */
+    if(!TAG_MAP.get(element.name)){
+        let src = __dirname + '/src/components/graceComponents/' + element.name + '.vue';
+        /**
+         * 文件是否存在
+         */
+        if(fs.existsSync(src)){
+            copyfile(src, targetDir + 'src/components/' + element.name + '.vue');
+        } else {
+            throw `组件查找失败! 依赖文件[${element.name}] 在设计器中未找到, 查看src/components/graceComponents文件夹下是否存在该组件`;
+        }
+        dependency.push({
+            name: element.name,
+            type: 'component'
+        })
+    }
+
     // console.log(styleMapping)
     if(element.isSingle){
         return `
@@ -126,11 +154,27 @@ function createVueElement(element, dataMapping, styleMapping) {
                 element.tagName == 'select' ?
                 element.data.options.map(o => `<option value="${o.value}">${o.name}</option>`).join(BR):
                 element.isBlock ?
-                element.childElement.map(e => createVueElement(e, dataMapping, styleMapping)).join(BR):
+                element.childElement.map(e => createVueElement(e, dataMapping, styleMapping, dependency)).join(BR):
                 getDataMapping(element, dataMapping)
             }
         </${element.tagName}>`;
     }
+}
+/**
+ * 从依赖中查找组件, 写入文件
+ */
+function getComponents (dependency) {
+    return dependency.filter(d => d.type == 'component').map(d => {
+        return `${d.name}`;
+    }).join(', ');
+}
+/**
+ * 读取依赖, 生成import 语句
+ */
+function getDependency (dependency) {
+    return dependency.map(d => {
+        return `import ${d.name} from '../${d.type == 'component' ? 'components' : 'assets'}/${d.name}';`;
+    }).join('\r\n');
 }
 /**
  * 整合元素中的数据到页面数据集合
@@ -144,17 +188,20 @@ function setDataMapping (data, dataMapping) {
  * 从集合中获取当前元素的渲染数据key
  */
 function getDataMapping (element, dataMapping) {
-    for(let k in element.data){
-        if(dataMapping.hasOwnProperty(k + eId)){
-            if(element.tagName == 'input' || element.tagName == 'select'){
-                return 'v-model="'+ k + eId +'"';
+    if(TAG_MAP.get(element.name)){
+        for(let k in element.data){
+            if(dataMapping.hasOwnProperty(k + eId)){
+                if(element.tagName == 'input' || element.tagName == 'select'){
+                    return 'v-model="'+ k + eId +'"';
+                }
+                if(element.tagName == 'img'){
+                    return ':src="'+ k + eId +'"';
+                }
+                return "{{"+ k + eId +"}}";
             }
-            if(element.tagName == 'img'){
-                return ':src="'+ k + eId +'"';
-            }
-            return "{{"+ k + eId +"}}";
         }
     }
+    return "";
 }
 /**
  * 整合元素中的样式到页面样式集合
@@ -274,3 +321,9 @@ function toLowerLine(str) {
   	}
 	return temp;
 };
+/**
+ * 复制文件
+ */
+function copyfile(src,dir) {
+    fs.writeFileSync(dir,fs.readFileSync(src));
+}

@@ -37,6 +37,9 @@ export default {
     created() {
     },
     mounted() {
+        for(let k in this.element.data){
+            this.$children[0].$data[k] = this.element.data[k]
+        }
         this.element.data = this.$children[0].$data;
     }
 }

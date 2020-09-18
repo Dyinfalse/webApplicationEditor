@@ -8,6 +8,7 @@
         <option value="IdeInput">IdeInput</option>
         <option value="IdeButton">IdeButton</option>
         <option value="IdeSelect">IdeSelect</option>
+        <option value="IviewTable">IviewTable</option>
       </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>
       <button @click="removeComponent()">remove</button>
@@ -35,7 +36,6 @@ export default {
   methods: {
     addComponent() {
       this.page.addElement(this.componentName);
-      console.log(this.page)
     },
     /**
      * 组件删除

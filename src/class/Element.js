@@ -1,6 +1,6 @@
 import Vue from "vue"
 let installed = {};
-let isBlockSet = new Set(['IdeDiv']);
+let isBlockSet = new Set(['IdeDiv', 'IviewTable']);
 /**
  * 元素类
  */
@@ -63,14 +63,27 @@ export default class Element {
     * 父级元素
     */
    parent = {};
+   /**
+    * 事件
+    */
+   event;
 
    constructor(id, name, parent) {
-      if(!name) throw "实例化组件异常! constructorElementException: param name is required"
+      if(!name) throw "实例化组件异常! ConstructorElementException: param name is required"
       if(typeof installed[name] == 'number'){
          installed[name] ++;
       }else {
          installed[name] = 0;
-         let c = require(`../components/baseElement/${name}.vue`).default;
+         let c;
+         try {
+            c = require(`../components/baseElement/${name}.vue`).default;
+         } catch (e) {
+            try {
+               c = require(`../components/graceComponents/${name}.vue`).default;
+            } catch(e) {
+               throw "组件查找异常! ComponentRequireException: can not find Component by name"
+            }
+         }
          Vue.component(c.name, c);
       }
       this.uuid = this.randomUuid();
@@ -104,7 +117,7 @@ export default class Element {
    remove(){
          let key = this.parent.isElement ? 'childElement' : 'elements';
          let i = this.parent[key].indexOf(this);
-         if(i == -1) throw "删除组件异常! removeElementException: can not find current element in parent";
+         if(i == -1) throw "删除组件异常! RemoveElementException: can not find current element in parent";
          this.parent[key].splice(i, 1);
    }
 
