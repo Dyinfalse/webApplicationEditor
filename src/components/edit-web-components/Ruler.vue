@@ -63,10 +63,11 @@
                 </div>
                 <!-- 画布 -->
                 <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel"
-                    :style="{...comStyle, width: this.$P.store.pageSize.displayWidth + 'px', height: this.$P.store.pageSize.displayHeight + 'px'}"
+                    :style="{...comStyle, width: this.$P.store.pageConfig.displayWidth + 'px', height: this.$P.store.pageConfig.displayHeight + 'px'}"
                     @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box" id="canvas-box">
-                        <router-view :key="$route.fullPath"/>
+                        <NavMenu v-if="$P.store.pageConfig.openNavMenuAble"></NavMenu>
+                        <router-view v-else :key="$route.fullPath"/>
                     </div>
                 </div>
             </div>
@@ -106,9 +107,10 @@
 <script>
 import vdr from './vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
 import Page from '../Page';
+import NavMenu from '../graceComponents/NavMenu';
 export default {
         components:{
-            vdr, Page
+            vdr, Page, NavMenu
         },
         name: 'Ide-ruler',
         props: {

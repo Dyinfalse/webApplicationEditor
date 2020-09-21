@@ -13,4 +13,12 @@
   color: #2c3e50;
 }
 
+.flex-box {
+  display: flex;
+}
+
+.flex {
+  flex: 1;
+}
+
 </style>

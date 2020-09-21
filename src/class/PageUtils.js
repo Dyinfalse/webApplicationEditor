@@ -21,16 +21,21 @@ export default class PageUtils {
      */
     store = {};
 
-
     constructor(router) {
         this.router = router;
         this.store = Vue.observable({
             focus: [],
-            pageSize: {
+            pageConfig: {
                 displayWidth: 1920,
                 displayHeight: 1080,
-            }
+                openNavMenuAble: false
+            },
+            /**
+             * 导航配置
+             */
+            navConfig: []
         });
+
     }
 
     /**

@@ -12,10 +12,22 @@
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.getPage().style[k]">
             </p>
-            <p v-for="(v, k) in $P.store.pageSize" :key="k">
+            <p v-for="(v, k) in $P.store.pageConfig" :key="k">
                 <span>{{TRANSLATE_ENUM[k]}}</span>
-                <input type="text" v-model="$P.store.pageSize[k]">
+                <input type="text" v-model="$P.store.pageConfig[k]">
             </p>
+            <!-- 导航配置 -->
+            <div v-if="$P.store.pageConfig.openNavMenuAble">
+                <button @click="addNav()">addNav</button>
+                <div v-for="submenu in $P.store.navConfig" :name="submenu.id" :key="submenu.id">
+                    <input type="text" v-model="submenu.text">
+                    <button @click="addChildMenu(submenu)">addChildMenu</button>
+                    <div v-for="menuItem in submenu.menuItems" :name="submenu.id + '-' + menuItem.id" :key="submenu.id + '-' + menuItem.id">
+                        名称 <input type="text" v-model="menuItem.text">
+                        url <input type="text" v-model="menuItem.url">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div v-show="tab === 2">
@@ -94,7 +106,8 @@ const TRANSLATE_ENUM = {
     "position": "定位方式",
     "verticalAlign": "对齐方式",
     "displayWidth": "现实器宽度",
-    "displayHeight": "现实器高度"
+    "displayHeight": "现实器高度",
+    "openNavMenuAble": "开启导航菜单"
 }
 
 export default {
@@ -103,7 +116,7 @@ export default {
       return {
           TRANSLATE_ENUM,
           tab: 1,
-          componentName: ''
+          componentName: '',
       }
   },
   computed: {
@@ -117,6 +130,27 @@ export default {
        */
       addChildElement() {
             this.$P.store.focus[0].addChildElement(this.componentName)
+      },
+      /**
+       * 添加一级导航
+       */
+      addNav() {
+          /**
+           * 直接等于length 删除会有问题, 需要优化
+           */
+          this.$P.store.navConfig.push({
+              id: this.$P.store.navConfig.length,
+              text: '',
+              menuItems: []
+          })
+          console.log(this.$P.store.navConfig)
+      },
+      addChildMenu(submenu) {
+          submenu.menuItems.push({
+              id: submenu.menuItems.length,
+              url: '',
+              text: ''
+          })
       }
   },
   mounted() {
