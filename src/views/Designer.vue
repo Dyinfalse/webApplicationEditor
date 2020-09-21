@@ -16,18 +16,20 @@
         使用name是因为预览和设计的时候name是保持一致的,
         所以在预览和设计之间切换的时候, 不会触发原组件的重新挂载(如果重新挂载,会导致资源浪费,并且会出错误)
       -->
-      <router-view :key="$route.fullPath"/>
-    <Ctrl></Ctrl>
-    <PageTree :key="$router.currentRoute.name"></PageTree>
+      <!-- <router-view :key="$route.fullPath"/> -->
+      <BaseView></BaseView>
+      <Ctrl></Ctrl>
+      <PageTree :key="$router.currentRoute.name"></PageTree>
   </div>
 </template>
 
 <script>
 import Ctrl from '../components/ctrl/Ctrl';
 import PageTree from '../components/ctrl/PageTree';
+import BaseView from './BaseView';
 export default {
   name: 'Designer',
-  components: { Ctrl, PageTree },
+  components: { Ctrl, PageTree, BaseView},
   data() {
     return {
         router: [],

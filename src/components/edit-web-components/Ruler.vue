@@ -62,9 +62,11 @@
 
                 </div>
                 <!-- 画布 -->
-                <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel" :style="comStyle" @mousedown='mousedown'>
+                <div class="ruler-canvas-panel" ref='ruler-canvas-panel' id="ruler-canvas-panel"
+                    :style="{...comStyle, width: this.$P.store.pageSize.displayWidth + 'px', height: this.$P.store.pageSize.displayHeight + 'px'}"
+                    @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box" id="canvas-box">
-                        <Element v-for="(item) in VueComponent" :element="item" :key="item.uuid"></Element>
+                        <router-view :key="$route.fullPath"/>
                     </div>
                 </div>
             </div>
@@ -103,27 +105,17 @@
 
 <script>
 import vdr from './vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
-import Element from '../Element';
+import Page from '../Page';
 export default {
         components:{
-            vdr, Element
+            vdr, Page
         },
         name: 'Ide-ruler',
         props: {
-            pageStyle: {
-                type: Object,
-                default: () => {return {}}
-            },
             scroll: {
                 type: Boolean,
                 default () {
                     return true
-                }
-            },
-            VueComponent:{
-                type: Array,
-                default () {
-                    return []
                 }
             },
             setPageSize: {
@@ -247,11 +239,12 @@ export default {
         },
         data() {
             return {
+                $P_page_size: {},
                 activeUUid:"",
                 pageSize: {                    
                     width: 1920,
                     height: 1080,
-                    backgroundColor: '#000',
+                    backgroundColor: '#fff',
                     backgroundImage: null,
                     scale: 0.6,
                     rotate:0,
@@ -330,12 +323,11 @@ export default {
         computed: {
             comStyle:function(){
                 // this.pageSize = Object.assign({},this.pageSize,this.setPageSize);
-                return {...this.getCommonStyle(this.pageSize), ...this.pageStyle}
+                return {...this.getCommonStyle(this.pageSize)}
             }            
         },
         mounted() {
             this.$nextTick(()=>{
-
                 this.pageSize = {...this.pageSize,...this.setPageSize}
                 this.CanvasInit(this.pageSize);
                 document.getElementById('ruler-canvas-panel').addEventListener('mousewheel', this.scrollFunc, false);
@@ -719,7 +711,7 @@ export default {
             },
             mousedown(event){
                 let box = document.getElementById('canvas-box');
-                if(event.target.id !== 'canvas-box') return;
+                if(!(event.target.id == 'canvas-box' || event.target.id == 'page')) return;
                 event.preventDefault();
                 let div = document.getElementById('MousemoveActive');
                 let scrollElement = document.getElementById('ruler-canvas-scroll');
@@ -1145,6 +1137,7 @@ export default {
                 overflow: hidden;
                 font-size: 0px;
                 text-align: left;
+                overflow: auto;
             }
         }
         .gridBack{

@@ -21,9 +21,16 @@ export default class PageUtils {
      */
     store = {};
 
+
     constructor(router) {
         this.router = router;
-        this.store = Vue.observable({focus: []});
+        this.store = Vue.observable({
+            focus: [],
+            pageSize: {
+                displayWidth: 1920,
+                displayHeight: 1080,
+            }
+        });
     }
 
     /**

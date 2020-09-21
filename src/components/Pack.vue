@@ -37,6 +37,9 @@ export default {
     created() {
     },
     mounted() {
+        /**
+         * 组件渲染的时候, 将组件实例和element实例做引用交换
+         */
         for(let k in this.element.data){
             this.$children[0].$data[k] = this.element.data[k]
         }

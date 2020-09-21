@@ -1,4 +1,4 @@
-import BaseView from '../views/BaseView';
+import _Page from '../components/Page';
 import router from '../router';
 import Element from './Element';
 /**
@@ -22,8 +22,8 @@ export default class Page {
      */
     style = {
         background: '#ccc',
-        width: 1920 + 'px',
-        height: 1080 + 'px',
+        width: '100%',
+        height: 'auto'
     };
     /**
      * 页面包含的元素
@@ -49,7 +49,7 @@ export default class Page {
     constructor(path, name, vue) {
         this.path = path || 'page';
         this.name = name || path;
-        this.vue = vue || BaseView;
+        this.vue = vue || _Page;
         this.addRouter();
     }
     /**

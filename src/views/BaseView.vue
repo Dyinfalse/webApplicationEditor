@@ -14,7 +14,7 @@
       <button @click="removeComponent()">remove</button>
     </div>
     <div style="overflow:hidden">
-      <Ruler :pageStyle="page.style" :VueComponent='page.elements'></Ruler>
+      <Ruler></Ruler>
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     addComponent() {
-      this.page.addElement(this.componentName);
+      this.$P.getPage().addElement(this.componentName);
     },
     /**
      * 组件删除
@@ -49,7 +49,6 @@ export default {
   },
   created() {
     console.log('BaseView 挂载');
-    this.page = this.$P.getPage();
   },
   mounted() {
     

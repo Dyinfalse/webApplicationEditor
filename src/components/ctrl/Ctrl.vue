@@ -12,6 +12,10 @@
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.getPage().style[k]">
             </p>
+            <p v-for="(v, k) in $P.store.pageSize" :key="k">
+                <span>{{TRANSLATE_ENUM[k]}}</span>
+                <input type="text" v-model="$P.store.pageSize[k]">
+            </p>
         </div>
 
         <div v-show="tab === 2">
@@ -88,7 +92,9 @@ const TRANSLATE_ENUM = {
     "marginBottom": "下外边距",
     "borderRadius": "圆角",
     "position": "定位方式",
-    "verticalAlign": "对齐方式"
+    "verticalAlign": "对齐方式",
+    "displayWidth": "现实器宽度",
+    "displayHeight": "现实器高度"
 }
 
 export default {
