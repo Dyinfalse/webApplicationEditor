@@ -66,7 +66,7 @@
                     :style="{...comStyle, width: this.$P.store.pageConfig.displayWidth + 'px', height: this.$P.store.pageConfig.displayHeight + 'px'}"
                     @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box" id="canvas-box">
-                        <NavMenu v-if="$P.store.pageConfig.openNavMenuAble"></NavMenu>
+                        <NavMenu :key="navMenuKey" v-if="$P.store.pageConfig.openNavMenuAble && !$P.getPage().isLogin"></NavMenu>
                         <router-view v-else :key="$route.fullPath"/>
                     </div>
                 </div>
@@ -241,7 +241,7 @@ export default {
         },
         data() {
             return {
-                $P_page_size: {},
+                navMenuKey: '',
                 activeUUid:"",
                 pageSize: {                    
                     width: 1920,
@@ -837,6 +837,9 @@ export default {
                 },
                 deep: true
             },
+            $route(to,from) {
+                this.navMenuKey = this.$P.getPage(this.$router.currentRoute.name).isLogin;
+            }
         },
         beforeDestroy () {
             // window.removeEventListener('keydown', this.keydownCode,true)

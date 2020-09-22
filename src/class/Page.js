@@ -45,10 +45,14 @@ export default class Page {
      * 组件数据
      */
     data = {};
-
+    /**
+     * 是否是登录页
+     */
+    isLogin = false;
+    
     constructor(path, name, vue) {
         this.path = path || 'page';
-        this.name = name || path;
+        this.name = name || this.path;
         this.vue = vue || _Page;
         this.addRouter();
     }

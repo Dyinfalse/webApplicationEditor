@@ -1,0 +1,47 @@
+/**
+    @bgColor_ys         背景颜色
+    @borderColor_ys     边框颜色
+    @fontColor_ys       字体颜色
+    @bgColor_ys_select  选中后颜色
+    @bgColor_ys_hover   鼠标移入颜色
+*/
+.TransferUI(
+    @bgColor_ys:#3d5072,
+    @borderColor_ys:#3a4a69,
+    @fontColor_ys:#D9E3F3,
+    @bgColor_ys_select:#3a4a69,
+    @bgColor_ys_hover:#3a4a69,
+) {
+  /deep/.ivu-transfer {
+    &-list {
+      &-header {
+        background-color: @bgColor_ys;
+        border: 1px solid @bgColor_ys;
+        color: @fontColor_ys;
+      }
+      &-body {
+        background-color: @bgColor_ys;
+        border: 1px solid @bgColor_ys;
+        border-top: 1px solid @borderColor_ys;
+      }
+      &-content-item {
+        color: @fontColor_ys;
+        &:hover {
+          background-color: @bgColor_ys_hover;
+        }
+      }
+    }
+    .ivu-checkbox-inner {
+      background-color: rgba(0, 0, 0, 0.0001);
+    }
+    .ivu-btn {
+      background-color: @bgColor_ys;
+    }
+    .ivu-transfer-list-search {
+      .ivu-input {
+        background-color: @bgColor_ys_hover;
+        border: 1px solid @borderColor_ys;
+      }
+    }
+  }
+}

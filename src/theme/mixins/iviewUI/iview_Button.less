@@ -1,0 +1,147 @@
+/**
+*/
+.buttonUi(
+    // class = ys-cancel
+    @bgColor_cancel:#55637b, // 背景色
+    @borderColor_cancel:#55637b, //边框色
+    @fontColor_cancel:#D9E3F3, // 字体颜色
+    @bgColor_cancel_hover:#55637b, // 鼠标移入背景色
+    @borderColor_cancel_hover:#55637b, // 鼠标移入边框色
+    @fontColor_cancel_hover:#D9E3F3, // 鼠标移入字体颜色
+
+    // class = ys-confirm
+    @bgColor_confirm:#2d8cf0,        // 背景色 弹框确定
+    @borderColor_confirm:#2d8cf0, //边框色
+    @fontColor_confirm:#D9E3F3, // 字体颜色
+    @bgColor_confirm_hover:#2d8cf0, // 鼠标移入背景色
+    @borderColor_confirm_hover:#2d8cf0, // 鼠标移入边框色
+    @fontColor_confirm_hover:#D9E3F3, // 鼠标移入字体颜色
+
+    // class = ys-looking
+    @bgColor_looking:#485575,    // 背景色 查看
+    @borderColor_looking:#485575, //边框色
+    @fontColor_looking:#D9E3F3, // 字体颜色
+    @bgColor_looking_hover:#DFE6F1, // 鼠标移入背景色
+    @borderColor_looking_hover:#DFE6F1, // 鼠标移入边框色
+    @fontColor_looking_hover:black, // 鼠标移入字体颜色
+
+    // class = ys-NewCreate
+    @bgColor_NewCreate:#2F3C5C,        // 背景颜色
+    @borderColor_NewCreate:#D9E3F3,    //边框色
+    @fontColor_NewCreate:#D9E3F3,      // 字体颜色
+    @bgColor_NewCreate_hover:#384A72,  // 鼠标移入背景色
+    @borderColor_NewCreate_hover:#D9E3F3, // 鼠标移入边框色
+    @fontColor_NewCreate_hover:#D9E3F3, // 鼠标移入字体颜色
+
+    // class = ys-iconBtn
+    @bgColor_iconBtn:#212D43,        // 背景颜色
+    @borderColor_iconBtn:#212D43,    //边框色
+    @fontColor_iconBtn:#D9E3F3,      // 字体颜色
+    @bgColor_iconBtn_hover:#0061FF,  // 鼠标移入背景色
+    @borderColor_iconBtn_hover:#0061FF, // 鼠标移入边框色
+    @fontColor_iconBtn_hover:#D9E3F3, // 鼠标移入字体颜色
+
+    // ys-text
+    @fontColor_textBtn:#57a3f3,      // 字体颜色
+    @fontColor_textBtn_hover:#0061FF, // 鼠标移入字体颜色 
+  ) {
+  /deep/ .ivu-btn {
+    span {
+      cursor: pointer;
+    }
+    //设置带有图标的按钮图标字体大小
+    .ivu-icon {
+      font-size: 20px;
+    }
+  }
+
+  // 弹框取消按钮 class = ys-cancel
+  .ys-cancel {
+    background-color: @bgColor_cancel;
+    border: 1px solid @borderColor_cancel;
+    color: @fontColor_cancel;
+    &:hover {
+      background-color: lighten(@bgColor_cancel_hover, 15%);
+      border: 1px solid @borderColor_cancel_hover;
+      color: @fontColor_cancel_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // 确定按钮样式 class = ys-confirm
+  .ys-confirm {
+    background-color: @bgColor_confirm;
+    border: 1px solid @borderColor_confirm;
+    color: @fontColor_confirm;
+    &:hover {
+      background-color: lighten(@bgColor_confirm_hover, 15%);
+      border: 1px solid @borderColor_confirm_hover;
+      color: @fontColor_confirm_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // 查看实例按钮 class = ys-looking
+  .ys-looking {
+    background-color: @bgColor_looking;
+    border: 1px solid @borderColor_looking;
+    color: @fontColor_looking;
+    &:hover {
+      background-color: @bgColor_looking_hover;
+      border: 1px solid @borderColor_looking_hover;
+      color: @fontColor_looking_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // 新建实例按钮 class = ys-NewCreate
+  .ys-NewCreate {
+    background-color: @bgColor_NewCreate;
+    border: 1px solid @borderColor_NewCreate;
+    color: @fontColor_NewCreate;
+    &:hover {
+      background-color: @bgColor_NewCreate_hover;
+      border: 1px solid @borderColor_NewCreate_hover;
+      color: @fontColor_NewCreate_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // 新增功能按钮样式 class = ys-iconBtn
+  .ys-iconBtn {
+    background-color: @bgColor_iconBtn;
+    border: 1px solid @borderColor_iconBtn;
+    color: @fontColor_iconBtn;
+    &:hover {
+      background-color: @bgColor_iconBtn_hover;
+      border: 1px solid @borderColor_iconBtn_hover;
+      color: @fontColor_iconBtn_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // 文本按钮样式 class = ys-text
+  .ys-text {
+    background-color: fade(white, 0.1%);
+    border: none;
+    color: @fontColor_textBtn;
+    &:hover {
+      background-color: fade(white, 0.1%);
+      border: none;
+      color: @fontColor_textBtn_hover;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

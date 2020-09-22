@@ -1,0 +1,45 @@
+/**
+*/
+.selectUI(
+    @bgColor_selection:#313A54, // 下拉框文本框背景颜色
+    @fontColor_selection:#D9E3F3, // 下拉框文本框字体颜色
+    @borderColor_selection:#4D5A73, // 下拉框文本框边框颜色
+
+    @bgColor_dropdown:#3C5072, // 下拉框展开面板背景颜色
+    @fontColor_dropdown:#D9E3F3,  // 下拉框展开面板字体颜色
+    @bgColor_dropdown_item_hover:#1B2942,  // 下拉框展开面板项目（每一个item）鼠标移入背景颜色
+    @fontColor_dropdown_item_hover:#D9E3F3,  // 下拉框展开面板项目（每一个item）鼠标移入字体颜色
+
+    @bgColor_dropdown_item_focus:#1B2942,  // 下拉框展开面板项目（每一个item）选中背景颜色
+    @fontColor_dropdown_item_focus:#D9E3F3,  // 下拉框展开面板项目（每一个item）选中字体颜色
+) {
+  /deep/.ivu-select {
+    &-placeholder {
+      color: @borderColor_selection !important;
+    }
+    &-selection {
+      // IDE中大部分样式
+      background-color: fade(@bgColor_selection, 0.1%); // 设置透明度
+      color: @fontColor_selection;
+      border: 1px solid @borderColor_selection;
+    }
+    &-dropdown {
+      background-color: @bgColor_dropdown;
+    }
+    &-item {
+      color: @fontColor_dropdown;
+      &:hover {
+        background-color: @bgColor_dropdown_item_hover;
+        color: @fontColor_dropdown_item_hover;
+      }
+      &-focus {
+        background-color: @bgColor_dropdown_item_focus;
+        color: @fontColor_dropdown_item_focus;
+      }
+    }
+  }
+  /deep/.ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+  .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
+    font-size: 16px;
+  }
+}

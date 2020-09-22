@@ -29,6 +29,8 @@ export default {
   },
   methods: {
       setFocus(element) {
+          this.$router.push("/designer/" + element.getPage().path);
+          
           this.$P.setFocus(element);
       }
   },

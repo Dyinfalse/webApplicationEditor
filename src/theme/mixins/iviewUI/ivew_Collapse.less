@@ -1,0 +1,23 @@
+.CollapseUI(
+    @allBGColor:#384966, //展开面板的全部背景色 头部使用
+    @border_Color:#384966, // 边框颜色
+    @header_border_Color:#384966, // 头部下边框颜色
+    @content_partition_borderColor:#21304A, // 展开面板间隔颜色
+    @content_BgColor:#21304A, // 展开内容背景颜色
+    @font_Color:#B3C3E2, //字体颜色
+) {
+  /deep/.ivu-collapse {
+    background-color: @allBGColor;
+    border: 1px solid @border_Color;
+    &-item {
+      border-top: 1px solid @content_partition_borderColor !important;
+      & > .ivu-collapse-header {
+        border-bottom: 1px solid @header_border_Color !important;
+        color: @font_Color;
+      }
+    }
+    &-content {
+      background-color: @content_BgColor;
+    }
+  }
+}

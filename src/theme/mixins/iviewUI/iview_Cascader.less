@@ -1,0 +1,29 @@
+.CascaderUI(
+    @item_FontColor:#D9E3F3, // 字体颜色
+    @item_FontColor_hover:#D9E3F3, // 鼠标移入/选中字体颜色
+    @item_bgColor_hover:#1B2942, // 每一项鼠标移入/选中背景颜色
+    @list_right_lineColor:#e8eaec, // 每个展开列表右边线颜色
+) {
+  /deep/.ivu-cascader {
+    &-menu {
+      border-right: 1px solid @list_right_lineColor;
+      &:last-child {
+        border-right-color: transparent;
+        margin-right: -1px;
+      }
+      &-item {
+        color: @item_FontColor;
+        &:hover {
+          color: @item_FontColor_hover;
+          background-color: @item_bgColor_hover;
+        }
+
+        // 选中样式
+        &-active {
+          color: @item_FontColor_hover;
+          background-color: @item_bgColor_hover;
+        }
+      }
+    }
+  }
+}

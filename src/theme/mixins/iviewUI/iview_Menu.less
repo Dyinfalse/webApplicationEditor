@@ -1,0 +1,62 @@
+.menuUI(
+    @menu_fontColor:#72839D, //菜单栏字体颜色
+    @menu_hover_fontColor:white, // 鼠标移入菜单项字体颜色
+    @menu_active_fontColor:white, // 选中后字体颜色
+    @menu_active_BGColor:#556B90,// 选中后背景颜色
+    @menu_active_right_afteerBGColor:white, //选中后右边线伪元素背景颜色
+    @menu_opened_BGColor:#36445E, // 二级菜单打开背景颜色
+
+) {
+  // 去除边上伪元素的白线
+  /deep/.ivu-menu-vertical.ivu-menu-light:after {
+    background-color: transparent;
+  }
+
+  /deep/.ivu-menu {
+    color: @menu_fontColor;
+    // 鼠标移入字体颜色
+    &-item {
+      &:hover {
+        color: @menu_hover_fontColor;
+      }
+    }
+    &-submenu-title {
+      &:hover {
+        color: @menu_hover_fontColor;
+      }
+    }
+    // 选中后样式
+    &-item-active:not(.ivu-menu-submenu) {
+      color: @menu_active_fontColor !important;
+      background-color: @menu_active_BGColor !important;
+      &::after {
+        background-color: @menu_active_right_afteerBGColor !important;
+      }
+    }
+
+    // 二级菜单打开样式
+    &-opened {
+      background-color: @menu_opened_BGColor;
+    }
+  }
+
+  // 折叠样式
+  // 取消折叠的鼠标移入背景样式
+  .ysDropWap {
+    /deep/.ivu-dropdown {
+      &-item {
+        color: @menu_fontColor;
+        &:hover {
+          color: @menu_hover_fontColor;
+          background-color: transparent;
+        }
+      }
+    }
+    /deep/.ivu-tooltip {
+      color: @menu_fontColor;
+      &:hover {
+        color: @menu_hover_fontColor;
+      }
+    }
+  }
+}

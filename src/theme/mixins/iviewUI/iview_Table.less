@@ -1,0 +1,161 @@
+/**
+* Iview 表格样式
+*/
+.tableUI(
+    @table_out_borderColor:#2F3D57, //表格外边框颜色
+    @table_BG_Color:#2F3D57, //表格主体背景颜色
+    @table_header_BG_Color:#384763, //表头背景颜色
+    @table_font_Color:#D9E3F3, //表格字体颜色
+    @table_row_bottomColor:#2F3D57, //表格行间隔的下边框颜色
+    @table_row_BG_hoverAndactiveColor:#435678, //表格行鼠标移入/选中背景颜色
+    @table_row_Color_hoverAndactiveColor:#D9E3F3, //表格行鼠标移入/选中字体颜色
+    @table_header_sortColor:#D9E3F3, // 可以排序的表格头部排序图标颜色
+    @table_header_sortColor_on:#2d8cf0, // 可以排序的表格头部排序图标点击后颜色
+    @table_header_poptipColorAndBGColor:#384763, // 表格筛选弹框头部小三角颜色和背景颜色
+    @table_header_poptipBgColor_hover:#435678, // 表格筛选弹框行鼠标移入背景颜色
+    @table_header_poptipFontColor_selected:#2d8cf0, // 表格筛选弹框行选中字体颜色
+    @mayClick_fontColor:#4598f1, // 表格中可以点击的列的字体样式
+    @mayClick_fontColor_hover:#2d8cf0, // 表格中可以点击的列的字体鼠标移入样式
+) {
+  /deep/.ivu-table {
+    background-color: @table_BG_Color;
+    color: @table_font_Color;
+
+    // 去除伪元素颜色 下边框和有边框的颜色
+    &:before {
+      background-color: @table_BG_Color;
+    }
+    &-fixed {
+      &::before {
+        background-color: @table_BG_Color;
+      }
+      &-right {
+        &::before {
+          background-color: @table_BG_Color;
+        }
+      }
+    }
+
+    &-wrapper-with-border {
+      border-color: @table_out_borderColor;
+    }
+
+    // 修改表头和表行背景颜色
+    & th {
+      background-color: @table_header_BG_Color;
+      border-bottom-color: @table_row_bottomColor;
+    }
+    & td {
+      background-color: @table_BG_Color;
+      border-bottom-color: @table_row_bottomColor;
+    }
+    &-border {
+      &::after {
+        background-color: @table_BG_Color;
+      }
+      & td,
+      & th {
+        border-right: none;
+      }
+    }
+
+    // 表格行鼠标移入样式
+    &-row {
+      &-hover td,
+      &-highlight td {
+        background-color: @table_row_BG_hoverAndactiveColor;
+        color: @table_row_Color_hoverAndactiveColor;
+      }
+    }
+
+    // 有折叠的样式
+    &-cell {
+      &-tree {
+        border: none;
+        background-color: transparent;
+        & > i {
+          font-weight: 900;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        .ivu-icon-ios-add::before {
+          content: "\F11F";
+        }
+        .ivu-icon-ios-remove::before {
+          content: "\F116";
+        }
+      }
+    }
+
+    // 排序按钮样式
+    &-sort {
+      i {
+        color: @table_header_sortColor;
+      }
+      .on {
+        color: @table_header_sortColor_on;
+      }
+    }
+
+    // 筛选按钮样式
+    &-filter {
+      i {
+        color: @table_header_sortColor;
+      }
+      .on {
+        color: @table_header_sortColor_on;
+      }
+      &-footer {
+        button {
+          background-color: rgba(1, 1, 1, 0.01);
+          color: @table_header_sortColor_on;
+          &:hover {
+            background-color: rgba(1, 1, 1, 0.01);
+            color: @table_header_sortColor_on;
+          }
+        }
+      }
+    }
+
+    &-filter {
+      // &-list:hover,
+      &-select-item {
+        color: @table_font_Color;
+        &:hover {
+          background-color: @table_header_poptipBgColor_hover;
+          color: @table_row_Color_hoverAndactiveColor;
+        }
+        &-selected {
+          color: @table_header_poptipFontColor_selected;
+        }
+      }
+    }
+  }
+  /deep/ tr.ivu-table-row-highlight.ivu-table-row-hover td {
+    background-color: @table_row_BG_hoverAndactiveColor;
+  }
+
+  // 筛选样式
+  /deep/.ivu-poptip {
+    &-popper[x-placement^="bottom"],
+    &-popper[x-placement^="top"],
+    &-arrow {
+      &::after {
+        border-bottom-color: @table_header_poptipColorAndBGColor !important;
+        border-top-color: @table_header_poptipColorAndBGColor !important;
+      }
+    }
+    &-inner {
+      background-color: @table_header_poptipColorAndBGColor;
+    }
+  }
+
+  // 表格可点击列样式
+  .ys_mayClick {
+    cursor: pointer;
+    color: @mayClick_fontColor;
+    &:hover {
+      color: @mayClick_fontColor_hover;
+    }
+  }
+}

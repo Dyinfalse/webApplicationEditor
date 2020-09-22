@@ -1,0 +1,101 @@
+/**
+*/
+.modalUi(
+    @bgColor_modal:#2f3b52,  // 背景颜色
+    @fontColor_header:#D9E3F3, // 头部字体颜色
+    @borderColor_header:#2f3b52, // 头部边框颜色
+
+    @fontColor_content:#D9E3F3, // 内容字体颜色
+
+    @borderColor_footer:#2f3b52, // 脚部边框颜色
+    
+    @BtnBGColor_ys_confirm_text_hover:#57627c, // 类型为confirm中button为text的按钮鼠标移入背景色
+  ) {
+  /deep/ .ivu-modal {
+    &-header {
+      border-bottom: 1px solid @borderColor_header;
+      &-inner {
+        font-size: 18px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: @fontColor_header;
+      }
+    }
+    &-content {
+      background-color: @bgColor_modal;
+      color: @fontColor_content;
+      .ivu-icon {
+        cursor: pointer;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+    &-footer {
+      border-top: 1px solid @borderColor_footer;
+    }
+  }
+
+  // confirm样式
+  /deep/.ivu-modal-confirm {
+    &-head-title {
+      font-size: 18px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: @fontColor_header;
+    }
+    &-body {
+      div {
+        color: @fontColor_content;
+      }
+    }
+    &-footer {
+      .ivu-btn-text {
+        &:hover {
+          background-color: @BtnBGColor_ys_confirm_text_hover;
+        }
+      }
+    }
+  }
+
+  // 自定义模态框插槽样式
+
+  // 带有附件的弹框样式
+  .accessoryBox {
+    height: 100%;
+    width: 100%;
+    padding: 6px 15px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    .uploadicon {
+      font-size: 25px;
+      cursor: pointer;
+      &:hover {
+        color: #57a3f3;
+      }
+    }
+  }
+  // 已上传附件弹框样式
+  .uploadedBox {
+    height: 100%;
+    width: 100%;
+    padding: 6px 15px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    .uploadedicon {
+      font-size: 25px;
+      color: #179bff;
+      margin-right: 8px;
+    }
+    .uploadBtn {
+      height: 28px;
+      margin-top: 5px;
+      background-color: rgba(0, 0, 0, 0.001);
+      color: white;
+      font-size: 12px;
+      &:hover {
+        color: #0061ff;
+      }
+    }
+  }
+}

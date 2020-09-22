@@ -1,0 +1,41 @@
+/**
+*  公用的模块主题色值          
+*/
+.CommonUI(
+  @common-FontColor: #B3BDD3, // 公共部分的字体颜色
+  @common-iconfont-Color: #B3BDD3, // 新增字体图标颜色
+
+  @common-block-BgColor:#2f3d57, // 公共分块的背景颜色
+  @common-block-BgColor-hover:#2f3d57, // 公共分块的鼠标移入背景颜色
+  @common-block-second-BgColor:rgba(85, 107, 144, 1), // 公共区块内部嵌套的二级区块的背景颜色
+  @common-block-second-BgColor-hover:rgba(85, 107, 144, 1), // 公共区块内部嵌套的二级区块的鼠标移入背景颜色
+) {
+  .ys-common {
+    // 公共部分的字体颜色 class= ys-common-FontColor
+    &-FontColor {
+      color: @common-FontColor;
+    }
+    // iconfont 字体图标颜色   class= ys-common-iconFont
+    &-iconFont {
+      color: @common-iconfont-Color;
+    }
+
+    // 公共区块的背景颜色  class= ys-common-block
+    &-block {
+      background-color: @common-block-BgColor;
+    }
+    // 区块鼠标移入背景色 class= ys-common-blockHover
+    &-blockHover:hover {
+      background-color: @common-block-BgColor-hover;
+    }
+
+    // 公共区块内部嵌套的二级区块的背景颜色  class= ys-common-block-second
+    &-block-second {
+      background-color: @common-block-second-BgColor;
+    }
+    // 公共区块内部嵌套的二级区块的鼠标移入背景颜色 class= ys-common-blockHover-second
+    &-blockHover-second:hover {
+      background-color: @common-block-second-BgColor-hover;
+    }
+  }
+}

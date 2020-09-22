@@ -1,0 +1,39 @@
+/**
+*   IDE平台头部组件色值         
+*/
+.HeaderUI(
+    @header_bgColor:#354053, //头部组件背景颜色
+    @header_borderColor:#354053, // 头部组件边框颜色
+    @header_active_bgColor:#4c5e7c, //头部组件选中后背景色
+    @header_active_borderColor:#4c5e7c, //头部组件选中后边框色
+    @header_hover_bgColor:#4c5e7c, //头部组件鼠标移入后边框色
+    @header_hover_borderColor:#4c5e7c, //头部组件鼠标移入后边框色 
+    @header_fontSize:16px, // 头部组件字体大小
+    @header_fontColor:#919BB3, // 头部组件字体颜色
+    @header_active_fontSize:16px, // 头部组件选中后字体大小
+    @header_active_fontColor:white, // 头部组件选中后字体颜色
+    @header_hover_fontSize:16px, // 头部组件鼠标移入后字体大小
+    @header_hover_fontColor:white, // 头部组件鼠标移入后字体颜色
+    ) {
+  .ys-header {
+    background-color: @header_bgColor;
+    border: 1px solid @header_borderColor;
+    font-size: @header_fontSize;
+    color: @header_fontColor;
+    font-weight: 600;
+    &:hover {
+      background-color: @header_hover_bgColor;
+      border: 1px solid @header_hover_borderColor;
+      font-size: @header_hover_fontSize;
+      color: @header_hover_fontColor;
+      font-weight: 800;
+    }
+    &-active {
+      background-color: @header_active_bgColor;
+      border: 1px solid @header_active_borderColor;
+      font-size: @header_active_fontSize;
+      color: @header_active_fontColor;
+      font-weight: 800;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+/**
+  @header-color  头部主体色
+  @borderColor_header 头部边框颜色
+  @content-color  中间主体色
+  @borderColor_content 主体边框颜色
+  @footer-color  脚部主体色
+  @menu-color    侧边栏主体色
+*/
+.theme(
+    @header-color:#29364e,
+    @borderColor_header:black,
+    @content-color:#2b344f,
+    @borderColor_content:#2b344f,
+    @footer-color:#0f1932,
+    @menu-color:#1f293d,
+    @scrollbar-bgColor:rgba(1, 1, 1, 0.1), // 滚动条背景颜色
+    @scrollbar-bgColor-thumb:#bfbfbf, // 滚动条滑块颜色
+    @scrollbar-bgColor-thumb-hover:#bfbfbf, // 滚动条滑块鼠标移入颜色
+  ) {
+  .header-wrapper {
+    display: flex;
+    background-color: @header-color;
+    height: 72px;
+    border-bottom: 1px solid @borderColor_header;
+    padding: 0;
+    z-index: 10;
+  }
+  .content-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: @content-color;
+    overflow: hidden;
+    .main-content {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      // padding: 0 50px 20px 50px;
+    }
+  }
+  .side-wrapper {
+    height: 100vh;
+    background-color: @menu-color;
+  }
+  .footer-wrapper {
+    height: 50px;
+    overflow: hidden;
+    padding: 10px;
+    background-color: @footer-color;
+  }
+
+  // 滚动条样式修改
+
+  // ::-webkit-scrollbar 滚动条整体部分
+  // ::-webkit-scrollbar-thumb  滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条）
+  // ::-webkit-scrollbar-track  滚动条的轨道（里面装有Thumb）
+  // ::-webkit-scrollbar-button 滚动条的轨道的两端按钮，允许通过点击微调小方块的位置。
+  // ::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去）
+  // ::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
+  // ::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
+  body::-webkit-scrollbar,
+  div::-webkit-scrollbar,
+  ul::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+  body::-webkit-scrollbar-track,
+  div::-webkit-scrollbar-track,
+  ul::-webkit-scrollbar-track {
+    background: @scrollbar-bgColor;
+    border-radius: 2px;
+  }
+
+  body::-webkit-scrollbar-thumb,
+  div::-webkit-scrollbar-thumb,
+  ul::-webkit-scrollbar-thumb {
+    background: @scrollbar-bgColor-thumb;
+    border-radius: 10px;
+    &:hover {
+      background: @scrollbar-bgColor-thumb-hover;
+    }
+  }
+  body::-webkit-scrollbar-corner,
+  div::-webkit-scrollbar-corner,
+  ul::-webkit-scrollbar-corner {
+    background: #179a16;
+  }
+}

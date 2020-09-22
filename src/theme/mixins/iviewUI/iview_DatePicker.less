@@ -1,0 +1,72 @@
+/**
+* 日期选择和时间选择配置
+*/
+.DatePickerUI(
+    @header_fontColor:white,  // 头部字体颜色
+    @body_fontColor:white, // 内容主体字体颜色
+    @cell_active_bgColor:#0061ff, // 日期选中之后背景颜色
+    @cell_hover_bgColor:#3a4a69, // 日期鼠标移入之后背景颜色
+    @cell_disabled_bgColor:#3a4a69, // 禁用后背景颜色
+) {
+  /deep/.ivu-date-picker {
+    .ivu-select-dropdown {
+      .ivu-date-picker-header {
+        &-label {
+          color: @header_fontColor;
+        }
+      }
+      .ivu-date-picker-cells {
+        &-cell {
+          color: @body_fontColor;
+          &-today {
+            em:after {
+              background-color: @cell_active_bgColor;
+            }
+          }
+          &-focused {
+            background-color: @cell_active_bgColor;
+          }
+          &:hover em {
+            cursor: pointer;
+            background-color: @cell_hover_bgColor;
+          }
+          &-range {
+            &:before {
+              background-color: @cell_hover_bgColor;
+            }
+          }
+          &-selected {
+            em {
+              background-color: @cell_active_bgColor;
+            }
+          }
+          &-disabled{
+            background-color: @cell_disabled_bgColor;
+            &:hover em{
+              cursor: not-allowed;
+            }
+          }
+        }
+        &-focused em {
+          box-shadow: 0 0 0 1px @cell_active_bgColor inset;
+        }
+      }
+
+      //时间选择样式
+      .ivu-time-picker-header {
+        color: @header_fontColor;
+      }
+      .ivu-time-picker-cells-list {
+        .ivu-time-picker-cells-cell {
+          color: @body_fontColor;
+          &:hover {
+            background-color: @cell_hover_bgColor;
+          }
+          &-selected {
+            background-color: @cell_active_bgColor;
+          }
+        }
+      }
+    }
+  }
+}

@@ -16,6 +16,10 @@
                 <span>{{TRANSLATE_ENUM[k]}}</span>
                 <input type="text" v-model="$P.store.pageConfig[k]">
             </p>
+            <p>
+                <span>开启登录功能</span>
+                <input type="text" :key="$router.currentRoute.name" v-model="$P.getPage().isLogin">
+            </p>
             <!-- 导航配置 -->
             <div v-if="$P.store.pageConfig.openNavMenuAble">
                 <button @click="addNav()">addNav</button>
@@ -105,9 +109,12 @@ const TRANSLATE_ENUM = {
     "borderRadius": "圆角",
     "position": "定位方式",
     "verticalAlign": "对齐方式",
-    "displayWidth": "现实器宽度",
-    "displayHeight": "现实器高度",
-    "openNavMenuAble": "开启导航菜单"
+    "displayWidth": "显示器宽度",
+    "displayHeight": "显示器高度",
+    "openNavMenuAble": "开启导航菜单",
+    "loginName": "登录页面",
+    "isLogin": "登录页面",
+    
 }
 
 export default {
@@ -143,7 +150,6 @@ export default {
               text: '',
               menuItems: []
           })
-          console.log(this.$P.store.navConfig)
       },
       addChildMenu(submenu) {
           submenu.menuItems.push({

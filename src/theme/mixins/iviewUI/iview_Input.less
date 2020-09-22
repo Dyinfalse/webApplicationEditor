@@ -1,0 +1,162 @@
+/**
+*/
+.inputUi(
+    // default 样式（默认）
+    @bgColor_default: #313A54, // 背景颜色
+    @borderColor_default: #4D5A73, // 边框颜色
+    @fontColor_default:#D9E3F3, // 字体颜色
+    @bgColor_default_hover: #313A54, // 背景颜色
+    @borderColor_default_hover: #A4B9DE, // 边框颜色
+    @fontColor_default_hover:#D9E3F3, // 字体颜色
+
+    // class = "ys_input_border_bottom"样式  只有下边框情况
+    @bgColor_bbt: #313A54, // 背景颜色
+    @borderColor_bbt: #4D5A73, // 边框颜色
+    @fontColor_bbt:#D9E3F3, // 字体颜色
+    @bgColor_bbt_hover: #313A54, // 背景颜色
+    @borderColor_bbt_hover: #A4B9DE, // 边框颜色
+    @fontColor_bbt_hover:#D9E3F3, // 字体颜色
+
+    // class = "ys_input_search_icon"样式  带图标文本框样式
+    @bgColor_search: #212d43, // 背景颜色
+    @borderColor_search: #212d43, // 边框颜色
+    @fontColor_search:#D9E3F3, // 字体颜色
+    @bgColor_search_hover: #212d43, // 背景颜色
+    @borderColor_search_hover: #D9E3F3, // 边框颜色
+    @fontColor_search_hover:#D9E3F3, // 字体颜色
+
+    // type = "textarea"样式  带图标文本框样式
+    @bgColor_textarea: #313A54, // 背景颜色
+    @borderColor_textarea: #4D5A73, // 边框颜色
+    @fontColor_textarea:#D9E3F3, // 字体颜色
+    @bgColor_textarea_hover: #313A54, // 背景颜色
+    @borderColor_textarea_hover: #A4B9DE, // 边框颜色
+    @fontColor_textarea_hover:#D9E3F3, // 字体颜色
+
+    // 数字输入框样式
+    @bgColor_number:#2f3b52, //数字框背景颜色
+    @number_btn_Color:#2d8cf0, // 数字框按钮背景颜色
+    @number_font_Color:#D9E3F3, // 数字输入框按钮字体颜色
+
+  ) {
+  /deep/ .ivu-input {
+    //  input type= default
+    font-size: 16px;
+    &-default {
+      color: @fontColor_default;
+      background-color: fade(@bgColor_default, 0.1%); // fade设置透明度
+      border: 1px solid @borderColor_default;
+
+      &:hover {
+        color: @fontColor_default_hover;
+        background-color: fade(@bgColor_default_hover, 0.1%);
+        border: 1px solid lighten(@borderColor_default_hover, 20%); //lighten 设置色值增加亮度
+      }
+      &:focus {
+        box-shadow: 0 0 0 1px lighten(@borderColor_default_hover, 10%);
+      }
+    }
+  }
+
+  // 只有下边框的样式
+  .ys_input_border_bottom {
+    /deep/.ivu-input {
+      color: @fontColor_bbt;
+      background-color: fade(@bgColor_bbt, 0.1%); // fade设置透明度
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid @borderColor_bbt;
+
+      &:hover {
+        color: @fontColor_default_hover;
+        background-color: fade(@bgColor_bbt_hover, 0.1%);
+        border-bottom: 1px solid lighten(@borderColor_bbt_hover, 20%); //lighten 设置色值增加亮度
+      }
+      &:focus {
+        border-bottom: 1px solid lighten(@borderColor_bbt_hover, 20%); //lighten 设置色值增加亮度
+        box-shadow: none;
+      }
+    }
+  }
+
+  // 带图标文本框样式
+  .ys_input_search_icon {
+    /deep/.ivu-input {
+      color: @bgColor_search;
+      background-color: fade(@bgColor_search, 0.1%); // fade设置透明度
+      border: 1px solid @borderColor_search;
+
+      &:hover {
+        color: @fontColor_default_hover;
+        background-color: fade(@bgColor_search_hover, 0.1%);
+        border: 1px solid lighten(@borderColor_search_hover, 20%); //lighten 设置色值增加亮度
+      }
+      &:focus {
+        box-shadow: 0 0 0 1px lighten(@borderColor_search_hover, 10%);
+      }
+    }
+  }
+
+  // 富文本样式
+  /deep/textarea.ivu-input {
+    color: @fontColor_textarea;
+    background-color: fade(@bgColor_textarea, 0.1%); // fade设置透明度
+    border: 1px solid @borderColor_textarea;
+
+    &:hover {
+      color: @fontColor_default_hover;
+      background-color: fade(@bgColor_textarea_hover, 0.1%);
+      border: 1px solid lighten(@borderColor_textarea_hover, 20%); //lighten 设置色值增加亮度
+    }
+    &:focus {
+      box-shadow: 0 0 0 1px lighten(@borderColor_textarea_hover, 10%);
+    }
+  }
+
+  // 数字输入框
+  /deep/.ivu-input-number {
+    border: 1px solid @borderColor_default;
+    &-input {
+      color: @fontColor_default;
+      background-color: @bgColor_number; // fade设置透明度
+      border: 1px solid @borderColor_default;
+    }
+    &:hover {
+      color: @fontColor_default_hover;
+      background-color: fade(@bgColor_default_hover, 0.1%);
+      border: 1px solid lighten(@borderColor_default_hover, 20%); //lighten 设置色值增加亮度
+    }
+    &:focus {
+      box-shadow: none;
+    }
+    &-handler {
+      &-wrap {
+        background-color: @number_btn_Color;
+      }
+      &-up-inner {
+        color: @number_font_Color;
+        &:hover {
+          color: @number_font_Color;
+        }
+      }
+      &-down-inner {
+        color: @number_font_Color !important;
+      }
+    }
+  }
+
+  input::-webkit-input-placeholder {
+    color: @borderColor_default;
+  }
+
+  input:-moz-placeholder {
+    color: @borderColor_default;
+  }
+
+  input::-moz-placeholder {
+    color: @borderColor_default;
+  }
+  input:-ms-input-placeholder {
+    color: @borderColor_default;
+  }
+}

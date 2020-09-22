@@ -1,0 +1,182 @@
+@import "./mixins/index.less"; // 头部、脚部、侧边栏和content主题色配置
+@import "./mixins/iviewUI/iview_Button.less"; // iviewUI button自定义样式配置
+@import "./mixins/iviewUI/iview_Input.less"; // iviewUI input自定义样式配置
+@import "./mixins/iviewUI/iview_modal.less"; // iviewUI modal自定义样式配置
+@import "./mixins/iviewUI/iview_DatePicker.less"; // iviewUI DatePicker日期选择自定义样式配置
+@import "./mixins/iviewUI/ivew_Transfer.less"; // iviewUI Transfer穿梭框自定义样式配置
+@import "./mixins/iviewUI/iview_Page.less"; // iviewUI Page分页自定义样式配置
+@import "./mixins/iviewUI/iview_Select.less"; // iviewUI Select下拉框自定义样式配置
+@import "./mixins/iviewUI/iview_Dropdown.less"; // iviewUI 下来菜单自定义样式配置
+@import "./mixins/iviewUI/iview_CheckboxAndRadio.less"; // iviewUI 多选按钮和单选按钮自定义样式配置
+@import "./mixins/iviewUI/iview_Table.less"; // 表格样式
+@import "./mixins/iviewUI/iview_Menu.less"; // 菜单样式
+@import "./mixins/iviewUI/ivew_Collapse.less"; //
+@import "./mixins/iviewUI/iview_Tree.less"; // 树结构组件样式
+@import "./mixins/iviewUI/iview_Cascader.less"; // 联动框组件样式
+
+// 下面是平台自定义组件的公共样式
+@import "./mixins/CustomUI/HeaderUI.less"; // 平台区块头部组件色值配置
+@import "./mixins/CustomUI/commonUI.less"; // 平台区块公共色值配置
+
+.theme1 {
+  //默认的样式
+  .theme();
+  .buttonUi();
+  .inputUi();
+  .modalUi();
+  .DatePickerUI();
+  .TransferUI();
+  .PageUI();
+  .selectUI();
+  .DropdownUI();
+  .CheckboxAndRadioUI();
+  .tableUI();
+  .menuUI();
+  .CollapseUI();
+  .TreeUI();
+  .CascaderUI();
+
+  // 自定义
+  .HeaderUI();
+  .CommonUI();
+}
+.theme2 {
+  .theme(
+    #2c2d35,
+    black,
+    #2a2d35,
+    #2a2d35,
+    yellow,
+    #393e45,
+    rgba(1, 1, 1, 0.1),
+    #bfbfbf,
+    #bfbfbf
+  );
+  .buttonUi(
+    #595c64,
+    #595c64,
+    white,
+    #595c64,
+    #595c64,
+    white,
+    #ffb700,
+    #ffb700,
+    #2a2e33,
+    #ffb700,
+    #ffb700,
+    black,
+    #4f535b,
+    #4f535b,
+    #d9e3f3,
+    #ffb700,
+    #ffb700,
+    black,
+    #2a2e33,
+    #d9e3f3,
+    #d9e3f3,
+    #3c4147,
+    #d9e3f3,
+    #d9e3f3,
+    #3c4147,
+    #575d65,
+    #d9e3f3,
+    #ffb700,
+    #ffb700,
+    white,
+    #0061ff,
+    #0061ff
+  );
+  .inputUi(
+    #000002,
+    #575d65,
+    #d9e3f3,
+    #000002,
+    #ffb700,
+    #ffb700,
+    #000002,
+    #575d65,
+    #d9e3f3,
+    #000002,
+    #ffb700,
+    #ffb700,
+    #3e4046,
+    #3e4046,
+    #f2f4fa,
+    #2c2d31,
+    #ffb700,
+    #ffb700,
+    #000002,
+    #575d65,
+    #d9e3f3,
+    #000002,
+    #ffb700,
+    #ffb700,
+    #2a2d35,
+    #ffb700,
+    black
+  );
+  .modalUi(#2a2d35, #d9e3f3, #2a2d35, #d9e3f3, #2a2d35, #ffb600);
+  .DatePickerUI(#d9e3f3, #d9e3f3, #ffb600, #2a2d35);
+  .TransferUI(#8c0776, red, black, yellow, white);
+  .PageUI(#595c64, #595c64, #bcbfc7, #ffb800, black);
+  .selectUI(
+    #000002,
+    white,
+    #d9e3f3,
+    #3e4046,
+    #d9e3f3,
+    #2c2d31,
+    #d9e3f3,
+    #2c2d31,
+    #d9e3f3
+  );
+  .DropdownUI(#d9e3f3, #3e4046, #2c2d31, #d9e3f3);
+  .CheckboxAndRadioUI(
+    #d9e3f3,
+    #585b64,
+    #585b64,
+    #ffb505,
+    #ffb505,
+    black,
+    #d9e3f3,
+    #3e4046,
+    #d9e3f3,
+    #ffb505,
+    #ffb505
+  );
+  .tableUI(
+    #3c4147,
+    #3c4147,
+    #2a2e33,
+    white,
+    #3c4147,
+    #c99715,
+    black,
+    #d9e3f3,
+    #c99715,
+    #2a2e33,
+    #c99715,
+    #c99715,
+    #4598f1,
+    #2d8cf0
+  );
+  .menuUI(white, #ffb505, black, #c99715, #ffb700, #41474d);
+  .CascaderUI(white, white, #2c2d31, #d9e3f3);
+
+  // 自定义
+  .HeaderUI(
+    #3c4147,
+    #3c4147,
+    #ffb700,
+    #ffb700,
+    #ffb700,
+    #ffb700,
+    16px,
+    #d1e2ff,
+    16px,
+    black,
+    16px,
+    black
+  );
+  .CommonUI(#b8c1d0, #b8c1d0, #3c4147, #3c4147, #2a2e33, #2a2e33);
+}

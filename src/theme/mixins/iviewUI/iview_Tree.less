@@ -1,0 +1,19 @@
+.TreeUI(
+    @fontColor:#B3C3E2, //字体颜色
+    @tree_item_BgColor:#384966, // 树节点鼠标移入和选中背景颜色
+    @font_active_Color:#B3C3E2, // 树节点鼠标移入和选中字体颜色
+) {
+  /deep/.ivu-tree {
+    color: @fontColor;
+    &-title {
+      color: @fontColor;
+      &:hover {
+        background-color: @tree_item_BgColor;
+        color: @font_active_Color;
+      }
+      &-selected {
+        background-color: @tree_item_BgColor;
+      }
+    }
+  }
+}

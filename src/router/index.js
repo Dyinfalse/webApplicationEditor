@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Designer from '../views/Designer';
+import Login from '../components/graceComponents/Login';
 
 Vue.use(VueRouter)
 

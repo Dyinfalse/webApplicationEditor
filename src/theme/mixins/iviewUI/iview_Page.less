@@ -1,0 +1,44 @@
+/**
+    @bgColor_ys             背景颜色
+    @borderColor_ys         边框颜色
+    @fontColor_ys           字体颜色
+    @bgColor_ys_select      选中背景颜色
+*/
+.PageUI(
+    @bgColor_ys:#3a4a69,
+    @borderColor_ys:#3a4a69,
+    @fontColor_ys:#D9E3F3,
+    @bgColor_ys_select:#0061ff,
+    @fontColor_ys_select:#D9E3F3,  //选中后字体颜色
+) {
+  /deep/.ivu-page {
+    &-prev {
+      background-color: @bgColor_ys;
+      border: 1px solid @borderColor_ys;
+      a {
+        color: @fontColor_ys;
+      }
+    }
+    &-item {
+      background-color: @bgColor_ys;
+      border: 1px solid @borderColor_ys;
+      a {
+        color: @fontColor_ys;
+      }
+      &-active {
+        background-color: @bgColor_ys_select;
+        border: 1px solid @bgColor_ys_select;
+        a {
+          color: @fontColor_ys_select;
+        }
+      }
+    }
+    &-next {
+      background-color: @bgColor_ys;
+      border: 1px solid @borderColor_ys;
+      a {
+        color: @fontColor_ys;
+      }
+    }
+  }
+}

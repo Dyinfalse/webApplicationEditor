@@ -120,6 +120,12 @@ export default class Element {
          if(i == -1) throw "删除组件异常! RemoveElementException: can not find current element in parent";
          this.parent[key].splice(i, 1);
    }
+   /**
+    * 获取元素所在页面
+    */
+   getPage() {
+      return this.parent.isPage ? this.parent : this.parent.getPage();
+   }
 
    /**
     * 转JSON

@@ -1,7 +1,7 @@
 <template>
     <div class="PageTree">
       <div v-for="(page, path) in $P.pageSet" :key="path">
-        <div @click="toUrl(path)">
+        <div>
           {{path}}
           <ElementTree :elements="page.elements"></ElementTree>
         </div>
@@ -23,9 +23,6 @@ export default {
     
   },
   methods: {
-      toUrl(path){
-        this.$router.push("/designer/" + path);
-      }
   },
   mounted() {
   }

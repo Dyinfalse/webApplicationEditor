@@ -1,0 +1,56 @@
+/*
+* 多选按钮和单选按钮样式
+*/
+.CheckboxAndRadioUI(
+    // 多选checkbox
+    @checkbox_FontColor:#d9e3f3, // 多选框文字颜色
+    @checkbox_defBgColor:#384966, // 默认没有选中背景颜色
+    @checkbox_defBorderColor:#d9e3f3, // 没有选中边框颜色
+    @checkbox_checkBgColor:#005ffc, // 选中后的背景颜色
+    @checkbox_checkBorderColor:#005ffc, // 选中后的边框颜色
+    @checkbox_checkIconColor:white, // 选中后的图标字体颜色
+
+    // 单选radio
+    @radio_FontColor:#d9e3f3, // 单选框文字颜色
+    @radio_defBgColor:#384966, // 默认没有选中背景颜色
+    @radio_defBorderColor:#d9e3f3, // 没有选中边框颜色
+    @radio_checkBgColor:#005ffc, // 选中后的背景颜色
+    @radio_checkBorderColor:white, // 选中后的边框颜色
+
+) {
+  // 多选按钮
+  /deep/.ivu-checkbox {
+    &-default {
+      color: @checkbox_FontColor;
+    }
+    &-inner {
+      background-color: @checkbox_defBgColor;
+      border: 1px solid @checkbox_defBorderColor;
+    }
+  }
+  /deep/.ivu-checkbox-checked .ivu-checkbox-inner {
+    background-color: @checkbox_checkBgColor;
+    border: 1px solid @checkbox_checkBorderColor;
+    &:after {
+      border: 2px solid @checkbox_checkIconColor;
+      border-top: 0;
+      border-left: 0;
+    }
+  }
+
+  // 单选按钮
+  // 多选按钮
+  /deep/.ivu-radio-default {
+    color: @radio_FontColor;
+  }
+  /deep/.ivu-radio-inner {
+    background-color: @radio_defBgColor;
+    border: 1px solid @radio_defBorderColor;
+  }
+  /deep/.ivu-radio-checked .ivu-radio-inner {
+    border-color: @radio_checkBorderColor;
+    &:after {
+      background-color: @radio_checkBgColor;
+    }
+  }
+}

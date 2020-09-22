@@ -16,7 +16,9 @@
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0",
-    "webpack-require-http": "^0.4.3"
+    "webpack-require-http": "^0.4.3",
+    "ys-base-js": "^0.1.1",
+    "ys-vue-basecom": "^0.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

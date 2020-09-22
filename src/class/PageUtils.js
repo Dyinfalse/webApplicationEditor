@@ -28,7 +28,7 @@ export default class PageUtils {
             pageConfig: {
                 displayWidth: 1920,
                 displayHeight: 1080,
-                openNavMenuAble: false
+                openNavMenuAble: false,
             },
             /**
              * 导航配置
@@ -50,7 +50,7 @@ export default class PageUtils {
     }
 
     /**
-     * 获取一个页面的配置
+     * 获取当前页面的配置
      */
     getPage(path){
         path = path ? path : this.router.currentRoute.fullPath;

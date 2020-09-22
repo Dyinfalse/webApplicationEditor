@@ -1,0 +1,19 @@
+.DropdownUI(
+@FontColor:#d9e3f3,  // 字体颜色
+@bgColor_item:#3C5072, // 展开后项目背景色
+@bgColor_item_hover:#1B2942, // 鼠标移入项目背景色
+@FontColor_hover:#D9E3F3,  // 鼠标移入字体颜色
+) {
+  /deep/.ivu-dropdown-menu {
+    .ivu-dropdown-item {
+      color: @FontColor;
+      display: flex;
+      justify-content: center;
+      background-color: @bgColor_item;
+      &:hover {
+        color: @FontColor_hover;
+        background-color: @bgColor_item_hover;
+      }
+    }
+  }
+}
