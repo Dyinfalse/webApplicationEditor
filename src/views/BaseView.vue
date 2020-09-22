@@ -9,7 +9,7 @@
         <option value="IdeButton">IdeButton</option>
         <option value="IdeSelect">IdeSelect</option>
         <option value="IviewTable">IviewTable</option>
-        <option value="Login">Login</option>
+        <option value="IdeYsHeader">IdeYsHeader</option>
         
       </select>
       <button @click="addComponent()" style="margin-right: 20px">add</button>

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
 import store from './store'
+import router from './router'
 import 'view-design/dist/styles/iview.css';
+
 import PageUtils from './class/PageUtils';
 // 引入全局配置文件
 import "@/utils/system_options";
