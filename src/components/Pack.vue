@@ -52,8 +52,9 @@ export default {
 .pack {
     box-sizing: border-box;
     overflow: hidden;
+    background: rgb(43, 52, 79);
 }
 .focus {
-    border: 2px dashed #000;
+    border: 2px dashed #fff;
 }
 </style>

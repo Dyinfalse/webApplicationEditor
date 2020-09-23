@@ -1,7 +1,6 @@
 <template>
     <Pack :element="element">
         <component
-            :id="element.name"
             :is="element.name"
             :styleConfig="element.style"
             :element="element"

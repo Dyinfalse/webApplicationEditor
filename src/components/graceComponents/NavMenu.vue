@@ -2,7 +2,7 @@
     <div class="flex-box content">
         <div class="left">
             <div class="logo"></div>
-            <Menu v-if="$P.store.pageConfig.openNavMenuAble && !$P.getPage().isLogin" :accordion="true" :active-name="$router.currentRoute.name" >
+            <Menu v-if="$P.store.pageConfig.openNavMenuAble && !$P.getPage().isLogin" :accordion="true" :active-name="$route.name" >
                 <Submenu v-for="submenu in $P.store.navConfig" :name="submenu.id" :key="submenu.id">
                     <template slot="title">
                         <Icon type="ios-paper"></Icon>

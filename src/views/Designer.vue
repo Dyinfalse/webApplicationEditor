@@ -19,7 +19,7 @@
       <!-- <router-view :key="$route.fullPath"/> -->
       <BaseView></BaseView>
       <Ctrl></Ctrl>
-      <PageTree :key="$router.currentRoute.name"></PageTree>
+      <PageTree :key="$route.name"></PageTree>
   </div>
 </template>
 

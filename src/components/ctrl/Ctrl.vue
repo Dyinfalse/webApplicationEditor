@@ -18,7 +18,7 @@
             </p>
             <p>
                 <span>开启登录功能</span>
-                <input type="text" :key="$router.currentRoute.name" v-model="$P.getPage().isLogin">
+                <input type="text" :key="$route.name" v-model="$P.getPage().isLogin">
             </p>
             <!-- 导航配置 -->
             <div v-if="$P.store.pageConfig.openNavMenuAble">

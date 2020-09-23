@@ -14,7 +14,7 @@
         <img src="./img/userimg.png" alt="" />
       </div>
       <DropdownMenu slot="list">
-        <DropdownItem @click.native="LogOut">退出登1录</DropdownItem>
+        <DropdownItem @click.native="LogOut">退出登录</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>
@@ -87,6 +87,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
 
       .UserImg {
         height: 36px;

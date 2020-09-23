@@ -1,6 +1,6 @@
 <template>
     <div class="ElementTree">
-      <div v-for="element in elements" :key="element.uuid">
+      <div v-for="element in scopeElements" :key="element.uuid">
         <div>
             <p :class="$P.store.focus[0] == element ? 'focus' : ''"  @click="setFocus(element)">{{element.name}}</p>
             <ElementTree :elements="element.childElement"></ElementTree>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
       return {
-        
+        scopeElements: this.elements
       }
   },
   computed: {
