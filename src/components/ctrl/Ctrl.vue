@@ -112,9 +112,9 @@ const TRANSLATE_ENUM = {
     "displayWidth": "显示器宽度",
     "displayHeight": "显示器高度",
     "openNavMenuAble": "开启导航菜单",
+    "openHeaderAble": "开启公共头部",
     "loginName": "登录页面",
     "isLogin": "登录页面",
-    
 }
 
 export default {

@@ -21,9 +21,9 @@ export default class Page {
      * 页面样式
      */
     style = {
-        background: '#ccc',
+        background: '#2b344f',
         width: '100%',
-        height: 'auto'
+        height: 'calc(100% - 67px)'
     };
     /**
      * 页面包含的元素

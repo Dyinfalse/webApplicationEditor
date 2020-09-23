@@ -66,8 +66,7 @@
                     :style="{...comStyle, width: this.$P.store.pageConfig.displayWidth + 'px', height: this.$P.store.pageConfig.displayHeight + 'px'}"
                     @mousedown='mousedown'>
                     <div class="gridBack ruler-canvas-panel-box" id="canvas-box">
-                        <NavMenu :key="navMenuKey" v-if="$P.store.pageConfig.openNavMenuAble && !$P.getPage().isLogin"></NavMenu>
-                        <router-view v-else :key="$route.fullPath"/>
+                        <NavMenu :key="navMenuKey"></NavMenu>
                     </div>
                 </div>
             </div>
@@ -740,6 +739,7 @@ export default {
                     div.style.width = `0px`;
                     div.style.height = `0px`;
                     div.style.position = `absolute`;
+                    div.style.zIndex = `999`;
                     box.appendChild(div);
                 }
 

@@ -29,6 +29,7 @@ export default class PageUtils {
                 displayWidth: 1920,
                 displayHeight: 1080,
                 openNavMenuAble: false,
+                openHeaderAble: false
             },
             /**
              * 导航配置

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="flex-box content">
+    <div class="flex-box header-content">
         <div class="header">
             <div class="header-tab">
                 <HeaderTabs></HeaderTabs>
@@ -44,8 +44,8 @@ export default {
 }
 </script>
 <style scoped lang="less">
-    .content {
-        height: 100%;
+    .header-content {
+        height: 67px;
         display: flex;
         background-color: #29364e;
         border-bottom: 1px solid black;
