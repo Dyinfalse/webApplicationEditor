@@ -13,4 +13,9 @@ export default class LoginRoute extends RouteBase {
         }
     }
 
+    /** @override */
+    getImport(): string {
+        return `import ${this.name} from "../components/${this.name}";`;
+    }
+
 }

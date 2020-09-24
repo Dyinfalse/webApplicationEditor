@@ -1,7 +1,9 @@
 import PageConfig from "../interfaces/PageConfig";
 import Base from "../utils/Base";
 import File from '../utils/File';
-import RouterBuilder from './RouterBuilder';
+import RouterBuilder from './Route/RouterBuilder';
+import PageBuilder from './Page/PageBuilder';
+import NavBuilder from "./NavBuilder";
 /**
  * 构建主要入口类
  */
@@ -43,7 +45,17 @@ export default class VueBuilder extends Base {
         /**
          * 构建路由文件
          */
-        new RouterBuilder(this.pageConfig.pages).start(this.targetPath);
+        new RouterBuilder(this.pageConfig).start(this.targetPath);
+        /**
+         * 构建页面 vue 文件
+         */
+        new PageBuilder(this.pageConfig.pages).start(this.targetPath);
+        /**
+         * 构建导航
+         */
+        if(this.pageConfig.frame.openNavMenuAble){
+            new NavBuilder(this.pageConfig.navConfig).start(this.targetPath);
+        }
     }
 
     successful(): void {

@@ -7,28 +7,24 @@
     },
     "navConfig": [{
         "id": 0,
-        "text": "菜单0",
-        "menuItems": [{
-            "id": 0,
-            "url": "base_1",
-            "text": "子菜单0-0"
-        }, {
-            "id": 1,
-            "url": "base_2",
-            "text": "子菜单0-1"
-        }]
-    }, {
-        "id": 1,
         "text": "菜单1",
         "menuItems": [{
             "id": 0,
-            "url": "base_3",
-            "text": "子菜单1-0"
+            "url": "base_1",
+            "text": "子菜单1"
         }, {
             "id": 1,
-            "url": "base_4",
-            "text": "子菜单-1-1"
+            "url": "base_2",
+            "text": "子菜单2"
+        }, {
+            "id": 2,
+            "url": "base_3",
+            "text": "子菜单3"
         }]
+    }, {
+        "id": 1,
+        "text": "",
+        "menuItems": []
     }],
     "pages": [{
         "path": "base_0",
@@ -41,8 +37,8 @@
         },
         "isLogin": "false1",
         "elements": [{
-            "uuid": "47353172-85d1-4a30-9219-89a6ebb4b325-1600918619590",
-            "name": "IdeText",
+            "uuid": "268a8a36-556f-4bcd-af93-49161240f307-1600941133930",
+            "name": "IdeDiv",
             "style": {
                 "width": "100px",
                 "height": "100px",
@@ -59,10 +55,8 @@
                 "bottom": "0px",
                 "verticalAlign": "top"
             },
-            "isBlock": false,
-            "data": {
-                "value": ""
-            },
+            "isBlock": true,
+            "data": {},
             "childElement": []
         }]
     }, {
@@ -76,119 +70,12 @@
         },
         "isLogin": false,
         "elements": [{
-            "uuid": "3a170591-43f8-4fe4-99e9-c25a5edbcf6f-1600918715811",
-            "name": "IdeDiv",
-            "style": {
-                "width": "300px",
-                "height": "300px",
-                "background": "#2b344f",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "unset",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": true,
-            "data": {},
-            "childElement": [{
-                "uuid": "8cbfb896-cb6b-4950-a82c-2a006655b919-1600918744926",
-                "name": "IdeInput",
-                "style": {
-                    "width": "100px",
-                    "height": "30px",
-                    "background": "#2b344f",
-                    "border": "none",
-                    "fontSize": "14px",
-                    "borderRadius": "0px",
-                    "paddingLeft": "10px",
-                    "paddingRight": "10px",
-                    "paddingTop": "5px",
-                    "paddingBottom": "5px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "test1"
-                },
-                "childElement": []
-            }, {
-                "uuid": "bd09c011-5a11-449e-9c97-2b0f37222b9f-1600918783020",
-                "name": "IdeDiv",
-                "style": {
-                    "width": "200px",
-                    "height": "200px",
-                    "background": "#2b344f",
-                    "border": "none",
-                    "fontSize": "14px",
-                    "borderRadius": "0px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": true,
-                "data": {},
-                "childElement": [{
-                    "uuid": "3126d456-f9fe-45a2-a385-6f8d865432e2-1600918806220",
-                    "name": "IdeImage",
-                    "style": {
-                        "width": "100px",
-                        "height": "100px",
-                        "background": "#fff",
-                        "border": "none",
-                        "fontSize": "14px",
-                        "borderRadius": "0px"
-                    },
-                    "packStyle": {
-                        "position": "unset",
-                        "left": "0px",
-                        "right": "0px",
-                        "top": "0px",
-                        "bottom": "0px",
-                        "verticalAlign": "top"
-                    },
-                    "isBlock": false,
-                    "data": {
-                        "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-                    },
-                    "childElement": []
-                }]
-            }]
-        }]
-    }, {
-        "path": "base_2",
-        "name": "base_2",
-        "vue": "Page",
-        "style": {
-            "background": "#2b344f",
-            "width": "100%",
-            "height": "calc(100% - 67px)"
-        },
-        "isLogin": false,
-        "elements": [{
-            "uuid": "371206dd-98ca-413f-8be8-7ed37fe080b7-1600918818937",
-            "name": "IdeSelect",
+            "uuid": "c97d40ec-2cab-4df4-84da-27d18a5640f2-1600941217653",
+            "name": "IdeInput",
             "style": {
                 "width": "200px",
                 "height": "30px",
-                "background": "#2b344f",
+                "background": "#fff",
                 "border": "none",
                 "fontSize": "14px",
                 "borderRadius": "0px",
@@ -207,19 +94,146 @@
             },
             "isBlock": false,
             "data": {
-                "value": "1",
+                "value": "78687998"
+            },
+            "childElement": []
+        }, {
+            "uuid": "17a48242-386e-4560-bdd5-1fdb3d1c69b5-1600941561020",
+            "name": "IdeSelect",
+            "style": {
+                "width": "200px",
+                "height": "30px",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px",
+                "paddingLeft": "10px",
+                "paddingRight": "10px",
+                "paddingTop": "5px",
+                "paddingBottom": "5px"
+            },
+            "packStyle": {
+                "position": "unset",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "3",
                 "options": [{
                     "name": "选项1",
-                    "value": "0"
-                }, {
-                    "name": "选项2",
                     "value": "1"
                 }, {
-                    "name": "选项3",
+                    "name": "选项2",
                     "value": "2"
+                }, {
+                    "name": "选项3",
+                    "value": "3"
                 }]
             },
             "childElement": []
+        }]
+    }, {
+        "path": "base_2",
+        "name": "base_2",
+        "vue": "Page",
+        "style": {
+            "background": "#2b344f",
+            "width": "100%",
+            "height": "calc(100% - 67px)"
+        },
+        "isLogin": false,
+        "elements": [{
+            "uuid": "6c9cd854-054d-4d2c-9c47-c71eb27c199e-1600941213837",
+            "name": "IdeDiv",
+            "style": {
+                "width": "500px",
+                "height": "500px",
+                "background": "#000",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "unset",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": true,
+            "data": {},
+            "childElement": [{
+                "uuid": "3a2697eb-481c-403c-9136-2b47e35676e9-1600941478606",
+                "name": "IdeDiv",
+                "style": {
+                    "width": "400px",
+                    "height": "400px",
+                    "background": "#222",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "b89f94f6-300e-48fd-801b-01e6d97e52d8-1600941503725",
+                    "name": "IdeDiv",
+                    "style": {
+                        "width": "300px",
+                        "height": "300px",
+                        "background": "#333",
+                        "border": "none",
+                        "fontSize": "14px",
+                        "borderRadius": "0px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": true,
+                    "data": {},
+                    "childElement": [{
+                        "uuid": "7b03951e-244d-43b0-b55e-66c1b7264f6b-1600941521002",
+                        "name": "IdeDiv",
+                        "style": {
+                            "width": "200px",
+                            "height": "200px",
+                            "background": "#444",
+                            "border": "none",
+                            "fontSize": "14px",
+                            "borderRadius": "0px"
+                        },
+                        "packStyle": {
+                            "position": "unset",
+                            "left": "0px",
+                            "right": "0px",
+                            "top": "0px",
+                            "bottom": "0px",
+                            "verticalAlign": "top"
+                        },
+                        "isBlock": true,
+                        "data": {},
+                        "childElement": []
+                    }]
+                }]
+            }]
         }]
     }, {
         "path": "base_3",
@@ -232,11 +246,11 @@
         },
         "isLogin": false,
         "elements": [{
-            "uuid": "0238b81c-6c03-451e-87aa-587d94992c12-1600918873279",
+            "uuid": "87cdb4ed-e7ae-47b8-ae2b-481ae987865a-1600941228668",
             "name": "IviewTable",
             "style": {
                 "width": "100%",
-                "height": "200px",
+                "height": "",
                 "background": "#fff",
                 "border": "none",
                 "fontSize": "14px",
@@ -255,15 +269,15 @@
                 "columns1": [{
                     "title": "姓名",
                     "key": "name",
-                    "__id": "L7by0O"
+                    "__id": "wI4yvI"
                 }, {
                     "title": "年龄",
                     "key": "age",
-                    "__id": "hp35wV"
+                    "__id": "sKGvDt"
                 }, {
                     "title": "地址",
                     "key": "address",
-                    "__id": "aCcNbX"
+                    "__id": "4DrefR"
                 }],
                 "data1": [{
                     "name": "王小明",
@@ -285,16 +299,5 @@
             },
             "childElement": []
         }]
-    }, {
-        "path": "base_4",
-        "name": "base_4",
-        "vue": "Page",
-        "style": {
-            "background": "#2b344f",
-            "width": "100%",
-            "height": "calc(100% - 67px)"
-        },
-        "isLogin": false,
-        "elements": []
     }]
 }

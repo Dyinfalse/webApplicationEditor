@@ -13,24 +13,26 @@ export default class RouteBase extends Base implements Route {
 
     constructor (routeInfo: Page) {
         super();
-        let { path, name, vue } = routeInfo;
+        let { path, name } = routeInfo;
         this.path = path;
         this.name = name;
-        this.component = vue;
+        this.component = name;
     }
     /** @override */
     getImport(): string {
-        return `import ${this.name} from "../views/${this.name}"`;
+        return `import ${this.component} from "../views/${this.component}";`;
     }
 
     /** @override */
     toString(): string {
-        return (`{` +
+        return (`{ ` +
             `path: '${this.path}',` +
             (this.name ? `name: '${this.name}',` : '') +
             (this.component ? `component: ${this.name},` : '') +
             (this.redirect ? `redirect: '${this.redirect}',` : '') +
             (this.children ? `children: ${this.children}` : '') +
-        `}`);
+        `}`)
+        /** 格式化 */
+        .replace(',}', ' }').replace(/\,/g, ', ');
     }
 }

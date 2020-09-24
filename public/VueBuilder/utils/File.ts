@@ -4,6 +4,12 @@ const fs: any = require('fs');
 
 export default class File extends Base {
     /**
+     * 是否存在文件
+     */
+    fileHas(path: string): boolean {
+        return fs.existsSync(path);
+    }
+    /**
      * 文件写入
      */
     write(target: string, data: string) {
