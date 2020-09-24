@@ -1,8 +1,7 @@
-import Page from "../interfaces/Page";
+import PageConfig from "../interfaces/PageConfig";
 import Base from "../utils/Base";
 import File from '../utils/File';
-
-const pageConfig: Array<Page> = require('./test.json');
+import RouterBuilder from './RouterBuilder';
 /**
  * 构建主要入口类
  */
@@ -23,6 +22,10 @@ export default class VueBuilder extends Base {
      * 目标项目跟路径
      */
     targetPath: string = this.rootPath + '../webApplicationRunner/';
+    /**
+     * 配置信息
+     */
+    pageConfig: PageConfig = require('../../../test.json');
 
     constructor () {
         super();
@@ -38,7 +41,10 @@ export default class VueBuilder extends Base {
         if(this.file.delete(this.targetPath + 'src/views')){
             this.logger.print('删除views成功');
         }
-
+        /**
+         * 构建路由文件
+         */
+        new RouterBuilder(this.pageConfig.pages).start();
     }
 
     successful(): void {

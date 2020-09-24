@@ -81,18 +81,6 @@ export default class Page {
 
     }
     /**
-     * 转Json 用于保存
-     */
-    toJson() {
-        return {
-            path: this.path,
-            name: this.name,
-            vue: this.vue.name,
-            style: this.style,
-            elements: this.elements.map(e => e.toJson())
-        }
-    }
-    /**
      * 创建一个页面, 自动在页面路由中增加
      */
     addRouter () {
@@ -115,5 +103,18 @@ export default class Page {
          * 跳转到新增加的路由
          */
         router.push("/designer/" + this.path)
+    }
+    /**
+     * 转Json 用于保存
+     */
+    toJson() {
+        return {
+            path: this.path,
+            name: this.name,
+            vue: this.vue.name,
+            style: this.style,
+            isLogin: this.isLogin,
+            elements: this.elements.map(e => e.toJson())
+        }
     }
 }

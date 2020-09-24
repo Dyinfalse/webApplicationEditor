@@ -82,9 +82,13 @@ export default class PageUtils {
      * 获取页面的所有配置JSON信息
      */
     toJson() {
-        let config = {};
+        let config = {
+            frame: this.store.pageConfig,
+            navConfig: this.store.navConfig,
+            pages: []
+        };
         for(let k in this.pageSet) {
-            config[k] = this.pageSet[k].toJson();
+            config.pages.push(this.pageSet[k].toJson());
         }
         return JSON.stringify(config);
     }
