@@ -3,27 +3,31 @@
         "displayWidth": 1920,
         "displayHeight": 1080,
         "openNavMenuAble": "false1",
-        "openHeaderAble": false
+        "openHeaderAble": "false1"
     },
     "navConfig": [{
         "id": 0,
-        "text": "test",
+        "text": "菜单0",
         "menuItems": [{
             "id": 0,
-            "url": "base_0",
-            "text": "test1"
+            "url": "base_1",
+            "text": "子菜单0-0"
         }, {
             "id": 1,
-            "url": "base_1",
-            "text": "test2"
+            "url": "base_2",
+            "text": "子菜单0-1"
         }]
     }, {
         "id": 1,
-        "text": "menu",
+        "text": "菜单1",
         "menuItems": [{
             "id": 0,
-            "url": "base_2",
-            "text": "menu1"
+            "url": "base_3",
+            "text": "子菜单1-0"
+        }, {
+            "id": 1,
+            "url": "base_4",
+            "text": "子菜单-1-1"
         }]
     }],
     "pages": [{
@@ -35,10 +39,10 @@
             "width": "100%",
             "height": "calc(100% - 67px)"
         },
-        "isLogin": false,
+        "isLogin": "false1",
         "elements": [{
-            "uuid": "adbee338-f45c-4f51-8c92-0d727e9166c2-1600915213125",
-            "name": "IdeImage",
+            "uuid": "47353172-85d1-4a30-9219-89a6ebb4b325-1600918619590",
+            "name": "IdeText",
             "style": {
                 "width": "100px",
                 "height": "100px",
@@ -57,55 +61,7 @@
             },
             "isBlock": false,
             "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-            },
-            "childElement": []
-        }, {
-            "uuid": "fe9cba7b-2332-4bab-9a48-6284796b2e1f-1600915213264",
-            "name": "IdeImage",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "unset",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-            },
-            "childElement": []
-        }, {
-            "uuid": "ab36ca84-f942-4ba0-8907-e00df2876e79-1600915213393",
-            "name": "IdeImage",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "unset",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
+                "value": ""
             },
             "childElement": []
         }]
@@ -120,36 +76,12 @@
         },
         "isLogin": false,
         "elements": [{
-            "uuid": "a3cf79b8-5b7f-4601-acdb-6186ab498450-1600915215146",
-            "name": "IdeImage",
-            "style": {
-                "width": "100px",
-                "height": "100px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px"
-            },
-            "packStyle": {
-                "position": "unset",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
-            },
-            "childElement": []
-        }, {
-            "uuid": "d9d59dfe-1125-48ed-8f99-3f6c06402eaf-1600915217015",
+            "uuid": "3a170591-43f8-4fe4-99e9-c25a5edbcf6f-1600918715811",
             "name": "IdeDiv",
             "style": {
                 "width": "300px",
                 "height": "300px",
-                "background": "#fff",
+                "background": "#2b344f",
                 "border": "none",
                 "fontSize": "14px",
                 "borderRadius": "0px"
@@ -165,12 +97,12 @@
             "isBlock": true,
             "data": {},
             "childElement": [{
-                "uuid": "20ac5735-4f4a-4bb2-b89f-f22142c106d0-1600915227666",
+                "uuid": "8cbfb896-cb6b-4950-a82c-2a006655b919-1600918744926",
                 "name": "IdeInput",
                 "style": {
                     "width": "100px",
                     "height": "30px",
-                    "background": "#fff",
+                    "background": "#2b344f",
                     "border": "none",
                     "fontSize": "14px",
                     "borderRadius": "0px",
@@ -189,16 +121,16 @@
                 },
                 "isBlock": false,
                 "data": {
-                    "value": ""
+                    "value": "test1"
                 },
                 "childElement": []
             }, {
-                "uuid": "bbd92029-5429-48a0-ae03-e30db527ef6a-1600915229785",
-                "name": "IdeButton",
+                "uuid": "bd09c011-5a11-449e-9c97-2b0f37222b9f-1600918783020",
+                "name": "IdeDiv",
                 "style": {
-                    "width": "100px",
-                    "height": "100px",
-                    "background": "#fff",
+                    "width": "200px",
+                    "height": "200px",
+                    "background": "#2b344f",
                     "border": "none",
                     "fontSize": "14px",
                     "borderRadius": "0px"
@@ -211,59 +143,33 @@
                     "bottom": "0px",
                     "verticalAlign": "top"
                 },
-                "isBlock": false,
-                "data": {
-                    "value": "按钮"
-                },
-                "childElement": []
-            }, {
-                "uuid": "8fca13a2-f148-422f-b431-d3e9c8d07eee-1600915230158",
-                "name": "IdeButton",
-                "style": {
-                    "width": "100px",
-                    "height": "100px",
-                    "background": "#fff",
-                    "border": "none",
-                    "fontSize": "14px",
-                    "borderRadius": "0px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "按钮"
-                },
-                "childElement": []
-            }, {
-                "uuid": "efcf4c81-e245-41a9-947a-ff67af6679b5-1600915230313",
-                "name": "IdeButton",
-                "style": {
-                    "width": "100px",
-                    "height": "100px",
-                    "background": "#fff",
-                    "border": "none",
-                    "fontSize": "14px",
-                    "borderRadius": "0px"
-                },
-                "packStyle": {
-                    "position": "unset",
-                    "left": "0px",
-                    "right": "0px",
-                    "top": "0px",
-                    "bottom": "0px",
-                    "verticalAlign": "top"
-                },
-                "isBlock": false,
-                "data": {
-                    "value": "按钮"
-                },
-                "childElement": []
+                "isBlock": true,
+                "data": {},
+                "childElement": [{
+                    "uuid": "3126d456-f9fe-45a2-a385-6f8d865432e2-1600918806220",
+                    "name": "IdeImage",
+                    "style": {
+                        "width": "100px",
+                        "height": "100px",
+                        "background": "#fff",
+                        "border": "none",
+                        "fontSize": "14px",
+                        "borderRadius": "0px"
+                    },
+                    "packStyle": {
+                        "position": "unset",
+                        "left": "0px",
+                        "right": "0px",
+                        "top": "0px",
+                        "bottom": "0px",
+                        "verticalAlign": "top"
+                    },
+                    "isBlock": false,
+                    "data": {
+                        "src": "https://cn.bing.com/th?id=OHR.CityofGuanajuato_ZH-CN7559565626_UHD.jpg&pid=hp&w=3840&h=2160&rs=1&c=4&r=0"
+                    },
+                    "childElement": []
+                }]
             }]
         }]
     }, {
@@ -277,11 +183,60 @@
         },
         "isLogin": false,
         "elements": [{
-            "uuid": "1ee5f8b2-1eeb-4747-9c6c-be596828cb2f-1600915236298",
+            "uuid": "371206dd-98ca-413f-8be8-7ed37fe080b7-1600918818937",
+            "name": "IdeSelect",
+            "style": {
+                "width": "200px",
+                "height": "30px",
+                "background": "#2b344f",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px",
+                "paddingLeft": "10px",
+                "paddingRight": "10px",
+                "paddingTop": "5px",
+                "paddingBottom": "5px"
+            },
+            "packStyle": {
+                "position": "unset",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": false,
+            "data": {
+                "value": "1",
+                "options": [{
+                    "name": "选项1",
+                    "value": "0"
+                }, {
+                    "name": "选项2",
+                    "value": "1"
+                }, {
+                    "name": "选项3",
+                    "value": "2"
+                }]
+            },
+            "childElement": []
+        }]
+    }, {
+        "path": "base_3",
+        "name": "base_3",
+        "vue": "Page",
+        "style": {
+            "background": "#2b344f",
+            "width": "100%",
+            "height": "calc(100% - 67px)"
+        },
+        "isLogin": false,
+        "elements": [{
+            "uuid": "0238b81c-6c03-451e-87aa-587d94992c12-1600918873279",
             "name": "IviewTable",
             "style": {
-                "width": "100px",
-                "height": "100px",
+                "width": "100%",
+                "height": "200px",
                 "background": "#fff",
                 "border": "none",
                 "fontSize": "14px",
@@ -300,15 +255,15 @@
                 "columns1": [{
                     "title": "姓名",
                     "key": "name",
-                    "__id": "9a3wvh"
+                    "__id": "L7by0O"
                 }, {
                     "title": "年龄",
                     "key": "age",
-                    "__id": "HR7cS5"
+                    "__id": "hp35wV"
                 }, {
                     "title": "地址",
                     "key": "address",
-                    "__id": "chbczB"
+                    "__id": "aCcNbX"
                 }],
                 "data1": [{
                     "name": "王小明",
@@ -329,34 +284,17 @@
                 }]
             },
             "childElement": []
-        }, {
-            "uuid": "c3771402-9ee0-4c2f-a0b0-7826e3a6b15d-1600915240355",
-            "name": "IdeInput",
-            "style": {
-                "width": "100px",
-                "height": "30px",
-                "background": "#fff",
-                "border": "none",
-                "fontSize": "14px",
-                "borderRadius": "0px",
-                "paddingLeft": "10px",
-                "paddingRight": "10px",
-                "paddingTop": "5px",
-                "paddingBottom": "5px"
-            },
-            "packStyle": {
-                "position": "unset",
-                "left": "0px",
-                "right": "0px",
-                "top": "0px",
-                "bottom": "0px",
-                "verticalAlign": "top"
-            },
-            "isBlock": false,
-            "data": {
-                "value": ""
-            },
-            "childElement": []
         }]
+    }, {
+        "path": "base_4",
+        "name": "base_4",
+        "vue": "Page",
+        "style": {
+            "background": "#2b344f",
+            "width": "100%",
+            "height": "calc(100% - 67px)"
+        },
+        "isLogin": false,
+        "elements": []
     }]
 }

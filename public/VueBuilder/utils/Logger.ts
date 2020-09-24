@@ -18,7 +18,7 @@ export default class Logger {
     }
 
     success(info: string) :void {
-        this.print(`${ColorEnum.GREEN}${ColorEnum.BLACK_BG}ERROR${ColorEnum.CLEAR}${ColorEnum.GREEN}: ` + info);
+        this.print(`${ColorEnum.GREEN}${ColorEnum.BLACK_BG}SUCCESS${ColorEnum.CLEAR}${ColorEnum.GREEN}: ` + info);
         this.clearColor();
     }
     

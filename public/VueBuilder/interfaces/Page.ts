@@ -4,6 +4,7 @@ export default interface Page {
     path: string;
     name: string;
     vue: string;
+    isLogin: boolean;
     style: CSSStyleDeclaration;
-    elements: Array<Element>
+    elements: Array<Element>;
 }

@@ -9,7 +9,6 @@ import { getBaseRequire, getHeaderTab } from "ys-base-js";
 
 const BaseRequire = getBaseRequire(ProtDispose);
 const HeaderTabs = getHeaderTab(router, routers);
-console.log(HeaderTabs)
 /**
  * 批量导入module下的所有模块
  * 如果module下面有自己新建的文件夹  文件夹里面的JS文件不能用index命名  容易冲突

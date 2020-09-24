@@ -20,4 +20,10 @@ export default class Base {
         }
         return temp;
     }
+    /**
+     * 格式化json
+     */
+    json(obj: any): string {
+        return JSON.stringify(obj, null, 4);
+    }
 }

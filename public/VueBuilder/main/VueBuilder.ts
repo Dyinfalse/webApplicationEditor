@@ -29,7 +29,6 @@ export default class VueBuilder extends Base {
 
     constructor () {
         super();
-        this.logger.print(this.targetPath);
         if(isConstructor){ throw this.logger.error("VueBuilder 只能实例化一次") };
         isConstructor = true;
         this.startDate = new Date();
@@ -44,7 +43,7 @@ export default class VueBuilder extends Base {
         /**
          * 构建路由文件
          */
-        new RouterBuilder(this.pageConfig.pages).start();
+        new RouterBuilder(this.pageConfig.pages).start(this.targetPath);
     }
 
     successful(): void {

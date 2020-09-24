@@ -4,6 +4,12 @@ const fs: any = require('fs');
 
 export default class File extends Base {
     /**
+     * 文件写入
+     */
+    write(target: string, data: string) {
+        fs.writeFileSync(target, data, { encoding:'utf-8' });
+    }
+    /**
      * 拷贝文件
      */
     copy(src: string, dir: string): boolean {
