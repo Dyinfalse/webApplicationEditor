@@ -18,8 +18,6 @@ export default class RouterBuilder extends File {
      */
     routerResult: Array<Route> = [];
 
-    rootDir: string = '';
-
     annotation: string = '路由配置文件';
 
     openNavMenuAble: boolean;
@@ -32,9 +30,8 @@ export default class RouterBuilder extends File {
     /**
      * 开始构建
      */
-    start(rootDir: string): void {
+    start(): void {
         try {
-            this.rootDir = rootDir;
             /**
              * 如果有导航, 插入带导航的路由
              */
@@ -72,6 +69,6 @@ export default class RouterBuilder extends File {
 export default [
     ${routeList.join(',\r\n\t')}
 ];`;
-        this.write((this.rootDir + "src/router/router.js"), context);
+        this.write((this.targetRoot + "src/router/router.js"), context);
     }
 }

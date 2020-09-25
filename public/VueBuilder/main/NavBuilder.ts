@@ -10,7 +10,7 @@ export default class NavBuilder extends File {
         this.navConfig = navConfig;
     }
 
-    start(targetPath: string): void {
-        this.write(targetPath + '/src/components/menuConfig.json', this.json(this.navConfig));
+    start(): void {
+        this.write(this.targetRoot + '/src/components/menuConfig.json', this.json(this.navConfig));
     }
 }

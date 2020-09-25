@@ -15,6 +15,7 @@ export default class Logger {
     error(info: string, stack ?: any) {
         stack = stack || '';
         this.print(`${ColorEnum.RED}${ColorEnum.BLACK_BG}ERROR${ColorEnum.CLEAR}${ColorEnum.RED}: ` + info, stack);
+        this.clearColor();
     }
 
     success(info: string) :void {

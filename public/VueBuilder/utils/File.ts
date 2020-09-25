@@ -46,7 +46,7 @@ export default class File extends Base {
             }
             return true;
         } catch (e: any) {
-            this.logger.error('文件拷贝失败: ' + path, e);
+            this.logger.error('文件删除失败: ' + path, e);
             return false;
         }
     }

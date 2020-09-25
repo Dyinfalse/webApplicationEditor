@@ -20,6 +20,10 @@
             "id": 2,
             "url": "base_3",
             "text": "子菜单3"
+        }, {
+            "id": 3,
+            "url": "base_4",
+            "text": "子菜单4"
         }]
     }, {
         "id": 1,
@@ -269,15 +273,125 @@
                 "columns1": [{
                     "title": "姓名",
                     "key": "name",
-                    "__id": "wI4yvI"
+                    "__id": "QT325C"
                 }, {
                     "title": "年龄",
                     "key": "age",
-                    "__id": "sKGvDt"
+                    "__id": "Oc16Po"
                 }, {
                     "title": "地址",
                     "key": "address",
-                    "__id": "4DrefR"
+                    "__id": "nicjG7"
+                }],
+                "data1": [{
+                    "name": "王小明",
+                    "age": 18,
+                    "address": "北京市朝阳区芍药居"
+                }, {
+                    "name": "张小刚",
+                    "age": 25,
+                    "address": "北京市海淀区西二旗"
+                }, {
+                    "name": "李小红",
+                    "age": 30,
+                    "address": "上海市浦东新区世纪大道"
+                }, {
+                    "name": "周小伟",
+                    "age": 26,
+                    "address": "深圳市南山区深南大道"
+                }]
+            },
+            "childElement": []
+        }]
+    }, {
+        "path": "base_4",
+        "name": "base_4",
+        "vue": "Page",
+        "style": {
+            "background": "#2b344f",
+            "width": "100%",
+            "height": "calc(100% - 67px)"
+        },
+        "isLogin": false,
+        "elements": [{
+            "uuid": "6bf4f59c-ca46-4b64-9d4c-da7d0f4b42f0-1600944280289",
+            "name": "IdeDiv",
+            "style": {
+                "width": "600px",
+                "height": "600px",
+                "background": "#2b344f",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "unset",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": true,
+            "data": {},
+            "childElement": [{
+                "uuid": "41148540-afb4-47f2-8c9f-3762c2e9bb18-1600944347630",
+                "name": "IdeText",
+                "style": {
+                    "width": "100px",
+                    "height": "100px",
+                    "background": "#fff",
+                    "border": "none",
+                    "fontSize": "14px",
+                    "borderRadius": "0px"
+                },
+                "packStyle": {
+                    "position": "unset",
+                    "left": "0px",
+                    "right": "0px",
+                    "top": "0px",
+                    "bottom": "0px",
+                    "verticalAlign": "top"
+                },
+                "isBlock": false,
+                "data": {
+                    "value": "11111"
+                },
+                "childElement": []
+            }]
+        }, {
+            "uuid": "3ffbcfd0-5973-4d97-8fa8-9b58a7f7a680-1600944299892",
+            "name": "IviewTable",
+            "style": {
+                "width": "700px",
+                "height": "",
+                "background": "#fff",
+                "border": "none",
+                "fontSize": "14px",
+                "borderRadius": "0px"
+            },
+            "packStyle": {
+                "position": "unset",
+                "left": "0px",
+                "right": "0px",
+                "top": "0px",
+                "bottom": "0px",
+                "verticalAlign": "top"
+            },
+            "isBlock": true,
+            "data": {
+                "columns1": [{
+                    "title": "姓名",
+                    "key": "name",
+                    "__id": "8NmclJ"
+                }, {
+                    "title": "年龄",
+                    "key": "age",
+                    "__id": "ejUaqJ"
+                }, {
+                    "title": "地址",
+                    "key": "address",
+                    "__id": "HTBWqu"
                 }],
                 "data1": [{
                     "name": "王小明",

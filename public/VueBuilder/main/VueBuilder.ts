@@ -17,14 +17,6 @@ export default class VueBuilder extends Base {
 
     file: File = new File();
     /**
-     * 项目跟路径
-     */
-    rootPath: string = __dirname.replace('public/VueBuilder/main', '');
-    /**
-     * 目标项目跟路径
-     */
-    targetPath: string = this.rootPath + '../webApplicationRunner/';
-    /**
      * 配置信息
      */
     pageConfig: PageConfig = require('../../../test.json');
@@ -39,22 +31,24 @@ export default class VueBuilder extends Base {
      * 开始构建
      */
     start(): void {
-        if(this.file.delete(this.targetPath + 'src/views')){
+        if(this.file.delete(this.targetRoot + 'src/views')){
             this.logger.print('删除views成功');
         }
         /**
          * 构建路由文件
          */
-        new RouterBuilder(this.pageConfig).start(this.targetPath);
+        new RouterBuilder(this.pageConfig).start();
         /**
          * 构建页面 vue 文件
          */
-        new PageBuilder(this.pageConfig.pages).start(this.targetPath);
+        for (let page of this.pageConfig.pages){
+            new PageBuilder(page).start();
+        }
         /**
          * 构建导航
          */
         if(this.pageConfig.frame.openNavMenuAble){
-            new NavBuilder(this.pageConfig.navConfig).start(this.targetPath);
+            new NavBuilder(this.pageConfig.navConfig).start();
         }
     }
 

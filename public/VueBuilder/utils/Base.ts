@@ -4,6 +4,14 @@ import Logger from './Logger';
  */
 export default class Base {
     /**
+     * 项目跟路径
+     */
+    rootPath: string = __dirname.replace('public/VueBuilder/utils', '');
+    /**
+     * 目标项目跟路径
+     */
+    targetRoot: string = this.rootPath + '../webApplicationRunner/';
+    /**
      * 注入日志打印类
      */
     logger: Logger = new Logger();
