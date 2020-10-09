@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "json2vue": "ts-node ./public/VueBuilder"
+    "json2vue": "ts-node ./VueBuilder"
   },
   "dependencies": {
     "axios": "^0.20.0",

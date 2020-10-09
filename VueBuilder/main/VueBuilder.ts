@@ -19,7 +19,7 @@ export default class VueBuilder extends Base {
     /**
      * 配置信息
      */
-    pageConfig: PageConfig = require('../../../test.json');
+    pageConfig: PageConfig = require('../../test.json');
 
     constructor () {
         super();

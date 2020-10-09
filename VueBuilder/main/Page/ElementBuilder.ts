@@ -59,7 +59,7 @@ export default class ElementBuilder extends Base implements Element {
          * 判断该元素是否是外部依赖, 如果是, 需要从设计器拷贝vue文件到Runner
          */
         if(!page.TAG_MAP.get(this.name)){
-            let src = __dirname.replace('public/VueBuilder/main/Page', '') + 'src/components/graceComponents/' + this.name + '.vue';
+            let src = __dirname.replace('VueBuilder/main/Page', '') + 'src/components/graceComponents/' + this.name + '.vue';
             /**
              * 文件是否存在
              */

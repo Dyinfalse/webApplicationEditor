@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Ruler from '@/components/edit-web-components/Ruler';
+import Ruler from '@/components/ctrl/Ruler';
 
 export default {
   name: 'BaseView',

@@ -104,12 +104,11 @@
 </template>
 
 <script>
-import vdr from './vue-draggable-resizable-gorkys/vue-draggable-resizable.vue'
 import Page from '../Page';
 import NavMenu from '../graceComponents/NavMenu';
 export default {
         components:{
-            vdr, Page, NavMenu
+            Page, NavMenu
         },
         name: 'Ide-ruler',
         props: {

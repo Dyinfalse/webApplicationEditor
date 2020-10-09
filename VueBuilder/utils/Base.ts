@@ -6,7 +6,7 @@ export default class Base {
     /**
      * 项目跟路径
      */
-    rootPath: string = __dirname.replace('public/VueBuilder/utils', '');
+    rootPath: string = __dirname.replace('VueBuilder/utils', '');
     /**
      * 目标项目跟路径
      */
