@@ -104,11 +104,10 @@
 </template>
 
 <script>
-import Page from '../Page';
 import NavMenu from '../graceComponents/NavMenu';
 export default {
         components:{
-            Page, NavMenu
+            NavMenu
         },
         name: 'Ide-ruler',
         props: {
